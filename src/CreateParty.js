@@ -75,10 +75,10 @@ class CreateParty extends Component {
       <div className="App">
       	<h1>ORGANIZER</h1>
       	<div className="btn-group">
-      		<button className="" onClick={()=> {this.setState({ peopleOpened: true });}}>PEOPLE</button>
-      		<button className="" onClick={()=> {this.setState({ stuffOpened: true });}}>STUFF</button>
-      		<button className="" onClick={()=> {this.setState({ placeOpened: true });}}>PLACE</button>
-      		<button className="" onClick={()=> {this.setState({ infoOpened: true });}}>SPECIAL INFO</button>
+      		<button className="btn" onClick={()=> {this.setState({ peopleOpened: true });}}>PEOPLE</button>
+      		<button className="btn" onClick={()=> {this.setState({ stuffOpened: true });}}>STUFF</button>
+      		<button className="btn" onClick={()=> {this.setState({ placeOpened: true });}}>PLACE</button>
+      		<button className="btn" onClick={()=> {this.setState({ infoOpened: true });}}>SPECIAL INFO</button>
       	</div>
       </div>
     );

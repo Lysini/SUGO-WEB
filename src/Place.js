@@ -26,18 +26,32 @@ class Place extends Component {
   render() {
     return (
       <div className="openedPlace">
+      	<button className="btn pull-right" onClick={this.props.onClose}>Close</button>
+      	<div className="container">
 	      <form>
-	      	<p>Name:<input type="text" onChange={placeName => this.setState({ placeName:placeName.target.value })} value={this.state.placeName} /></p>
-	      	<p>Location:<input type="text" onChange={placeLocation => this.setState({ placeLocation:placeLocation.target.value })} value={this.state.placeLocation} /></p>
-	      	<p>Price:<input type="text" onChange={placePrice => this.setState({ placePrice:placePrice.target.value })} value={this.state.placePrice} /> zł</p>
-	      	<p>Maximum places:<input type="text" onChange={placeMax => this.setState({ placeMax:placeMax.target.value })} value={this.state.placeMax} /></p>
-	      	<p>Note:<textarea type="text" onChange={placeNote => this.setState({ placeNote:placeNote.target.value })} value={this.state.placeNote} /></p>
-	      </form>
-	      <h1>{this.state.placeName}</h1>
-	      <h1>{this.state.placeLocation}</h1>
-	      <h1>{this.state.placeNote}</h1>
-		<button onClick={this.saveUp.bind(this)}>Save</button>
-		<button onClick={this.props.onClose}>Close</button>
+		    <div class="form-group">
+				<label>Name:</label>
+				<input className="form-control" onChange={placeName => this.setState({ placeName:placeName.target.value })} value={this.state.placeName} />
+			</div>
+			<div class="form-group">
+				<label>Location:</label>
+				<input className="form-control" onChange={placeLocation => this.setState({ placeLocation:placeLocation.target.value })} value={this.state.placeLocation} />
+			</div>
+		    <div class="form-group">
+				<label>Price:</label>
+				<input className="form-control" onChange={placePrice => this.setState({ placePrice:placePrice.target.value })} value={this.state.placePrice} />
+			</div>
+		    <div class="form-group">
+				<label>Maximum places:</label>
+				<input className="form-control" onChange={placeMax => this.setState({ placeMax:placeMax.target.value })} value={this.state.placeMax} />
+			</div>
+		    <div class="form-group">
+				<label>Note:</label>
+				<textarea className="form-control" onChange={placeNote => this.setState({ placeNote:placeNote.target.value })} value={this.state.placeNote} />
+			</div>
+		   </form>
+			<button className="btn" onClick={this.saveUp.bind(this)}>Save</button>
+      	</div>
       </div>
     );
   }
