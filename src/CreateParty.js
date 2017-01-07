@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import People from './People';
 import Stuff from './Stuff';
 import Place from './Place';
@@ -13,8 +12,24 @@ class CreateParty extends Component {
 	    	peopleOpened: false,
 	    	stuffOpened: false,
 	    	placeOpened: false,
-	    	infoOpened: false
+	    	infoOpened: false,
+	    	place: { placeName: '',
+	    			 placeLocation: '',
+	    			 placePrice: 0,
+	    			 placeMax: 0,
+	    			 placeNote: '' }
 	    };
+	}
+
+	savePlace(placeName, placeLocation, placePrice, placeMax, placeNote) {
+		this.setState({
+			placeOpened: false,
+	    	place: { placeName: placeName,
+	    			 placeLocation: placeLocation,
+	    			 placePrice: placePrice,
+	    			 placeMax: placeMax,
+	    			 placeNote: placeNote }
+	    });
 	}
 
 	openPeople() {
@@ -31,7 +46,7 @@ class CreateParty extends Component {
 
 	openPlace() {
 		return (
-          <Place onClose={()=>{this.setState({ placeOpened: false })}} />
+          <Place savePlace={this.savePlace.bind(this)} onClose={()=>{this.setState({ placeOpened: false })}} />
       	);
 	}
 
@@ -43,6 +58,7 @@ class CreateParty extends Component {
 
 
   render() {
+  	console.log(this.state.place);
   	if(this.state.peopleOpened) {
   		return this.openPeople();
   	}
@@ -59,8 +75,8 @@ class CreateParty extends Component {
       <div className="App">
       	<h1>ORGANIZER</h1>
       	<div className="btn-group">
-      		<button className="" onClick={()=> {this.setState({ peopleOpened: true });}} >PEOPLE</button>
-      		<button className="" onClick={()=> {this.setState({ stuffOpened: true });}} >STUFF</button>
+      		<button className="" onClick={()=> {this.setState({ peopleOpened: true });}}>PEOPLE</button>
+      		<button className="" onClick={()=> {this.setState({ stuffOpened: true });}}>STUFF</button>
       		<button className="" onClick={()=> {this.setState({ placeOpened: true });}}>PLACE</button>
       		<button className="" onClick={()=> {this.setState({ infoOpened: true });}}>SPECIAL INFO</button>
       	</div>
