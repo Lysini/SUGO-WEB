@@ -1,0 +1,71 @@
+.navbar {
+  margin-bottom: 0px;
+  border-width: 0;
+  min-height: 60px;
+  background-color: rgba(212, 223, 230,0.95);
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #000;
+  font-size: 1.25em;
+}
+
+.navbar-default .navbar-brand {
+  color: #000;
+}
+
+.main-bg {
+  background-image: url('http://www.sunlandrvresorts.com/wp-content/uploads/2013/09/bigstock-silhouettes-of-concert-crowd-i-15652625_mini.jpg');
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+
+.main-slogan {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-slogan-text {
+  font-size: 3.25em;
+}
+
+.main-slogan-btn {
+  font-size: 1.8em;
+  background-color: #8EC0E4;
+  padding: 15px;
+  color: #ddd;
+  border-radius: 35px;
+  border-color: #ddd;
+  border-width: 5px;
+}
+
+
+.Home-logo {
+  animation: Home-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.Home-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.Home-intro {
+  font-size: large;
+}
+
+.Home-main-title {
+  font-size: 6em;
+}
+
+@keyframes Home-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

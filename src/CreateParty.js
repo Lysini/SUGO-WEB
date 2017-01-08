@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import People from './People';
 import Stuff from './Stuff';
 import Place from './Place';
 import Info from './Info';
-import './App.css';
+import './CreateParty.css';
 
 class CreateParty extends Component {
 	constructor() {
@@ -72,13 +73,14 @@ class CreateParty extends Component {
   		return this.openInfo();
   	}
     return (
-      <div className="App">
+      <div className="container center">
       	<h1>ORGANIZER</h1>
       	<div className="btn-group">
       		<button className="btn" onClick={()=> {this.setState({ peopleOpened: true });}}>PEOPLE</button>
       		<button className="btn" onClick={()=> {this.setState({ stuffOpened: true });}}>STUFF</button>
       		<button className="btn" onClick={()=> {this.setState({ placeOpened: true });}}>PLACE</button>
       		<button className="btn" onClick={()=> {this.setState({ infoOpened: true });}}>SPECIAL INFO</button>
+      		<Link to="sum-up" query={{place: this.state.place.placeName}}><button className="btn main-slogan-btn">Sum Up</button></Link>
       	</div>
       </div>
     );
