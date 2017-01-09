@@ -41,6 +41,8 @@ class SumUp extends Component {
 		            <th>Informacje</th> 
 		            <td>{this.props.place.placeNote}</td>  
 		        </tr> 
+		            <th>Dodatkowe Informacje</th> 
+		            <p className="SumUpDodatkowe">{this.props.info}</p>
 		    </tbody> 
 		</table> 
       </div>

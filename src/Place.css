@@ -1,35 +1,48 @@
 .openedPlace {
-  background-color: #ddd;
+  background: linear-gradient(to bottom right, #41accb, #98d9ff,#dff6ff);
   height: 100vh;
   width: 100vw;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.PlaceTextArea{
+    max-width: 30vw;
+    margin: auto;
 }
+.PlaceText{
+    width: 30vw;
+    height: 3vh;
+    margin: auto;
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
 }
-
-.App-intro {
-  font-size: large;
+.PlaceClose{
+    cursor: pointer;
+    position:absolute;
+    top: 50px;
+    right: 50px;
 }
-
-.App-main-title {
-  font-size: 6em;
+.PlaceSave{
+    margin-left: 40vw;
 }
-
 .form-container {
   height: 80vh;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.close-right{
+  width:8px;
+  height:50px;
+  position:absolute;
+  top: 0;
+  background-color: #000;
+  transform:rotate(45deg);
+}
+.close-left{
+  width:8px;
+  height:50px;
+  background-color: #000;
+  transform:rotate(135deg);
 }
 
 @keyframes App-logo-spin {

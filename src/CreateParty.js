@@ -37,7 +37,10 @@ class CreateParty extends Component {
 	}
 
 	saveInfo(info) {
-		this.setState({ info: info });
+		this.setState({
+			infoOpened: false,
+			info: info
+		});
 	}
 
 	openPeople() {
@@ -66,13 +69,13 @@ class CreateParty extends Component {
 
 	openSumUp() {
 		return (
-          <SumUp place={this.state.place} onClose={()=>{this.setState({ sumUpOpened: false })}} />
+          <SumUp place={this.state.place} info={this.state.info} onClose={()=>{this.setState({ sumUpOpened: false })}} />
       	);
 	}
 
 
   render() {
-  	//console.log(this.state.place);
+  	console.log(this.state.info);
   	if(this.state.peopleOpened) {
   		return this.openPeople();
   	}
@@ -99,6 +102,7 @@ class CreateParty extends Component {
       		<button className="btn main-slogan-btn" onClick={()=> {this.setState({ sumUpOpened: true });}}>Sum Up</button>
       	</div>
       </div>
+
     );
   }
 }
