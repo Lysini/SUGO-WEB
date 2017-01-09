@@ -4,16 +4,19 @@ import People from './People';
 import Stuff from './Stuff';
 import Place from './Place';
 import Info from './Info';
+import SumUp from './SumUp';
 import './CreateParty.css';
 
 class CreateParty extends Component {
 	constructor() {
 	    super();
 	    this.state = {
+	    	sumUpOpened: false,
 	    	peopleOpened: false,
 	    	stuffOpened: false,
 	    	placeOpened: false,
 	    	infoOpened: false,
+	    	info: '',
 	    	place: { placeName: '',
 	    			 placeLocation: '',
 	    			 placePrice: 0,
@@ -31,6 +34,10 @@ class CreateParty extends Component {
 	    			 placeMax: placeMax,
 	    			 placeNote: placeNote }
 	    });
+	}
+
+	saveInfo(info) {
+		this.setState({ info: info });
 	}
 
 	openPeople() {
@@ -53,13 +60,19 @@ class CreateParty extends Component {
 
 	openInfo() {
 		return (
-          <Info onClose={()=>{this.setState({ infoOpened: false })}} />
+          <Info saveInfo={this.saveInfo.bind(this)} onClose={()=>{this.setState({ infoOpened: false })}} />
+      	);
+	}
+
+	openSumUp() {
+		return (
+          <SumUp place={this.state.place} onClose={()=>{this.setState({ sumUpOpened: false })}} />
       	);
 	}
 
 
   render() {
-  	console.log(this.state.place);
+  	//console.log(this.state.place);
   	if(this.state.peopleOpened) {
   		return this.openPeople();
   	}
@@ -72,6 +85,9 @@ class CreateParty extends Component {
   	else if(this.state.infoOpened) {
   		return this.openInfo();
   	}
+  	else if(this.state.sumUpOpened) {
+  		return this.openSumUp();
+  	}
     return (
       <div className="container center">
       	<h1>ORGANIZER</h1>
@@ -80,7 +96,7 @@ class CreateParty extends Component {
       		<button className="btn" onClick={()=> {this.setState({ stuffOpened: true });}}>STUFF</button>
       		<button className="btn" onClick={()=> {this.setState({ placeOpened: true });}}>PLACE</button>
       		<button className="btn" onClick={()=> {this.setState({ infoOpened: true });}}>SPECIAL INFO</button>
-      		<Link to="sum-up" query={{place: this.state.place.placeName}}><button className="btn main-slogan-btn">Sum Up</button></Link>
+      		<button className="btn main-slogan-btn" onClick={()=> {this.setState({ sumUpOpened: true });}}>Sum Up</button>
       	</div>
       </div>
     );

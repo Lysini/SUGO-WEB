@@ -14,10 +14,35 @@ class SumUp extends Component {
 
 
   render() {
-  	console.log(this.query.place);
+  	console.log(this.props.place);
     return (
       <div className="container">
-      	<h1>ORGANIZER</h1>
+      	<h1 className="text-center">Podsumowanie</h1>
+		<table className="table"> 
+		    <caption>Miejsce wydarzenia</caption> 
+		    <tbody> 
+		        <tr> 
+		            <th>Nazwa</th> 
+		            <td>{this.props.place.placeName}</td> 
+		        </tr> 
+		        <tr> 
+		            <th>Lokalizacja</th> 
+		            <td>{this.props.place.placeLocation}</td>  
+		        </tr> 
+		        <tr> 
+		            <th>Cena</th> 
+		          	<td>{this.props.place.placePrice}</td>   
+		        </tr> 
+		        <tr> 
+		            <th>Maksymalna liczba miejsc</th> 
+		            <td>{this.props.place.placeMax}</td>  
+		        </tr> 
+		        <tr> 
+		            <th>Informacje</th> 
+		            <td>{this.props.place.placeNote}</td>  
+		        </tr> 
+		    </tbody> 
+		</table> 
       </div>
     );
   }
