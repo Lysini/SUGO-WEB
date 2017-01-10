@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import People from './People';
 import Stuff from './Stuff';
 import Place from './Place';
@@ -36,6 +35,15 @@ class CreateParty extends Component {
 	    });
 	}
 
+	savePeople(peopleName, peopleSex, peopleNote) {
+		this.setState({
+			peopleOpened: false,
+	    	people: { peopleName: peopleName,
+	    			 peopleSex: peopleSex,
+	    			 peopleNote: peopleNote }
+	    });
+	}
+
 	saveInfo(info) {
 		this.setState({
 			infoOpened: false,
@@ -45,7 +53,7 @@ class CreateParty extends Component {
 
 	openPeople() {
 		return (
-          <People onClose={()=>{this.setState({ peopleOpened: false })}} />
+          <People savePeople={this.savePeople.bind(this)}  onClose={()=>{this.setState({ peopleOpened: false })}} />
       	);
 	}
 
@@ -75,7 +83,7 @@ class CreateParty extends Component {
 
 
   render() {
-  	console.log(this.state.info);
+  	console.log(this.state);
   	if(this.state.peopleOpened) {
   		return this.openPeople();
   	}

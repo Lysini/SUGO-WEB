@@ -18,12 +18,10 @@ class Info extends Component {
   render() {
     return (
 		<div className="openedPlace">
-		<button className="pull-right PlaceClose" onClick={this.props.onClose}>
-     	 <p className="lewa">
-      		</p>
-      		<p className="prawa">
-      		</p>
-      	</button>
+      	<div className="PlaceClose" onClick={this.props.onClose}>
+     		<div className="close-left"></div>
+      		<div className="close-right"></div>
+      	</div>
 			<div className="container pull-left">
 				<div className="form-container">
 					<form>
