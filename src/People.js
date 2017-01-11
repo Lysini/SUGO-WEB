@@ -6,13 +6,14 @@ class People extends Component {
 	    super();
 	    this.state = {
 	    	added: false,
+	    	inputSex: 'men',
 	    	person: {
 	    		peopleName: '',
-			    peopleSex: '',
+			    peopleSex: 'men',
 			    peopleNote: '',
 			    numberOfUsers: 0
 	    	},
-	    	people: ["penis", "dupa"]
+	    	people: []
 	    };
 	}
 
@@ -25,19 +26,22 @@ class People extends Component {
 	}
 
 	saveUpUser() {
-		this.setState({
-				person: {
+		const person = {
 					peopleName: this.state.inputName,
 					peopleSex: this.state.inputSex,
 					peopleNote: this.state.inputNote,
 					numberOfUsers: this.state.numberOfUsers+1
-				}
-		}, () => { console.log(this.state.person); this.setState({ people: this.state.people.push(this.state.person), added: true });});
-		console.log(this.state.people[0]);
-	}
+		};
+		this.setState({ people: this.state.people.push(person), added: true });
+		console.log(this.state.people[0].peopleName);
+		this.state.people.map((item, itemIndex) => { console.log(item);console.log(itemIndex);});
+		this.state.people.map((item, itemIndex) => { console.log(item);console.log(itemIndex);});
+		this.state.people.map((item, itemIndex) => { console.log(item); console.log(itemIndex);});
+}
 
   render() {
-  	console.log(this.state.people);
+  		console.log(" W RENDERZE");
+  		console.log(this.state.people);
     return (
 		<div className="openedPlace">
 	      	<div className="PlaceClose" onClick={this.props.onClose}>
@@ -72,15 +76,19 @@ class People extends Component {
 			    </thead> 
 		    <tbody> 
 		    { (this.state.added) ? 
-		    	this.state.people.map(function(item, key) {
-		    		console.log(item, key);
-				<tr key={key}> 
-		            <th scope="row">{this.state.people[key].person.numberOfUsers}</th>  
-		            <td>{this.state.people[key].person.peopleName}</td> 
-		            <td>{this.state.people[key].person.peopleSex}</td>
-		            <td>{this.state.people[key].person.peopleNote}</td> 
-		        </tr>
-		    	}) : null
+		    	(()=> {
+		    		console.log("map sie odpala");
+                  return this.state.people.map((item, itemIndex) => {
+                  	console.log("map sie odpala");
+					return (
+						<tr key={itemIndex}> 
+				            <th scope="row">{this.state.people[itemIndex].peopleName}</th>  
+				            <td>{this.state.people[itemIndex].peopleName}</td> 
+				            <td>{this.state.people[itemIndex].peopleSex}</td>
+				            <td>{this.state.people[itemIndex].peopleNote}</td> 
+				        </tr>
+			        );
+		    	})}) : null
 		    }
 		    </tbody> 
 		</table> 
