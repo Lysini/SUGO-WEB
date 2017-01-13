@@ -14,7 +14,7 @@ class SumUp extends Component {
 
 
   render() {
-  	console.log(this.props.place);
+  	console.log(this.props);
     return (
       <div className="container">
       	<h1 className="text-center">Podsumowanie</h1>

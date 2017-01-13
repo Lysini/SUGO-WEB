@@ -20,7 +20,10 @@ class CreateParty extends Component {
 	    			 placeLocation: '',
 	    			 placePrice: 0,
 	    			 placeMax: 0,
-	    			 placeNote: '' }
+	    			 placeNote: '' },
+	    	peopleMen: [],
+	    	peopleWomen: [],
+	    	numberOfUsers: 0
 	    };
 	}
 
@@ -35,12 +38,12 @@ class CreateParty extends Component {
 	    });
 	}
 
-	savePeople(peopleName, peopleSex, peopleNote) {
+	savePeople(peopleMen, peopleWomen, numberOfUsers) {
 		this.setState({
 			peopleOpened: false,
-	    	people: { peopleName: peopleName,
-	    			 peopleSex: peopleSex,
-	    			 peopleNote: peopleNote }
+	    	peopleMen: peopleMen,
+	    	peopleWomen: peopleWomen,
+	    	numberOfUsers: numberOfUsers
 	    });
 	}
 
@@ -77,7 +80,7 @@ class CreateParty extends Component {
 
 	openSumUp() {
 		return (
-          <SumUp place={this.state.place} info={this.state.info} onClose={()=>{this.setState({ sumUpOpened: false })}} />
+          <SumUp numberOfUsers={this.state.numberOfUsers} peopleWomen={this.state.peopleWomen} peopleMen={this.state.peopleMen} place={this.state.place} info={this.state.info} onClose={()=>{this.setState({ sumUpOpened: false })}} />
       	);
 	}
 

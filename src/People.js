@@ -3,45 +3,41 @@ import './Place.css';
 
 class People extends Component {
 	constructor() {
-	    super();
-	    this.state = {
-	    	added: false,
-	    	inputSex: 'men',
-	    	person: {
-	    		peopleName: '',
-			    peopleSex: 'men',
-			    peopleNote: '',
-			    numberOfUsers: 0
-	    	},
-	    	people: []
-	    };
+		super();
+		this.state = {
+			added: false,
+			inputSex: 'men',
+			numberOfUsers: 0,
+			peopleWomen: [],
+			peopleMen: []
+		};
 	}
 
 	saveUp() {
 		this.props.savePeople(
-	      this.state.peopleName,
-	      this.state.peopleSex,
-	      this.state.peopleNote
-	    );
+			this.state.peopleWomen,
+			this.state.peopleMen,
+			this.state.numberOfUsers
+			);
 	}
 
 	saveUpUser() {
-		const person = {
-					peopleName: this.state.inputName,
-					peopleSex: this.state.inputSex,
-					peopleNote: this.state.inputNote,
-					numberOfUsers: this.state.numberOfUsers+1
+		let person = {
+			peopleName: this.state.inputName,
+			peopleSex: this.state.inputSex,
+			peopleNote: this.state.inputNote,
+			numberOfUsers: this.state.numberOfUsers+1
 		};
-		this.setState({ people: this.state.people.push(person), added: true });
-		console.log(this.state.people[0].peopleName);
-		this.state.people.map((item, itemIndex) => { console.log(item);console.log(itemIndex);});
-		this.state.people.map((item, itemIndex) => { console.log(item);console.log(itemIndex);});
-		this.state.people.map((item, itemIndex) => { console.log(item); console.log(itemIndex);});
-}
+		if(this.state.inputSex === "men") {
+			this.state.peopleMen.push(person);
+		}
+		else {
+			this.state.peopleWomen.push(person);
+		}
+		this.setState({ added: true, numberOfUsers: this.state.numberOfUsers+1 });
+	}
 
   render() {
-  		console.log(" W RENDERZE");
-  		console.log(this.state.people);
     return (
 		<div className="openedPlace">
 	      	<div className="PlaceClose" onClick={this.props.onClose}>
@@ -64,8 +60,8 @@ class People extends Component {
 						<input type="text" className="form-control PlaceText" onChange={inputNote => this.setState({ inputNote:inputNote.target.value })} value={this.state.inputNote} />
 					</div>
 					<button className="btn" type="button" onClick={this.saveUpUser.bind(this)}>Save</button>
-					
 				   </form>
+			</div>
 		<table className="table"> 
 		    <caption>Mężczyźni</caption> 
 			    <thead> 
@@ -75,24 +71,41 @@ class People extends Component {
 			        </tr> 
 			    </thead> 
 		    <tbody> 
-		    { (this.state.added) ? 
-		    	(()=> {
-		    		console.log("map sie odpala");
-                  return this.state.people.map((item, itemIndex) => {
-                  	console.log("map sie odpala");
+			{ (this.state.added) ? 
+                this.state.peopleMen.map((item, itemIndex) => {
 					return (
 						<tr key={itemIndex}> 
-				            <th scope="row">{this.state.people[itemIndex].peopleName}</th>  
-				            <td>{this.state.people[itemIndex].peopleName}</td> 
-				            <td>{this.state.people[itemIndex].peopleSex}</td>
-				            <td>{this.state.people[itemIndex].peopleNote}</td> 
-				        </tr>
+				            <td>{this.state.peopleMen[itemIndex].peopleName}</td> 
+				            <td>{this.state.peopleMen[itemIndex].peopleSex}</td>
+				            <td>{this.state.peopleMen[itemIndex].peopleNote}</td> 
+						</tr>
 			        );
-		    	})}) : null
+			    }) : null
 		    }
 		    </tbody> 
-		</table> 
-			   </div>
+		</table>
+		<table className="table"> 
+		    <caption>Kobiety</caption> 
+			    <thead> 
+			        <tr> 
+			            <th></th> 
+			            <th>Dane uczestnika</th>  
+			        </tr> 
+			    </thead> 
+		    <tbody> 
+			{ (this.state.added) ? 
+                this.state.peopleWomen.map((item, itemIndex) => {
+					return (
+						<tr key={itemIndex}> 
+				            <td>{this.state.peopleWomen[itemIndex].peopleName}</td> 
+				            <td>{this.state.peopleWomen[itemIndex].peopleSex}</td>
+				            <td>{this.state.peopleWomen[itemIndex].peopleNote}</td> 
+						</tr>
+			        );
+			    }) : null
+		    }
+		    </tbody> 
+		</table>  
 				<button className="btn PlaceSave" onClick={this.saveUp.bind(this)}>Save Up</button>
 	      	</div>
       </div>
