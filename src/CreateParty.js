@@ -79,9 +79,16 @@ class CreateParty extends Component {
 	}
 
 	openSumUp() {
-		return (
-          <SumUp numberOfUsers={this.state.numberOfUsers} peopleWomen={this.state.peopleWomen} peopleMen={this.state.peopleMen} place={this.state.place} info={this.state.info} onClose={()=>{this.setState({ sumUpOpened: false })}} />
-      	);
+		this.props.router.push({
+		  pathname: '/sum-up',
+		  state: { 
+		  	place: this.state.place,
+		  	info: this.state.info,
+		  	peopleWomen: this.state.peopleWomen,
+		  	peopleMen: this.state.peopleMen,
+		  	numberOfUsers: this.state.numberOfUsers,
+		  } 
+		})
 	}
 
 
@@ -99,9 +106,6 @@ class CreateParty extends Component {
   	else if(this.state.infoOpened) {
   		return this.openInfo();
   	}
-  	else if(this.state.sumUpOpened) {
-  		return this.openSumUp();
-  	}
     return (
       <div className="container center">
       	<h1>ORGANIZER</h1>
@@ -110,7 +114,7 @@ class CreateParty extends Component {
       		<button className="btn" onClick={()=> {this.setState({ stuffOpened: true });}}>STUFF</button>
       		<button className="btn" onClick={()=> {this.setState({ placeOpened: true });}}>PLACE</button>
       		<button className="btn" onClick={()=> {this.setState({ infoOpened: true });}}>SPECIAL INFO</button>
-      		<button className="btn main-slogan-btn" onClick={()=> {this.setState({ sumUpOpened: true });}}>Sum Up</button>
+      		<button className="btn main-slogan-btn" onClick={this.openSumUp.bind(this)}>Sum Up</button>
       	</div>
       </div>
 
