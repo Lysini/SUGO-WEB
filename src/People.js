@@ -34,7 +34,12 @@ class People extends Component {
 		else {
 			this.state.peopleWomen.push(person);
 		}
-		this.setState({ added: true, numberOfUsers: this.state.numberOfUsers+1 });
+		this.setState({ 
+			added: true, 
+			numberOfUsers: this.state.numberOfUsers+1,
+			inputName: '',
+			inputNote: '' 
+		});
 	}
 
   render() {
