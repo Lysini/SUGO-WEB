@@ -1,0 +1,58 @@
+.openedPlace {
+  background: linear-gradient(to bottom right, #41accb, #98d9ff,#dff6ff);
+  height: 100vh;
+  width: 100vw;
+}
+
+.PlaceTextArea{
+    max-width: 30vw;
+    margin: auto;
+}
+.PlaceText{
+    width: 20vw;
+    height: 3vh;
+    margin: auto;
+}
+.addBlock{
+    margin-top: 10vh;
+}
+.PlaceClose{
+    cursor: pointer;
+    position:absolute;
+    top: 50px;
+    right: 50px;
+}
+.PlaceSave{
+    margin-right: 5vw;
+
+}
+.form-container {
+  height: 80vh;
+  width: 40vw;
+  align-items: center;
+  justify-content: center;
+}
+.close-right{
+  width:8px;
+  height:50px;
+  position:absolute;
+  top: 0;
+  background-color: #000;
+  transform:rotate(45deg);
+}
+.close-left{
+  width:8px;
+  height:50px;
+  background-color: #000;
+  transform:rotate(135deg);
+}
+.add-stuff{
+  position: fixed;
+  top:1vh;
+  right: 5vw;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
