@@ -31,7 +31,6 @@ class Stuff extends Component {
 			stuffArray: []
 		};
 		this.state.stuff.push(stuffLabel);
-		console.log(this.state.stuff);
 		this.setState({ addStatus: true, labelName: '' });
 	}
 
@@ -60,7 +59,6 @@ class Stuff extends Component {
 	      			<div className="row">
 					{(this.state.addStatus) ? 
 						this.state.stuff.map((item, itemIndex) => {
-							console.log(itemIndex);
 							return (
 								<div className="col-sm-4 pull-left">
 									<h3>{this.state.stuff[itemIndex].labelName}</h3>
