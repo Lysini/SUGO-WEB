@@ -16,6 +16,7 @@ class CreateParty extends Component {
 	    	placeOpened: false,
 	    	infoOpened: false,
 	    	info: '',
+	    	stuff: [],
 	    	place: { placeName: '',
 	    			 placeLocation: '',
 	    			 placePrice: 0,
@@ -47,6 +48,13 @@ class CreateParty extends Component {
 	    });
 	}
 
+	saveStuff(stuff) {
+		this.setState({
+			stuffOpened: false,
+			stuff: stuff
+	    });
+	}
+
 	saveInfo(info) {
 		this.setState({
 			infoOpened: false,
@@ -62,7 +70,7 @@ class CreateParty extends Component {
 
 	openStuff() {
 		return (
-          <Stuff onClose={()=>{this.setState({ stuffOpened: false })}} />
+          <Stuff saveStuff={this.saveStuff.bind(this)} onClose={()=>{this.setState({ stuffOpened: false })}} />
       	);
 	}
 

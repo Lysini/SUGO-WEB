@@ -1,43 +1,48 @@
 import React, { Component } from 'react';
 import './Stuff.css';
 
-class Place extends Component {
+class Stuff extends Component {
 	constructor() {
 	    super();
 	    this.state = {
 	    	addStatus: false,
 	    	addLabel:false,
 	    	addedLabel: false,
+	    	selectedLabel: 0,
+	    	stuff: [],
+	    	stuffLabels: '',
+	    	stuffItems: '',
 	    	labelName: '',
-	    	label1: '',
-	    	label2: '',
-	    	label3: '',
-	    	labelNames:[],
-	    	labels: [],
-	    	number: 0
+	    	stuffName: '',
+	    	stuffPrice: '',
+	    	stuffAmount: '',
 	    };
 	}
 
 	saveUp() {
 		this.props.saveStuff(
-			this.state.labels,
-			this.state.labelNames
+			this.state.stuff
 		);
 	}
 
 	addLabel(){
-		this.state.labelNames.push(this.state.labelName);
+		let stuffLabel = {
+			labelName: this.state.labelName,
+			stuffArray: []
+		};
+		this.state.stuff.push(stuffLabel);
+		console.log(this.state.stuff);
 		this.setState({ addStatus: true, labelName: '' });
 	}
 
 	addStuff(){
-		let stuff = {
-			stuff1: this.state.label1,
-			stuff2: this.state.label2,
-			stuff3: this.state.label3
+		let stuffItem = {
+			stuffName: this.state.stuffName,
+			stuffPrice: this.state.stuffPrice,
+			stuffAmount: this.state.stuffAmount
 		};
-		this.state.labels.push(stuff);
-      	this.setState({ addLabel: false, addedLabel:true, label1:'',label2:'',label3:'' });
+		this.state.stuff[this.state.selectedLabel].stuffArray.push(stuffItem);
+      	this.setState({ addLabel: false, addedLabel:true, stuffName:'', stuffPrice:'', stuffAmount:'' });
 	}
 
 	render() {
@@ -51,57 +56,47 @@ class Place extends Component {
       				<input type="text" className="form-control PlaceText pull-left" onChange={labelName => this.setState({ labelName:labelName.target.value })} value={this.state.labelName}/>
       				<button className="btn" type="button" onClick={this.addLabel.bind(this)}>Add</button>
       			</div>
-      			/*<div className="container pull-left addBlock">
-      			<div className="row">
-				{(this.state.addStatus) ? 
-					this.state.labelNames.map((item, itemIndex) => {
-						return (
-							<div key="itemIndex" className="col-sm-4 pull-left">
-								<p>{this.state.labelNames[itemIndex]}
-								<button className="btn" type="button" onClick={addStatus => this.setState({ addLabel: true })}>Add</button></p>
-								{(this.state.addedLabel) ?
-									<div>
-				            			<p>{this.state.labels[itemIndex].stuff1}</p>
-				           				<p>{this.state.labels[itemIndex].stuff2}</p>
-				           				<p>{this.state.labels[itemIndex].stuff3}</p>
-				           			</div>
-								: null
-								}	
-							</div> 
-						);
-					}): null
-				}
-				</div>
-				</div>*/
-				<table>
-					<tbody>
-						{(this.state.addStatus) ? 
-							this.state.labelNames.map((item, itemIndex) => {
+      			<div className="container pull-left addBlock">
+	      			<div className="row">
+					{(this.state.addStatus) ? 
+						this.state.stuff.map((item, itemIndex) => {
+							console.log(itemIndex);
 							return (
-								<tr key={itemIndex}> 
-									<th>{this.state.labelNames[itemIndex]}</th>
-									<button className="btn" type="button" onClick={addStatus => this.setState({ addLabel: true })}>Add</button>
-								</tr>
-								);
-							}): null
-						}
-					</tbody>
-				</table>
+								<div className="col-sm-4 pull-left">
+									<h3>{this.state.stuff[itemIndex].labelName}</h3>
+									<button className="btn" type="button" onClick={addStatus => this.setState({ addLabel: true, selectedLabel: itemIndex })}>Add</button>
+									{(this.state.addedLabel) ?
+										this.state.stuff[itemIndex].stuffArray.map(function(stuffItem, stuffIndex) {
+						                    return (
+						                    	<div>
+													<p>{stuffItem.stuffName}</p>
+							           				<p>{stuffItem.stuffPrice}</p>
+							           				<p>{stuffItem.stuffAmount}</p>
+							           			</div>
+						                    )
+						                }) : null
+									}	
+								</div> 
+							);
+						}): null
+					}
+					</div>
+				</div>
 				<div className="container pull-right add-stuff">
 				{ (this.state.addLabel) ? 
 					<div className="form-container">
 						<form>
 							<div className="form-group">
-								<label>Nwm co tu</label>
-								<input type="text" className="form-control PlaceText" onChange={label1 => this.setState({ label1:label1.target.value })} value={this.state.label1}/>
+								<label>Nazwa:</label>
+								<input type="text" className="form-control PlaceText" onChange={stuffName => this.setState({ stuffName:stuffName.target.value })} value={this.state.stuffName}/>
 							</div>
 							<div className="form-group">
-								<label>Nwm co tu</label>
-								<input type="text" className="form-control PlaceText" onChange={label2 => this.setState({ label2:label2.target.value })} value={this.state.label2}/>
+								<label>Cena:</label>
+								<input type="text" className="form-control PlaceText" onChange={stuffPrice => this.setState({ stuffPrice:stuffPrice.target.value })} value={this.state.stuffPrice}/>
 							</div>
 							<div className="form-group">
-								<label>Nwm co tu</label>
-								<input type="text" className="form-control PlaceText" onChange={label3 => this.setState({ label3:label3.target.value })} value={this.state.label3}/>
+								<label>Ilość:</label>
+								<input type="text" className="form-control PlaceText" onChange={stuffAmount => this.setState({ stuffAmount:stuffAmount.target.value })} value={this.state.stuffAmount}/>
 							</div>
 							<button className="btn" type="button" onClick={this.addStuff.bind(this)}>Add</button>
 						</form> 
@@ -115,4 +110,4 @@ class Place extends Component {
   }
 }
 
-export default Place;
+export default Stuff;
