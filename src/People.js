@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Place.css';
+
 
 class People extends Component {
 	constructor() {
@@ -45,6 +45,13 @@ class People extends Component {
   render() {
     return (
 		<div className="openedPlace">
+			<div className="container pull-left">
+				<h1>Info o Organizatorze</h1>
+				<p>Imie</p>
+				<p>Nazwisko</p>
+				<p>Info</p>
+			</div>
+			<h className="title">People</h>
 	      	<div className="PlaceClose" onClick={this.props.onClose}>
 	     		<div className="close-left"></div>
 	      		<div className="close-right"></div>
@@ -111,7 +118,7 @@ class People extends Component {
 		    }
 		    </tbody> 
 		</table>  
-				<button className="btn PlaceSave" onClick={this.saveUp.bind(this)}>Save Up</button>
+				<button className="btn PlaceSave" onClick={this.saveUp.bind(this)}>Next</button>
 	      	</div>
       </div>
     );

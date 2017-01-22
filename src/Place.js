@@ -55,7 +55,7 @@ class Place extends Component {
 				</div>
 			   </form>
 		   </div>
-			<button className="btn PlaceSave" onClick={this.saveUp.bind(this)}>Save</button>
+			<button className="btn PlaceSave" onClick={this.saveUp.bind(this)}>Next</button>
       	</div>
       </div>
     );

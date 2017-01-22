@@ -143,7 +143,7 @@ class Stuff extends Component {
 				    </div>
 				  </div>
 				</div>
-				<button className="btn pull-right PlaceSave" onClick={this.saveUp.bind(this)}>Save Up</button>
+				<button className="btn pull-right PlaceSave" onClick={this.saveUp.bind(this)}>Next</button>
       		</div>
     );
   }

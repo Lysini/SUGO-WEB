@@ -11,7 +11,7 @@ class CreateParty extends Component {
 	    super();
 	    this.state = {
 	    	sumUpOpened: false,
-	    	peopleOpened: false,
+	    	peopleOpened: true,
 	    	stuffOpened: false,
 	    	placeOpened: false,
 	    	infoOpened: false,
@@ -31,6 +31,7 @@ class CreateParty extends Component {
 	savePlace(placeName, placeLocation, placePrice, placeMax, placeNote) {
 		this.setState({
 			placeOpened: false,
+			infoOpened: true,
 	    	place: { placeName: placeName,
 	    			 placeLocation: placeLocation,
 	    			 placePrice: placePrice,
@@ -42,6 +43,7 @@ class CreateParty extends Component {
 	savePeople(peopleMen, peopleWomen, numberOfUsers) {
 		this.setState({
 			peopleOpened: false,
+			stuffOpened: true,
 	    	peopleMen: peopleMen,
 	    	peopleWomen: peopleWomen,
 	    	numberOfUsers: numberOfUsers
@@ -51,6 +53,7 @@ class CreateParty extends Component {
 	saveStuff(stuff) {
 		this.setState({
 			stuffOpened: false,
+			placeOpened: true,
 			stuff: stuff
 	    });
 	}
@@ -58,6 +61,7 @@ class CreateParty extends Component {
 	saveInfo(info) {
 		this.setState({
 			infoOpened: false,
+			sumUpOpened: true,
 			info: info
 		});
 	}
@@ -114,19 +118,10 @@ class CreateParty extends Component {
   	else if(this.state.infoOpened) {
   		return this.openInfo();
   	}
-    return (
-      <div className="container center">
-      	<h1>ORGANIZER</h1>
-      	<div className="btn-group">
-      		<button className="btn" onClick={()=> {this.setState({ peopleOpened: true });}}>PEOPLE</button>
-      		<button className="btn" onClick={()=> {this.setState({ stuffOpened: true });}}>STUFF</button>
-      		<button className="btn" onClick={()=> {this.setState({ placeOpened: true });}}>PLACE</button>
-      		<button className="btn" onClick={()=> {this.setState({ infoOpened: true });}}>SPECIAL INFO</button>
-      		<button className="btn main-slogan-btn" onClick={this.openSumUp.bind(this)}>Sum Up</button>
-      	</div>
-      </div>
-
-    );
+  	else if(this.state.sumUpOpened) {
+  		return this.openSumUp();
+  	}
+    	
   }
 }
 

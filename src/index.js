@@ -5,6 +5,7 @@ import Home from './Home';
 import CreateParty from './CreateParty';
 import SumUp from './SumUp';
 import './index.css';
+import '../public/css/style.css';
 
 ReactDOM.render((
 	  <Router history={browserHistory}>
