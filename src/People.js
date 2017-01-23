@@ -111,8 +111,7 @@ class People extends Component {
 		        overlayClassName="Overlay">
 					<div className="modal-header text-center">
 					    <h4 className="modal-title" id="myModalLabel">Dodaj Uczestnika</h4>
-					    <span className="fa fa-times" onClick={()=> this.setState({showModal: false})} aria-hidden="true"/>
-					    <span className="pull-right" onClick={()=> this.setState({showModal: false})} aria-hidden="true">X</span>
+					    <span className="fa fa-times pull-right" onClick={()=> this.setState({showModal: false})} aria-hidden="true"/>
 					</div>
 					<div className="modal-form-container">
 						<form>
