@@ -73,7 +73,7 @@ class People extends Component {
 			<div className="container ">
 				<div className="row">
 					<div className="col-sm-12 col-md-6 text-center">
-					   	<h1 className="people-men">Mężczyźni <button className="btn " onClick={showModal => this.setState({showModal: true, peopleSex: 'men'})}>+</button></h1>
+					   	<h1 className="people-men">Mężczyźni <i className="fa fa-plus" onClick={showModal => this.setState({showModal: true, peopleSex: 'men'})} aria-hidden="true"></i></h1>
 					   	<div className="people-men-1">
 							{(this.state.added) ? 
 				                this.state.peopleMen.map((item, itemIndex) => {
@@ -88,7 +88,7 @@ class People extends Component {
 						</div>
 					</div>
 					<div className="col-sm-12 col-md-6 text-center">
-						<h1 className="people-women">Kobiety <button className="btn " onClick={showModal => this.setState({showModal: true, peopleSex: 'women'})}>+</button></h1>   
+						<h1 className="people-women">Kobiety <i className="fa fa-plus" onClick={showModal => this.setState({showModal: true, peopleSex: 'women'})} aria-hidden="true"></i></h1>   
 						<div className="people-women-1">
 							{(this.state.added) ? 
 			               		this.state.peopleWomen.map((item, itemIndex) => {
@@ -111,6 +111,7 @@ class People extends Component {
 		        overlayClassName="Overlay">
 					<div className="modal-header text-center">
 					    <h4 className="modal-title" id="myModalLabel">Dodaj Uczestnika</h4>
+					    <span className="fa fa-times" onClick={()=> this.setState({showModal: false})} aria-hidden="true"/>
 					    <span className="pull-right" onClick={()=> this.setState({showModal: false})} aria-hidden="true">X</span>
 					</div>
 					<div className="modal-form-container">
