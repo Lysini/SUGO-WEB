@@ -7,7 +7,8 @@ class People extends Component {
 		super();
 		this.state = {
 			showModal: false,
-			showModalEdit: false,
+			updateActive: false,
+			modalTitle: 'Dodaj Uczestnika',
 			deleteStatus: false,
 			added: false,
 			peopleSex: 'men',
@@ -82,7 +83,7 @@ class People extends Component {
 			this.state.peopleWomen[this.state.assistantNumber]=person;
 		}
 		this.setState({ 
-			showModalEdit: false,
+			showModal: false,
 			inputName: '',
 			inputNote: '' 
 		});
@@ -107,13 +108,13 @@ class People extends Component {
 			<div className="container ">
 				<div className="row">
 					<div className="col-sm-12 col-md-6 text-center">
-					   	<h1 className="people-men">Mężczyźni <i className="fa fa-plus add-people-button" onClick={showModal => this.setState({showModal: true, peopleSex: 'men'})} aria-hidden="true"></i></h1>
+					   	<h1 className="people-men">Mężczyźni <i className="fa fa-plus add-people-button" onClick={showModal => this.setState({showModal: true, peopleSex: 'men', modalTitle: 'Dodaj uczestnika', updateActive: false})} aria-hidden="true"></i></h1>
 					   	<div className="people-men-1">
 							{(this.state.added) ? 
 				                this.state.peopleMen.map((item, itemIndex) => {
 									return (
 										<div>
-											<p>Imie: {this.state.peopleMen[itemIndex].peopleName} <button className="btn fa fa-pencil-square-o" onClick={() => this.setState({peopleSex: 'men', assistantNumber:itemIndex, showModalEdit:true, inputName: this.state.peopleMen[itemIndex].peopleName, inputNote: this.state.peopleMen[itemIndex].peopleNote})} aria-hidden="true"></button></p> 
+											<p>Imie: {this.state.peopleMen[itemIndex].peopleName} <button className="btn fa fa-pencil-square-o" onClick={() => this.setState({peopleSex: 'men', assistantNumber:itemIndex, showModal:true, inputName: this.state.peopleMen[itemIndex].peopleName, inputNote: this.state.peopleMen[itemIndex].peopleNote, modalTitle: 'Edytuj uczestnika', updateActive: true})} aria-hidden="true"></button></p> 
 								          	<p>Notka: {this.state.peopleMen[itemIndex].peopleNote} <button className="btn fa fa-trash" aria-hidden="true"></button></p>
 								          	
 								       	</div>
@@ -123,13 +124,13 @@ class People extends Component {
 						</div>
 					</div>
 					<div className="col-sm-12 col-md-6 text-center">
-						<h1 className="people-women">Kobiety <i className="fa fa-plus add-people-button" onClick={showModal => this.setState({showModal: true, peopleSex: 'women'})} aria-hidden="true"></i> </h1>   
+						<h1 className="people-women">Kobiety <i className="fa fa-plus add-people-button" onClick={showModal => this.setState({showModal: true, peopleSex: 'women', modalTitle: 'Dodaj uczestnika', updateActive: false})} aria-hidden="true"></i> </h1>   
 						<div className="people-women-1">
 							{(this.state.added) ? 
 			               		this.state.peopleWomen.map((item, itemIndex) => {
 									return (
 										<div>
-							            	<p>Imie: {this.state.peopleWomen[itemIndex].peopleName} <button className="fa fa-pencil-square-o" onClick={() => this.setState({peopleSex: 'women', assistantNumber:itemIndex, showModalEdit:true, inputName: this.state.peopleWomen[itemIndex].peopleName, inputNote: this.state.peopleWomen[itemIndex].peopleNote})} aria-hidden="true"></button></p> 
+							            	<p>Imie: {this.state.peopleWomen[itemIndex].peopleName} <button className="fa fa-pencil-square-o" onClick={() => this.setState({peopleSex: 'women', assistantNumber:itemIndex, showModal:true, inputName: this.state.peopleWomen[itemIndex].peopleName, inputNote: this.state.peopleWomen[itemIndex].peopleNote, modalTitle: 'Edytuj uczestnika', updateActive: true})} aria-hidden="true"></button></p> 
 							           		<p>Notka: {this.state.peopleWomen[itemIndex].peopleNote} <button className="fa fa-trash" aria-hidden="true"></button></p> 
 							        	</div>
 						        	);
@@ -145,8 +146,8 @@ class People extends Component {
 		        className="Modal"
 		        overlayClassName="Overlay">
 					<div className="modal-header text-center">
-						<h4 className="modal-title" id="myModalLabel">Dodaj Uczestnika</h4>
-					    <span className="fa fa-times" onClick={()=> this.setState({showModal: false, deleteStatus: false})} aria-hidden="true"/>
+						<h4 className="modal-title" id="myModalLabel">{this.state.modalTitle}</h4>
+					    <span className="fa fa-times" onClick={()=> this.setState({showModal: false})} aria-hidden="true"/>
 					</div>
 					<div className="modal-form-container">
 						<form>
@@ -158,30 +159,7 @@ class People extends Component {
 								<label>Notatki:</label>
 								<input type="text" className="form-control modal-note" onChange={inputNote => this.setState({ inputNote:inputNote.target.value })} value={this.state.inputNote} />
 							</div>
-							<button className="btn pull-right modal-save" type="button" onClick={this.saveUpUser.bind(this)}>Save</button>
-						</form>
-					</div>
-		        </ReactModal>
-		        <ReactModal 
-		        isOpen={this.state.showModalEdit}
-		        contentLabel="Inline Styles Modal Example"
-		        className="Modal"
-		        overlayClassName="Overlay">
-					<div className="modal-header text-center">
-						<h4 className="modal-title" id="myModalLabel">Edytuj Uczestnika</h4>
-					    <span className="fa fa-times" onClick={()=> this.setState({showModalEdit: false, inputName: '',inputNote: ''})} aria-hidden="true"/>
-					</div>
-					<div className="modal-form-container">
-						<form>
-				   			<div className="form-group text-center">
-								<label>Imię i nazwisko lub pseudonim:</label>
-								<input type="text" className="form-control modal-text" onChange={inputName => this.setState({ inputName:inputName.target.value })} value={this.state.inputName}/>
-							</div>
-							<div className="form-group text-center">
-								<label>Notatki:</label>
-								<input type="text" className="form-control modal-note" onChange={inputNote => this.setState({ inputNote:inputNote.target.value })} value={this.state.inputNote} />
-							</div>
-							<button className="btn pull-right modal-save" type="button" onClick={this.updateUser.bind(this)}>Save</button>
+							<button className="btn pull-right modal-save" type="button" onClick={(this.state.updateActive) ? this.updateUser.bind(this) : this.saveUpUser.bind(this)}>Save</button>
 						</form>
 					</div>
 		        </ReactModal>
