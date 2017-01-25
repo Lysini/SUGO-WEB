@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory } from 'react-router'
-import Home from './Home';
-import CreateParty from './CreateParty';
-import SumUp from './SumUp';
+import Home from './Home/Home';
+import CreateParty from './CreateParty/CreateParty';
+import SumUp from './SumUp/SumUp';
 import './index.css';
 import '../public/css/style.css';
 

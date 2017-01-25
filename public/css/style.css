@@ -204,6 +204,13 @@
 
 }
 
+@media (min-width: 992px) and (max-width: 1199px) {
+  .Modal {
+    height: 40%;
+  }
+}
+
+
 /* HOME PAGE */
 
 .how-works {

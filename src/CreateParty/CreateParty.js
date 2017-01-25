@@ -3,7 +3,6 @@ import People from './People';
 import Stuff from './Stuff';
 import Place from './Place';
 import Info from './Info';
-import SumUp from './SumUp';
 import './CreateParty.css';
 
 class CreateParty extends Component {

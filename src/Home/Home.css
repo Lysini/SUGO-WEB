@@ -1,0 +1,152 @@
+.navbar {
+  margin-bottom: 0px;
+  border-width: 0;
+  min-height: 60px;
+  background-color: rgba(212, 223, 230,0.95);
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #000;
+  font-size: 1.25em;
+}
+
+.navbar-default .navbar-brand {
+  color: #000;
+}
+
+.main-bg {
+  background-image: url('http://www.sunlandrvresorts.com/wp-content/uploads/2013/09/bigstock-silhouettes-of-concert-crowd-i-15652625_mini.jpg');
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+
+.main-slogan {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-slogan-text {
+  font-size: 3.25em;
+}
+
+.main-slogan-btn {
+  font-size: 1.8em;
+  background-color: #8EC0E4;
+  padding: 15px;
+  color: #ddd;
+  border-radius: 35px;
+  border-color: #ddd;
+  border-width: 5px;
+}
+
+
+.Home-logo {
+  animation: Home-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.Home-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.Home-intro {
+  font-size: large;
+}
+
+.Home-main-title {
+  font-size: 6em;
+}
+
+/* HOME PAGE */
+
+.how-works {
+  text-align: center;
+  background-color: #C7FAFF;
+  padding: 5vh auto;
+  width: 100vw;
+}
+
+.how-works-title {
+  font-size: 2.0em;
+}
+
+.how-works-box {
+  height: 85vh;
+  opacity: 0;
+}
+
+.how-works-img {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.how-works-description {
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 95vh;
+  font-size: 1.5em;
+  margin-top: -10vh;
+}
+
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  display: flex; }
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    filter: alpha(opacity=0); }
+  100% {
+    opacity: 1;
+    filter: alpha(opacity=100); } }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    filter: alpha(opacity=0); }
+  100% {
+    opacity: 1;
+    filter: alpha(opacity=100); } }
+
+.fadeOut {
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  display: none;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both; 
+  opacity: 0;
+  -webkit-animation-name: fadeOut;
+          animation-name: fadeOut; }
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+    filter: alpha(opacity=1); }
+  100% {
+    opacity: 0;
+    filter: alpha(opacity=0); } }
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    filter: alpha(opacity=1); }
+  100% {
+    opacity: 0;
+    filter: alpha(opacity=0); } }
