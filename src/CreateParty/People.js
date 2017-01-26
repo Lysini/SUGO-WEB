@@ -61,10 +61,8 @@ class People extends Component {
 	deleteUser(){
 		if(this.state.peopleSex==='men'){
 			this.state.peopleMen.splice(this.state.editOrDeleteNumber,1);
-			this.setState({deleteStatus: false});
-
 		}
-		else if(this.state.peopleSex==='women'){
+		else {
 			this.state.peopleWomen.splice(this.state.editOrDeleteNumber,1);
 		}
 	}
@@ -95,9 +93,8 @@ class People extends Component {
 			<div className="container pull-left">
 				<div className="col-sm-4 people-info">
 					<h2>Organizator</h2>
-					<p>Imie</p>
-					<p>Nazwisko</p>
-					<p>Info</p>
+					<p>{this.props.organizerName}</p>
+					<p>{this.props.organizerNote}</p>
 				</div>
 			</div>
 			<h className="title">People</h>

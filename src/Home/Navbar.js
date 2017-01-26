@@ -21,7 +21,7 @@ class Navbar extends Component {
 		      	<li><a href="#">Home</a></li>
 		        <li><a href="#">About App</a></li>
 		        <li><a href="#">Contact Us</a></li>
-		        <li><a href="#"><Link to={`create`}>Create Party +</Link></a></li>
+		        <li><a href="#"><Link to={`organizer`}>Create Party +</Link></a></li>
 		        <li><a href="#">Log In</a></li>
 		        <li><a href="#">PL/EN</a></li>
 		      </ul>

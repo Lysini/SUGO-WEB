@@ -67,7 +67,10 @@ class CreateParty extends Component {
 
 	openPeople() {
 		return (
-          <People savePeople={this.savePeople.bind(this)}  onClose={()=>{this.setState({ peopleOpened: false })}} />
+          <People organizerName={this.props.location.state.organizerName}
+		          organizerNote={this.props.location.state.organizerNote} 
+		          savePeople={this.savePeople.bind(this)}  
+		          onClose={()=>{this.setState({ peopleOpened: false })}} />
       	);
 	}
 
@@ -93,6 +96,8 @@ class CreateParty extends Component {
 		this.props.router.push({
 		  pathname: '/sum-up',
 		  state: { 
+		  	organizerName: this.props.location.state.organizerName,
+		  	organizerNote: this.props.location.state.organizerNote,
 		  	place: this.state.place,
 		  	info: this.state.info,
 		  	peopleWomen: this.state.peopleWomen,
