@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactModal from 'react-modal';
-import './Stuff.css';
+import './style.css';
 
 class Stuff extends Component {
 	constructor() {

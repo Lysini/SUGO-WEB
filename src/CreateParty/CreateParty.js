@@ -3,7 +3,7 @@ import People from './People';
 import Stuff from './Stuff';
 import Place from './Place';
 import Info from './Info';
-import './CreateParty.css';
+import './style.css';
 
 class CreateParty extends Component {
 	constructor() {

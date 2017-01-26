@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Place.css';
+import './style.css';
 
 class Place extends Component {
 	constructor() {

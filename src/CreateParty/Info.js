@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Info.css';
+import './style.css';
 
 class Info extends Component {
 	constructor() {

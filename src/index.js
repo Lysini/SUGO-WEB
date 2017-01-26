@@ -6,7 +6,7 @@ import Organizer from './CreateParty/Organizer';
 import CreateParty from './CreateParty/CreateParty';
 import SumUp from './SumUp/SumUp';
 import './index.css';
-import '../public/css/style.css';
+
 
 ReactDOM.render((
 	  <Router history={browserHistory}>

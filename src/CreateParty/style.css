@@ -10,6 +10,68 @@
     margin-top: 5vh;
 }
 
+.modal-form-container {
+  height: 30%;
+  width: 30%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: absolute;
+  top: 14vh;
+  left: 11vw;
+  margin: auto;
+
+}
+
+.Modal {
+  justify-content: center;
+  margin: auto;
+  background-color: #d0dae0;
+  height: 40%;
+  width: 30%;
+  position: absolute;
+  top: 25vh;
+  left: 35vw;
+  margin: auto;
+}
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  margin:auto;
+  background-color: rgba(0,0,0,0.3);
+}
+
+.modal-text{
+  width: 15vw;
+}
+
+.modal-note{
+  width: 15vw;
+  height: 5vh;
+}
+
+.modal-save{
+  width: 4vw;
+  height: 4vh;
+  font-size: 15px;
+}
+
 .people-men{ 
   background-color: #7dd18c;
   border-radius: 1vh;
@@ -53,18 +115,7 @@
     position: absolute;
     left: 30%;
 }
-.modal-text{
-    width: 15vw;
-}
-.modal-note{
-    width: 15vw;
-    height: 5vh;
-}
-.modal-save{
-    width: 4vw;
-    height: 4vh;
-    font-size: 15px;
-}
+
 
 .add-people-button{
     font-size: 20px;
@@ -145,45 +196,6 @@
   height: 5px;
 }
 
-.modal-form-container {
-  height: 30%;
-  width: 30%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  position: absolute;
-  top: 14vh;
-  left: 11vw;
-  margin: auto;
-}
-  .Modal {
-    justify-content: center;
-    height: 40%;
-    width: 30%;
-    margin: auto;
-  }
-
-  .Overlay {
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    justify-content: center;
-    margin:auto;
-    background-color: rgba(0,0,0,0.3);
-  }
 .table > tbody > tr > th {
   border-top: 0;
   border-bottom: 1px solid #ddd;
@@ -204,10 +216,31 @@
 
 }
 
+/* Media queries
+-------------------------------------------------- */
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+
+}
+
+/* Portrait tablets and medium desktops */
 @media (min-width: 992px) and (max-width: 1199px) {
-  .Modal {
-    height: 40%;
-  }
+
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+
+}
+
+/* Landscape phones and smaller */
+@media (max-width: 480px) {
+
 }
 
 
