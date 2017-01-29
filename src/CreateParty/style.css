@@ -71,7 +71,14 @@
   height: 4vh;
   font-size: 15px;
 }
-
+.fa-trash{
+	position: absolute;
+	right: 10px;
+}
+.fa-pencil-square-o{
+	position: absolute;
+	right: 10px;
+}
 .people-men{ 
   background-color: #7dd18c;
   border-radius: 1vh;
@@ -167,6 +174,9 @@
     font-size: 20px;
     height: 4vh;
 }
+.add-label-text{
+	width: 20%;
+}
 .close-right{
   width:8px;
   height:50px;
@@ -189,11 +199,6 @@
   position: fixed;
   top:1vh;
   right: 5vw;
-}
-
-.close-button{
-  width: 5px;
-  height: 5px;
 }
 
 .table > tbody > tr > th {
@@ -220,26 +225,726 @@
 -------------------------------------------------- */
 /* Large desktops and laptops */
 @media (min-width: 1200px) {
+  .modal-form-container {
+    height: 50%;
+    width: 30%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    position: absolute;
+    top: 11vh;
+    left: 14vw;
+    margin: auto;
+
+  }
+
+  .Modal {
+    justify-content: center;
+    margin: auto;
+    background-color: #d0dae0;
+    height: 40%;
+    width: 40%;
+    position: absolute;
+    top: 25vh;
+    left: 30vw;
+    margin: auto;
+  }
+
+  .modal-text{
+    width: 25vw;
+  }
+
+  .modal-note{
+    width: 25vw;
+    height: 7vh;
+  }
+
+  .modal-save{
+    width: 60px;
+    height: 35px;
+    font-size: 15px;
+  }
+  .people-info{
+    background-color: #d9dde2;
+    border-width: 0px;
+    border-radius: 3vh;
+    margin-top: 5vh;
+  }
+  .PlaceClose{
+    cursor: pointer;
+    position:absolute;
+    top: 50px;
+    right: 50px;
+  }
+  .PlaceSave{
+    position: absolute;
+    bottom: 10vh;
+    right: 3vw;
+    width: 70px;
+    font-size: 20px;
+    height: 40px;
+  }
+  .close-right{
+    width:8px;
+    height:50px;
+    position:absolute;
+    top: 0;
+    background-color: #000;
+    transform:rotate(45deg);
+  }
+  .close-left{
+    width:8px;
+    height:50px;
+    background-color: #000;
+    transform:rotate(135deg);
+  }
+  .people-men{ 
+    background-color: #7dd18c;
+    border-radius: 1vh;
+    margin: auto;
+    font-size: 30px;
+    min-width: 100%;
+    padding: 1vh;
+    position: relative;
+    top: 4vh;
+    align-items: center;
+    justify-content: center;
+
+  }
+  .people-women{
+    background-color: #f7a3de;
+    border-radius: 1vh;
+    font-size: 30px;
+    width: 100%;
+    padding: 1vh;
+    position: relative;
+    top: 4vh;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .people-men-1{
+    background-color: #7dd18c;
+    width: 90%;
+    text-align: left;
+    padding-left: 3vw;
+    border-bottom-right-radius: 2vh;
+    border-bottom-left-radius: 2vh;
+    position: relative;
+    top: 4vh;
+    left: 5%;
+  }
+  .people-women-1{
+    background-color: #f7a3de;
+    width: 90%;
+    text-align: left;
+    padding-left: 3vw;
+    border-bottom-right-radius: 2vh;
+    border-bottom-left-radius: 2vh;
+    position: relative;
+    top: 4vh;
+    left: 5%;
+  }
+ 	 .fa-trash{
+		position: absolute;
+		right: 10px;
+		top: 23px;
+		font-size: 11px;
+	}
+	.fa-pencil-square-o{
+		position: absolute;
+		right: 10px;
+		top: 0px;
+		font-size: 11px;
+	}
+
 
 }
 
 /* Portrait tablets and medium desktops */
 @media (min-width: 992px) and (max-width: 1199px) {
+  .modal-form-container {
+    height: 50%;
+    width: 30%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    position: absolute;
+    top: 11vh;
+    left: 14vw;
+    margin: auto;
+
+  }
+
+  .Modal {
+    justify-content: center;
+    margin: auto;
+    background-color: #d0dae0;
+    height: 40%;
+    width: 40%;
+    position: absolute;
+    top: 25vh;
+    left: 30vw;
+    margin: auto;
+  }
+
+  .modal-text{
+    width: 25vw;
+  }
+
+  .modal-note{
+    width: 25vw;
+    height: 7vh;
+  }
+
+  .modal-save{
+    width: 60px;
+    height: 35px;
+    font-size: 15px;
+  }
+  .people-info{
+    background-color: #d9dde2;
+    border-width: 0px;
+    border-radius: 3vh;
+    margin-top: 5vh;
+  }
+  .PlaceClose{
+    cursor: pointer;
+    position:absolute;
+    top: 50px;
+    right: 50px;
+  }
+  .PlaceSave{
+    position: absolute;
+    bottom: 10vh;
+    right: 3vw;
+    width: 70px;
+    font-size: 20px;
+    height: 40px;
+  }
+  .close-right{
+    width:8px;
+    height:50px;
+    position:absolute;
+    top: 0;
+    background-color: #000;
+    transform:rotate(45deg);
+  }
+  .close-left{
+    width:8px;
+    height:50px;
+    background-color: #000;
+    transform:rotate(135deg);
+  }
+  .people-men{ 
+    background-color: #7dd18c;
+    border-radius: 1vh;
+    margin: auto;
+    font-size: 30px;
+    min-width: 80%;
+    padding: 1vh;
+    position: relative;
+    top: 4vh;
+    align-items: center;
+    justify-content: center;
+
+  }
+  .people-women{
+    background-color: #f7a3de;
+    border-radius: 1vh;
+    font-size: 30px;
+    width: 80%;
+    padding: 1vh;
+    position: relative;
+    top: 4vh;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .people-men-1{
+    background-color: #7dd18c;
+    width: 70%;
+    text-align: left;
+    padding-left: 3vw;
+    border-bottom-right-radius: 2vh;
+    border-bottom-left-radius: 2vh;
+    position: relative;
+    top: 4vh;
+    left: 15%;
+  }
+  .people-women-1{
+    background-color: #f7a3de;
+    width: 70%;
+    text-align: left;
+    padding-left: 3vw;
+    border-bottom-right-radius: 2vh;
+    border-bottom-left-radius: 2vh;
+    position: relative;
+    top: 4vh;
+    left: 15%;
+  }
+ 	 .fa-trash{
+		position: absolute;
+		right: 10px;
+		top: 23px;
+		font-size: 11px;
+	}
+	.fa-pencil-square-o{
+		position: absolute;
+		right: 10px;
+		top: 0px;
+		font-size: 11px;
+	}
 
 }
 
 /* Portrait tablets and small desktops */
 @media (min-width: 768px) and (max-width: 991px) {
 
+  .modal-form-container {
+    height: 30%;
+    width: 50%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    position: absolute;
+    top: 14vh;
+    left: 15vw;
+    margin: auto;
+  }
+
+  .Modal {
+    justify-content: center;
+    margin: auto;
+    background-color: #d0dae0;
+    height: 40%;
+    width: 60%;
+    position: absolute;
+    top: 25vh;
+    left: 20vw;
+    margin: auto;
+  }
+
+  .modal-text{
+    width: 40vw;
+  }
+
+  .modal-note{
+    width: 40vw;
+    height: 7vh;
+  }
+
+  .modal-save{
+    width: 60px;
+    height: 35px;
+    font-size: 15px;
+  }
+  .people-info{
+    background-color: #d9dde2;
+    border-width: 0px;
+    border-radius: 3vh;
+    margin-top: 10vh;
+  }
+  .PlaceClose{
+    cursor: pointer;
+    position:absolute;
+    top: 50px;
+    right: 50px;
+  }
+  .PlaceSave{
+    position: absolute;
+    bottom: 10vh;
+    right: 3vw;
+    width: 70px;
+    font-size: 20px;
+    height: 40px;
+  }
+  .close-right{
+    width:8px;
+    height:40px;
+    position:absolute;
+    top: 0;
+    background-color: #000;
+    transform:rotate(45deg);
+  }
+  .close-left{
+    width:8px;
+    height:40px;
+    background-color: #000;
+    transform:rotate(135deg);
+  }
+  .people-men{ 
+    background-color: #7dd18c;
+    border-radius: 1vh;
+    margin: auto;
+    font-size: 30px;
+    max-height: 10vh;
+    min-width: 60%;
+    padding: 1vh;
+    position: fixed;
+    top: 27vh;
+    left: 20%;
+    align-items: center;
+    justify-content: center;
+
+  }
+  .people-women{
+    background-color: #f7a3de;
+    border-radius: 1vh;
+    font-size: 30px;
+    width: 60%;
+    padding: 1vh;
+    position: fixed;
+    top: 52vh;
+    left: 20%;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .people-men-1{
+    background-color: #7dd18c;
+    width: 56%;
+    text-align: left;
+    padding-left: 3vw;
+    border-bottom-right-radius: 2vh;
+    border-bottom-left-radius: 2vh;
+    position: absolute;
+    top: 15vh;
+    left: 22%;
+  }
+  .people-women-1{
+    background-color: #f7a3de;
+    width: 56%;
+    text-align: left;
+    padding-left: 3vw;
+    border-bottom-right-radius: 2vh;
+    border-bottom-left-radius: 2vh;
+    position: absolute;
+    top: 40vh;
+    left: 22%;
+  }
+  .title{
+  	font-size: 7vh;
+  	position: absolute;
+ 	left: 40vw;
+ 	padding-bottom: 10px;
+	}
+
 }
 
 /* Landscape phones and portrait tablets */
 @media (max-width: 767px) {
+  .modal-form-container {
+    height: 30%;
+    width: 50%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    position: absolute;
+    top: 14vh;
+    left: 15vw;
+    margin: auto;
+  }
+
+  .Modal {
+    justify-content: center;
+    margin: auto;
+    background-color: #d0dae0;
+    height: 40%;
+    width: 60%;
+    position: absolute;
+    top: 25vh;
+    left: 20vw;
+    margin: auto;
+  }
+
+  .modal-text{
+    width: 40vw;
+  }
+
+  .modal-note{
+    width: 40vw;
+    height: 7vh;
+  }
+
+  .modal-save{
+    width: 60px;
+    height: 35px;
+    font-size: 15px;
+  }
+  .people-info{
+    background-color: #d9dde2;
+    border-width: 0px;
+    border-radius: 3vh;
+    margin-top: 10vh;
+  }
+  .PlaceClose{
+    cursor: pointer;
+    position:absolute;
+    top: 50px;
+    right: 50px;
+  }
+  .PlaceSave{
+    position: absolute;
+    bottom: 10vh;
+    right: 3vw;
+    width: 70px;
+    font-size: 20px;
+    height: 40px;
+  }
+  .close-right{
+    width:8px;
+    height:40px;
+    position:absolute;
+    top: 0;
+    background-color: #000;
+    transform:rotate(45deg);
+  }
+  .close-left{
+    width:8px;
+    height:40px;
+    background-color: #000;
+    transform:rotate(135deg);
+  }
+  .people-men{ 
+    background-color: #7dd18c;
+    border-radius: 1vh;
+    margin: auto;
+    font-size: 30px;
+    max-height: 10vh;
+    min-width: 60%;
+    padding: 1vh;
+    position: fixed;
+    top: 27vh;
+    left: 20%;
+    align-items: center;
+    justify-content: center;
+
+  }
+  .people-women{
+    background-color: #f7a3de;
+    border-radius: 1vh;
+    font-size: 30px;
+    width: 60%;
+    padding: 1vh;
+    position: fixed;
+    top: 52vh;
+    left: 20%;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .people-men-1{
+    background-color: #7dd18c;
+    width: 56%;
+    text-align: left;
+    padding-left: 3vw;
+    border-bottom-right-radius: 2vh;
+    border-bottom-left-radius: 2vh;
+    position: absolute;
+    top: 32vh;
+    left: 22%;
+  }
+  .people-women-1{
+    background-color: #f7a3de;
+    width: 56%;
+    text-align: left;
+    padding-left: 3vw;
+    border-bottom-right-radius: 2vh;
+    border-bottom-left-radius: 2vh;
+    position: absolute;
+    top: 57vh;
+    left: 22%;
+  }
+  .title{
+  	font-size: 7vh;
+  	position: absolute;
+ 	left: 40vw;
+ 	padding-bottom: 10px;
+	}
 
 }
 
 /* Landscape phones and smaller */
 @media (max-width: 480px) {
+  .modal-form-container {
+    height: 30%;
+    width: 50%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    position: absolute;
+    top: 14vh;
+    left: 15vw;
+    margin: auto;
+  }
+
+  .Modal {
+    justify-content: center;
+    margin: auto;
+    background-color: #d0dae0;
+    height: 40%;
+    width: 60%;
+    position: absolute;
+    top: 25vh;
+    left: 20vw;
+    margin: auto;
+  }
+
+  .modal-text{
+    width: 40vw;
+  }
+
+  .modal-note{
+    width: 40vw;
+    height: 7vh;
+  }
+
+  .modal-save{
+    width: 60px;
+    height: 35px;
+    font-size: 15px;
+  }
+  .people-info{
+    background-color: #d9dde2;
+    border-width: 0px;
+    border-radius: 3vh;
+    margin-top: 10vh;
+  }
+  .PlaceClose{
+    cursor: pointer;
+    position:absolute;
+    top: 50px;
+    right: 50px;
+  }
+  .PlaceSave{
+    position: absolute;
+    bottom: 10vh;
+    right: 3vw;
+    width: 70px;
+    font-size: 20px;
+    height: 40px;
+  }
+  .close-right{
+    width:8px;
+    height:40px;
+    position:absolute;
+    top: 0;
+    background-color: #000;
+    transform:rotate(45deg);
+  }
+  .close-left{
+    width:8px;
+    height:40px;
+    background-color: #000;
+    transform:rotate(135deg);
+  }
+  .people-men{ 
+    background-color: #7dd18c;
+    border-radius: 1vh;
+    margin: auto;
+    font-size: 30px;
+    max-height: 10vh;
+    min-width: 60%;
+    padding: 1vh;
+    position: fixed;
+    top: 27vh;
+    left: 20%;
+    align-items: center;
+    justify-content: center;
+
+  }
+  .people-women{
+    background-color: #f7a3de;
+    border-radius: 1vh;
+    font-size: 30px;
+    width: 60%;
+    padding: 1vh;
+    position: fixed;
+    top: 42vh;
+    left: 20%;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .people-men-1{
+    background-color: #7dd18c;
+    width: 56%;
+    text-align: left;
+    padding-left: 3vw;
+    border-bottom-right-radius: 2vh;
+    border-bottom-left-radius: 2vh;
+    position: absolute;
+    top: 32vh;
+    left: 22%;
+  }
+  .people-women-1{
+    background-color: #f7a3de;
+    width: 56%;
+    text-align: left;
+    padding-left: 3vw;
+    border-bottom-right-radius: 2vh;
+    border-bottom-left-radius: 2vh;
+    position: absolute;
+    top: 47vh;
+    left: 22%;
+  }
+  .title{
+  	font-size: 7vh;
+  	position: absolute;
+ 	left: 35vw;
+ 	padding-bottom: 10px;
+	}
 
 }
 
