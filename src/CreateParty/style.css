@@ -67,8 +67,8 @@
 }
 
 .modal-save{
-  width: 4vw;
-  height: 4vh;
+  width: 60px;
+  height: 35px;
   font-size: 15px;
 }
 .fa-trash{
@@ -109,8 +109,6 @@
     padding-left: 3vw;
     border-bottom-right-radius: 2vh;
     border-bottom-left-radius: 2vh;
-    position: absolute;
-    left: 30%;
 }
 .people-women-1{
     background-color: #f7a3de;
@@ -119,8 +117,6 @@
     padding-left: 3vw;
     border-bottom-right-radius: 2vh;
     border-bottom-left-radius: 2vh;
-    position: absolute;
-    left: 30%;
 }
 
 
@@ -267,12 +263,6 @@
     width: 25vw;
     height: 7vh;
   }
-
-  .modal-save{
-    width: 60px;
-    height: 35px;
-    font-size: 15px;
-  }
   .people-info{
     background-color: #d9dde2;
     border-width: 0px;
@@ -292,20 +282,6 @@
     width: 70px;
     font-size: 20px;
     height: 40px;
-  }
-  .close-right{
-    width:8px;
-    height:50px;
-    position:absolute;
-    top: 0;
-    background-color: #000;
-    transform:rotate(45deg);
-  }
-  .close-left{
-    width:8px;
-    height:50px;
-    background-color: #000;
-    transform:rotate(135deg);
   }
   .people-men{ 
     background-color: #7dd18c;
@@ -343,6 +319,7 @@
     position: relative;
     top: 4vh;
     left: 5%;
+    padding-bottom: 8px;
   }
   .people-women-1{
     background-color: #f7a3de;
@@ -354,18 +331,17 @@
     position: relative;
     top: 4vh;
     left: 5%;
+    padding-bottom: 8px;
   }
  	 .fa-trash{
-		position: absolute;
+		position: relative;
 		right: 10px;
-		top: 23px;
 		font-size: 11px;
 	}
 	.fa-pencil-square-o{
-		position: absolute;
+		position: relative;
 		right: 10px;
-		top: 0px;
-		font-size: 11px;
+    font-size: 11px;
 	}
 
 
@@ -415,12 +391,6 @@
     width: 25vw;
     height: 7vh;
   }
-
-  .modal-save{
-    width: 60px;
-    height: 35px;
-    font-size: 15px;
-  }
   .people-info{
     background-color: #d9dde2;
     border-width: 0px;
@@ -432,28 +402,6 @@
     position:absolute;
     top: 50px;
     right: 50px;
-  }
-  .PlaceSave{
-    position: absolute;
-    bottom: 10vh;
-    right: 3vw;
-    width: 70px;
-    font-size: 20px;
-    height: 40px;
-  }
-  .close-right{
-    width:8px;
-    height:50px;
-    position:absolute;
-    top: 0;
-    background-color: #000;
-    transform:rotate(45deg);
-  }
-  .close-left{
-    width:8px;
-    height:50px;
-    background-color: #000;
-    transform:rotate(135deg);
   }
   .people-men{ 
     background-color: #7dd18c;
@@ -491,6 +439,7 @@
     position: relative;
     top: 4vh;
     left: 15%;
+    padding-bottom: 6px;
   }
   .people-women-1{
     background-color: #f7a3de;
@@ -502,17 +451,16 @@
     position: relative;
     top: 4vh;
     left: 15%;
+    padding-bottom: 6px;
   }
  	 .fa-trash{
-		position: absolute;
+		position: relative;
 		right: 10px;
-		top: 23px;
 		font-size: 11px;
 	}
 	.fa-pencil-square-o{
-		position: absolute;
+		position: relative;
 		right: 10px;
-		top: 0px;
 		font-size: 11px;
 	}
 
@@ -562,12 +510,6 @@
     width: 40vw;
     height: 7vh;
   }
-
-  .modal-save{
-    width: 60px;
-    height: 35px;
-    font-size: 15px;
-  }
   .people-info{
     background-color: #d9dde2;
     border-width: 0px;
@@ -579,14 +521,6 @@
     position:absolute;
     top: 50px;
     right: 50px;
-  }
-  .PlaceSave{
-    position: absolute;
-    bottom: 10vh;
-    right: 3vw;
-    width: 70px;
-    font-size: 20px;
-    height: 40px;
   }
   .close-right{
     width:8px;
@@ -656,8 +590,8 @@
   .title{
   	font-size: 7vh;
   	position: absolute;
- 	left: 40vw;
- 	padding-bottom: 10px;
+ 	  left: 40vw;
+  	padding-bottom: 10px;
 	}
 
 }
@@ -705,12 +639,6 @@
     width: 40vw;
     height: 7vh;
   }
-
-  .modal-save{
-    width: 60px;
-    height: 35px;
-    font-size: 15px;
-  }
   .people-info{
     background-color: #d9dde2;
     border-width: 0px;
@@ -722,14 +650,6 @@
     position:absolute;
     top: 50px;
     right: 50px;
-  }
-  .PlaceSave{
-    position: absolute;
-    bottom: 10vh;
-    right: 3vw;
-    width: 70px;
-    font-size: 20px;
-    height: 40px;
   }
   .close-right{
     width:8px;
@@ -848,12 +768,6 @@
     width: 40vw;
     height: 7vh;
   }
-
-  .modal-save{
-    width: 60px;
-    height: 35px;
-    font-size: 15px;
-  }
   .people-info{
     background-color: #d9dde2;
     border-width: 0px;
@@ -865,14 +779,6 @@
     position:absolute;
     top: 50px;
     right: 50px;
-  }
-  .PlaceSave{
-    position: absolute;
-    bottom: 10vh;
-    right: 3vw;
-    width: 70px;
-    font-size: 20px;
-    height: 40px;
   }
   .close-right{
     width:8px;
@@ -897,7 +803,6 @@
     min-width: 60%;
     padding: 1vh;
     position: fixed;
-    top: 27vh;
     left: 20%;
     align-items: center;
     justify-content: center;
@@ -908,10 +813,9 @@
     border-radius: 1vh;
     font-size: 30px;
     width: 60%;
-    padding: 1vh;
     position: fixed;
-    top: 42vh;
     left: 20%;
+    padding: 1vh;
     margin: auto;
     align-items: center;
     justify-content: center;
@@ -924,8 +828,7 @@
     padding-left: 3vw;
     border-bottom-right-radius: 2vh;
     border-bottom-left-radius: 2vh;
-    position: absolute;
-    top: 32vh;
+    position: fixed;
     left: 22%;
   }
   .people-women-1{
@@ -935,8 +838,7 @@
     padding-left: 3vw;
     border-bottom-right-radius: 2vh;
     border-bottom-left-radius: 2vh;
-    position: absolute;
-    top: 47vh;
+    position: fixed;
     left: 22%;
   }
   .title{
