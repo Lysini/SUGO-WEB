@@ -166,10 +166,10 @@
     position: absolute;
     bottom: 10vh;
     right: 3vw;
-    width: 4vw;
+    width: 70px;
     font-size: 20px;
-    height: 4vh;
-}
+    height: 40px;
+  }
 .add-label-text{
 	width: 20%;
 }
@@ -274,14 +274,6 @@
     position:absolute;
     top: 50px;
     right: 50px;
-  }
-  .PlaceSave{
-    position: absolute;
-    bottom: 10vh;
-    right: 3vw;
-    width: 70px;
-    font-size: 20px;
-    height: 40px;
   }
   .people-men{ 
     background-color: #7dd18c;
