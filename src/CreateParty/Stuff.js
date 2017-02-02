@@ -46,7 +46,7 @@ class Stuff extends Component {
 			stuffAmount: this.state.stuffAmount
 		};
 		this.state.stuff[this.state.selectedLabel].stuffArray.push(stuffItem);
-      	this.setState({ addLabel: false, addedLabel:true, stuffName:'', stuffPrice:'', stuffAmount:'' });
+      	this.setState({ showModal: false, addLabel: false, addedLabel:true, stuffName:'', stuffPrice:'', stuffAmount:'' });
 	}
 
 	updateStuff(){
