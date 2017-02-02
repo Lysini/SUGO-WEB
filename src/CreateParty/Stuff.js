@@ -9,6 +9,9 @@ class Stuff extends Component {
       		showModal: false,
 	    	addStatus: false,
 	    	addLabel:false,
+	    	modalTitle: 'Dodaj Przedmiot',
+	    	editItemIndex: 0,
+	    	editActive: false,
 	    	addedLabel: false,
 	    	selectedLabel: 0,
 	    	stuff: [],
@@ -46,6 +49,21 @@ class Stuff extends Component {
       	this.setState({ addLabel: false, addedLabel:true, stuffName:'', stuffPrice:'', stuffAmount:'' });
 	}
 
+	updateStuff(){
+		let stuffItem = {
+			stuffName: this.state.stuffName,
+			stuffPrice: this.state.stuffPrice,
+			stuffAmount: this.state.stuffAmount
+		};
+		this.state.stuff[this.state.selectedLabel].stuffArray[this.state.editItemIndex]=stuffItem;
+		this.setState({ 
+			showModal: false,
+			stuffName: '',
+			stuffPrice: '',
+			stuffAmount: ''
+		});
+	}
+
 	render() {
 		return (
     		<div className="openedPlace">
@@ -64,19 +82,20 @@ class Stuff extends Component {
 						this.state.stuff.map((item, itemIndex) => {
 							return (
 								<div className="col-sm-4 pull-left text-center">
-									<h3 className="people-men">{this.state.stuff[itemIndex].labelName} <i className="fa fa-plus add-people-button" onClick={addStatus => this.setState({ addLabel: true, showModal: true, selectedLabel: itemIndex })} aria-hidden="true"></i></h3>
-									<button className="btn" type="button"onClick={addStatus => this.setState({ addLabel: true, showModal: true, selectedLabel: itemIndex })}>Add</button>
+									<h3 className="stuff-label">{this.state.stuff[itemIndex].labelName} <i className="fa fa-plus add-people-button" onClick={addStatus => this.setState({ showModal: true, selectedLabel: itemIndex, modalTitle: 'Dodaj Przedmiot'  })} aria-hidden="true"></i></h3>
+									<div className="stuff-label-content">
 									{(this.state.addedLabel) ?
 										this.state.stuff[itemIndex].stuffArray.map(function(stuffItem, stuffIndex) {
 						                    return (
 						                    	<div>
-													<p>Nazwa: {stuffItem.stuffName}</p>
-							           				<p>Cena: {stuffItem.stuffPrice}</p>
+													<p>Nazwa: {stuffItem.stuffName} <button className="btn fa fa-pencil-square-o pull-right" aria-hidden="true"/></p>
+							           				<p>Cena: {stuffItem.stuffPrice} <button className="btn fa fa-trash pull-right" aria-hidden="true"></button></p>
 							           				<p>Ilosc: {stuffItem.stuffAmount}</p>
 							           			</div>
 						                    )
 						                }) : null
-									}	
+									}
+									</div>	
 								</div> 
 							);
 						}): null
@@ -86,31 +105,30 @@ class Stuff extends Component {
 			<ReactModal 
 	           isOpen={this.state.showModal}
 	           contentLabel="Inline Styles Modal Example"
-	           className="Modal"
+	           className="Modal-stuff"
 	           overlayClassName="Overlay"
 	        >
-				<div className="modal-header">
-				     <h4 className="modal-title" id="myModalLabel">Dodaj przedmiot</h4>
-				     <span className="close pull-right" onClick={()=> this.setState({showModal: false})} aria-hidden="true">&times;</span>
+				<div className="modal-header text-center">
+				     <h4 className="modal-title" id="myModalLabel">{this.state.modalTitle}</h4>
+				     <span className="fa fa-times" onClick={()=> this.setState({showModal: false})} aria-hidden="true"/>
 				</div>
-				<div className="modal-form-container">
+				<div className="modal-form-container-stuff">
 					<form>
 						<div className="form-group">
 							<label>Nazwa:</label>
-							<input type="text" className="form-control PlaceText" onChange={stuffName => this.setState({ stuffName:stuffName.target.value })} value={this.state.stuffName}/>
+							<input type="text" className="form-control modal-text" onChange={stuffName => this.setState({ stuffName:stuffName.target.value })} value={this.state.stuffName}/>
 						</div>
 						<div className="form-group">
 							<label>Cena:</label>
-							<input type="text" className="form-control PlaceText" onChange={stuffPrice => this.setState({ stuffPrice:stuffPrice.target.value })} value={this.state.stuffPrice}/>
+							<input type="text" className="form-control modal-text" onChange={stuffPrice => this.setState({ stuffPrice:stuffPrice.target.value })} value={this.state.stuffPrice}/>
 						</div>
 						<div className="form-group">
 							<label>Ilość:</label>
-							<input type="text" className="form-control PlaceText" onChange={stuffAmount => this.setState({ stuffAmount:stuffAmount.target.value })} value={this.state.stuffAmount}/>
+							<input type="text" className="form-control modal-text" onChange={stuffAmount => this.setState({ stuffAmount:stuffAmount.target.value })} value={this.state.stuffAmount}/>
 						</div>
+						<button className="btn pull-right modal-save" type="button" onClick={(this.state.editActive) ? this.updateStuff.bind(this) : this.addStuff.bind(this)}>Add</button>
 					</form> 
-				</div>
-				<div className="modal-footer">
-				    <button className="btn btn-success" type="button" onClick={this.addStuff.bind(this)}>Add</button>
+					
 				</div>
 	        </ReactModal>			
 				
@@ -121,20 +139,3 @@ class Stuff extends Component {
 }
 
 export default Stuff;
-
-							/*<div className="modal-form-container">
-							<form>
-								<div className="form-group">
-									<label>Nazwa:</label>
-									<input type="text" className="form-control PlaceText" onChange={stuffName => this.setState({ stuffName:stuffName.target.value })} value={this.state.stuffName}/>
-								</div>
-								<div className="form-group">
-									<label>Cena:</label>
-									<input type="text" className="form-control PlaceText" onChange={stuffPrice => this.setState({ stuffPrice:stuffPrice.target.value })} value={this.state.stuffPrice}/>
-								</div>
-								<div className="form-group">
-									<label>Ilość:</label>
-									<input type="text" className="form-control PlaceText" onChange={stuffAmount => this.setState({ stuffAmount:stuffAmount.target.value })} value={this.state.stuffAmount}/>
-								</div>
-							</form> 
-							</div>*/

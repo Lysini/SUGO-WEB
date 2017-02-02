@@ -50,15 +50,6 @@ class People extends Component {
 		});
 	}
 
-	multipleAdd(){
-		if(this.state.multipleAddStatus===false){
-			this.setState({multipleAddStatus: true})
-		}
-		else if(this.state.multipleAddStatus===true){
-			this.setState({multipleAddStatus: false})
-		}
-	}
-
 	deleteUser(){
 		if(this.state.peopleSex==='men'){
 			this.state.peopleMen.splice(this.state.editOrDeleteNumber,1);

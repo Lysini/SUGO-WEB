@@ -1,6 +1,6 @@
 .openedPlace {
   background: linear-gradient(to bottom right, #41accb, #98d9ff,#dff6ff);
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
 }
 .people-info{
@@ -44,6 +44,40 @@
   margin: auto;
 }
 
+.modal-form-container-stuff {
+  height: 30%;
+  width: 30%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: absolute;
+  top: 15vh;
+  left: 11vw;
+  margin: auto;
+
+}
+
+.Modal-stuff {
+  justify-content: center;
+  margin: auto;
+  background-color: #d0dae0;
+  height: 45%;
+  width: 30%;
+  position: absolute;
+  top: 25vh;
+  left: 35vw;
+  margin: auto;
+}
+
 .Overlay {
   position: fixed;
   top: 0;
@@ -75,9 +109,25 @@
 	position: absolute;
 	right: 10px;
 }
-.fa-pencil-square-o{
-	position: absolute;
-	right: 10px;
+.stuff-label{ 
+  background-color: #7dd18c;
+  border-radius: 1vh;
+  min-width: 28%;
+  margin: auto;
+  font-size: 30px;
+  padding: 1vh;
+  align-items: center;
+  justify-content: center;
+}
+.stuff-label-content{
+    background-color: #7dd18c;
+    margin-right: 4%;
+    text-align: left;
+    margin-left: 4%;
+    padding-left: 3%;
+    padding-bottom: 5px;
+    border-bottom-right-radius: 2vh;
+    border-bottom-left-radius: 2vh;
 }
 .people-men{ 
   background-color: #7dd18c;
@@ -330,12 +380,6 @@
 		right: 10px;
 		font-size: 11px;
 	}
-	.fa-pencil-square-o{
-		position: relative;
-		right: 10px;
-    font-size: 11px;
-	}
-
 
 }
 
@@ -372,6 +416,39 @@
     position: absolute;
     top: 25vh;
     left: 30vw;
+    margin: auto;
+  }
+
+  .modal-form-container-stuff {
+    height: 30%;
+    width: 30%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    position: absolute;
+    top: 17vh;
+    left: 14vw;
+    margin: auto;
+  }
+
+  .Modal-stuff {
+    justify-content: center;
+    margin: auto;
+    background-color: #d0dae0;
+    height: 45%;
+    width: 40%;
+    position: absolute;
+    top: 25vh;
+    left: 35vw;
     margin: auto;
   }
 
@@ -494,6 +571,39 @@
     margin: auto;
   }
 
+  .modal-form-container-stuff {
+    height: 30%;
+    width: 30%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    position: absolute;
+    top: 18vh;
+    left: 21vw;
+    margin: auto;
+  }
+
+  .Modal-stuff {
+    justify-content: center;
+    margin: auto;
+    background-color: #d0dae0;
+    height: 45%;
+    width: 60%;
+    position: absolute;
+    top: 25vh;
+    left: 20vw;
+    margin: auto;
+  }
+
   .modal-text{
     width: 40vw;
   }
@@ -590,6 +700,16 @@
 
 /* Landscape phones and portrait tablets */
 @media (max-width: 767px) {
+  .stuff-label{ 
+    background-color: #7dd18c;
+    border-radius: 1vh;
+    min-width: 40vw;
+    margin: auto;
+    font-size: 30px;
+    padding: 1vh;
+    align-items: center;
+    justify-content: center;
+  }
   .modal-form-container {
     height: 30%;
     width: 50%;
@@ -623,6 +743,42 @@
     margin: auto;
   }
 
+  .modal-form-container-stuff {
+    height: 30%;
+    width: 50%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    position: absolute;
+    top: 17vh;
+    left: 15vw;
+    margin: auto;
+  }
+
+  .Modal-stuff {
+    justify-content: center;
+    margin: auto;
+    background-color: #d0dae0;
+    height: 45%;
+    width: 60%;
+    position: absolute;
+    top: 25vh;
+    left: 20vw;
+    margin: auto;
+  }
+
+  .add-label-text{
+    width: 60%;
+  }
   .modal-text{
     width: 40vw;
   }
@@ -719,6 +875,16 @@
 
 /* Landscape phones and smaller */
 @media (max-width: 480px) {
+  .stuff-label{ 
+    background-color: #7dd18c;
+    border-radius: 1vh;
+    min-width: 40vw;
+    margin: auto;
+    font-size: 30px;
+    padding: 1vh;
+    align-items: center;
+    justify-content: center;
+  }
   .modal-form-container {
     height: 30%;
     width: 50%;
@@ -752,6 +918,42 @@
     margin: auto;
   }
 
+  .modal-form-container-stuff {
+    height: 30%;
+    width: 30%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    position: absolute;
+    top: 17vh;
+    left: 20vw;
+    margin: auto;
+  }
+
+  .Modal-stuff {
+    justify-content: center;
+    margin: auto;
+    background-color: #d0dae0;
+    height: 45%;
+    width: 60%;
+    position: absolute;
+    top: 25vh;
+    left: 20vw;
+    margin: auto;
+  }
+
+  .add-label-text{
+    width: 50%;
+  }
   .modal-text{
     width: 40vw;
   }

@@ -12,7 +12,22 @@ class Home extends Component {
 
 
   componentDidMount() {
+    fetch('http://localhost:8000/api/user',{
+        method: 'GET'
+      })
+      .then(
+          response => {
+                const status = response.status;
+                if (status === 200) {
+                  return response.json();
+                }
+      })
+      .then(responseData => {
+        console.log(responseData);
+      });
+
     this.setAnimations();
+
   }
 
   setAnimations() {
