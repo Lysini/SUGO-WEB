@@ -11,6 +11,22 @@ import './Home.css';
 class Home extends Component {
 
 
+  componentWillMount(){
+      fetch('http://localhost:8000/api/event',{
+          method: 'GET'
+      })
+      .then(
+        response=>{
+              const status = response.status;
+              if(status===200){
+                return response.json();
+              }
+      })
+      .then(responseData =>{
+        console.log(responseData)
+      });
+  }
+
   componentDidMount() {
     fetch('http://localhost:8000/api/user',{
         method: 'GET'

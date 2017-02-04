@@ -13,38 +13,37 @@ class People extends Component {
 			deleteStatus: false,
 			added: false,
 			peopleSex: 'men',
-			numberOfUsers: 0,
-			peopleWomen: [],
-			peopleMen: [],
+			people: {
+				peopleMen: [],
+				peopleWomen: [],
+				numberOfUsers: 0,
+			},
 			assistantNumber: 0
 		};
 	}
 
 	saveUp() {
 		this.props.savePeople(
-			this.state.peopleWomen,
-			this.state.peopleMen,
-			this.state.numberOfUsers
+			this.state.people
 			);
 	}
 
 	saveUpUser() {
 		let person = {
 			peopleName: this.state.inputName,
-			peopleSex: this.state.peopleSex,
 			peopleNote: this.state.inputNote,
 			numberOfUsers: this.state.numberOfUsers+1
 		};
 		if(this.state.peopleSex === "men") {
-			this.state.peopleMen.push(person);
+			this.state.people.peopleMen.push(person);
 		}
 		else {
-			this.state.peopleWomen.push(person);
+			this.state.people.peopleWomen.push(person);
 		}
 		this.setState({ 
 			added: true, 
 			showModal: false,
-			numberOfUsers: this.state.numberOfUsers+1,
+			numberOfUsers: this.state.people.numberOfUsers+1,
 			inputName: '',
 			inputNote: '' 
 		});
@@ -52,25 +51,24 @@ class People extends Component {
 
 	deleteUser(){
 		if(this.state.peopleSex==='men'){
-			this.state.peopleMen.splice(this.state.editOrDeleteNumber,1);
+			this.state.people.peopleMen.splice(this.state.editOrDeleteNumber,1);
 		}
 		else {
-			this.state.peopleWomen.splice(this.state.editOrDeleteNumber,1);
+			this.state.people.peopleWomen.splice(this.state.editOrDeleteNumber,1);
 		}
+		this.setState({numberOfUsers: this.state.numberOfUsers-1})
 	}
 
 	updateUser(){
 		let person = {
 			peopleName: this.state.inputName,
-			peopleSex: this.state.peopleSex,
 			peopleNote: this.state.inputNote,
-			numberOfUsers: this.state.numberOfUsers+1
 		};
 		if(this.state.peopleSex === "men") {
-			this.state.peopleMen[this.state.assistantNumber]=person;
+			this.state.people.peopleMen[this.state.assistantNumber]=person;
 		}
 		else {
-			this.state.peopleWomen[this.state.assistantNumber]=person;
+			this.state.people.peopleWomen[this.state.assistantNumber]=person;
 		}
 		this.setState({ 
 			showModal: false,
@@ -100,11 +98,11 @@ class People extends Component {
 					   	<h1 className="people-men">Mężczyźni <i className="fa fa-plus add-people-button" onClick={showModal => this.setState({showModal: true, peopleSex: 'men', modalTitle: 'Dodaj uczestnika', updateActive: false, inputName: '', inputNote: ''})} aria-hidden="true"></i></h1>
 					   	<div className="people-men-1">
 							{(this.state.added) ? 
-				                this.state.peopleMen.map((item, itemIndex) => {
+				                this.state.people.peopleMen.map((item, itemIndex) => {
 									return (
 										<div>
-											<p>Imie: {this.state.peopleMen[itemIndex].peopleName} <button className="btn fa fa-pencil-square-o pull-right" onClick={() => this.setState({peopleSex: 'men', assistantNumber:itemIndex, showModal:true, inputName: this.state.peopleMen[itemIndex].peopleName, inputNote: this.state.peopleMen[itemIndex].peopleNote, modalTitle: 'Edytuj uczestnika', updateActive: true})} aria-hidden="true"></button></p> 
-								          	<p>Notka: {this.state.peopleMen[itemIndex].peopleNote} <button className="btn fa fa-trash pull-right" onClick={() => { this.setState({editOrDeleteNumber: itemIndex}, this.deleteUser.bind(this))}} aria-hidden="true"></button></p>
+											<p>Imie: {this.state.people.peopleMen[itemIndex].peopleName} <button className="btn fa fa-pencil-square-o pull-right" onClick={() => this.setState({peopleSex: 'men', assistantNumber:itemIndex, showModal:true, inputName: this.state.people.peopleMen[itemIndex].peopleName, inputNote: this.state.people.peopleMen[itemIndex].peopleNote, modalTitle: 'Edytuj uczestnika', updateActive: true})} aria-hidden="true"></button></p> 
+								          	<p>Notka: {this.state.people.peopleMen[itemIndex].peopleNote} <button className="btn fa fa-trash pull-right" onClick={() => { this.setState({editOrDeleteNumber: itemIndex}, this.deleteUser.bind(this))}} aria-hidden="true"></button></p>
 								          	
 								       	</div>
 							        );
@@ -116,11 +114,11 @@ class People extends Component {
 						<h1 className="people-women">Kobiety <i className="fa fa-plus add-people-button" onClick={showModal => this.setState({showModal: true, peopleSex: 'women', modalTitle: 'Dodaj uczestnika', updateActive: false, inputName: '', inputNote: ''})} aria-hidden="true"></i> </h1>   
 						<div className="people-women-1">
 							{(this.state.added) ? 
-			               		this.state.peopleWomen.map((item, itemIndex) => {
+			               		this.state.people.peopleWomen.map((item, itemIndex) => {
 									return (
 										<div>
-							            	<p>Imie: {this.state.peopleWomen[itemIndex].peopleName} <button className="btn fa fa-pencil-square-o pull-right" onClick={() => this.setState({peopleSex: 'women', assistantNumber:itemIndex, showModal:true, inputName: this.state.peopleWomen[itemIndex].peopleName, inputNote: this.state.peopleWomen[itemIndex].peopleNote, modalTitle: 'Edytuj uczestnika', updateActive: true})} aria-hidden="true"></button></p> 
-							           		<p>Notka: {this.state.peopleWomen[itemIndex].peopleNote} <button className="btn fa fa-trash pull-right" onClick={() => { this.setState({editOrDeleteNumber: itemIndex}, this.deleteUser.bind(this))}} aria-hidden="true"></button></p> 
+							            	<p>Imie: {this.state.people.peopleWomen[itemIndex].peopleName} <button className="btn fa fa-pencil-square-o pull-right" onClick={() => this.setState({peopleSex: 'women', assistantNumber:itemIndex, showModal:true, inputName: this.state.people.peopleWomen[itemIndex].peopleName, inputNote: this.state.people.peopleWomen[itemIndex].peopleNote, modalTitle: 'Edytuj uczestnika', updateActive: true})} aria-hidden="true"></button></p> 
+							           		<p>Notka: {this.state.people.peopleWomen[itemIndex].peopleNote} <button className="btn fa fa-trash pull-right" onClick={() => { this.setState({editOrDeleteNumber: itemIndex}, this.deleteUser.bind(this))}} aria-hidden="true"></button></p> 
 							        	</div>
 						        	);
 						    	}) : null
