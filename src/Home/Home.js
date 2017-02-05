@@ -4,11 +4,28 @@ import $ from 'jquery';
 import ScrollMagic from 'scrollmagic';
 import Navbar from './Navbar';
 import './Home.css';
+import ReactModal from 'react-modal';
+import LogInModal from './LogInModal';
 
   var windowHeight = window.innerHeight;
   var windowWidth = window.innerWidth;
 
 class Home extends Component {
+
+  constructor() {
+      super();
+      this.state = {
+        showLogInModal: false,
+      };
+  }
+
+  showLogInModal() {
+    this.setState({
+      showLogInModal: true,
+    });
+  }
+
+
 
 
   componentWillMount(){
@@ -128,11 +145,17 @@ class Home extends Component {
   }
 
 
+
+
   render() {
     return (
       <div>
         <div className="main-bg">
-          <Navbar />
+          <Navbar showLogInModal={this.showLogInModal.bind(this)}/>
+          {(this.state.showLogInModal)?
+            <LogInModal onClose={()=>{this.setState({ showLogInModal: false })}}/>
+          : null
+          }
           <div className="main-slogan">
             <div>
               <p className="main-slogan-text">Spotkaj się ze znajomymi!</p>
