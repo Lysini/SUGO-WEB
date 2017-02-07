@@ -29,7 +29,7 @@ class Home extends Component {
 
 
   componentWillMount(){
-      fetch('http://localhost:8000/api/event',{
+      fetch('http://localhost:8000/event',{
           method: 'GET'
       })
       .then(
@@ -45,7 +45,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:8000/api/user',{
+    fetch('http://localhost:8000/user',{
         method: 'GET'
       })
       .then(
