@@ -25,42 +25,8 @@ class Home extends Component {
     });
   }
 
-
-
-
-  componentWillMount(){
-      fetch('http://localhost:8000/event',{
-          method: 'GET'
-      })
-      .then(
-        response=>{
-              const status = response.status;
-              if(status===200){
-                return response.json();
-              }
-      })
-      .then(responseData =>{
-        console.log(responseData)
-      });
-  }
-
   componentDidMount() {
-    fetch('http://localhost:8000/user',{
-        method: 'GET'
-      })
-      .then(
-          response => {
-                const status = response.status;
-                if (status === 200) {
-                  return response.json();
-                }
-      })
-      .then(responseData => {
-        console.log(responseData);
-      });
-
     this.setAnimations();
-
   }
 
   setAnimations() {
@@ -153,7 +119,7 @@ class Home extends Component {
         <div className="main-bg">
           <Navbar showLogInModal={this.showLogInModal.bind(this)}/>
           {(this.state.showLogInModal)?
-            <LogInModal onClose={()=>{this.setState({ showLogInModal: false })}}/>
+            <LogInModal router={this.props.router} onClose={()=>{this.setState({ showLogInModal: false })}}/>
           : null
           }
           <div className="main-slogan">

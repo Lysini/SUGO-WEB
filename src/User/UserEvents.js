@@ -11,8 +11,8 @@ class UserEvents extends Component {
 	    this.fetchEvents = this.fetchEvents.bind(this);
 	}
 
-	fetchEvents() {
-      fetch('http://localhost:8000/api/event',{
+	fetchEvents(userId) {
+      fetch(`http://localhost:8000/user/${userId}/events`,{
           method: 'GET'
       })
       .then(
@@ -28,8 +28,9 @@ class UserEvents extends Component {
 	}
 
 	componentWillMount() {
-		this.fetchEvents();
-	}
+    var userId = localStorage.getItem("userId");
+		this.fetchEvents(userId);
+  }
 
 
 

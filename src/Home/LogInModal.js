@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './Home.css';
 import { Link } from 'react-router';
-import ReactModal from 'react-modal';
-import $ from 'jquery';
+import ReactModal from 'react-modal'; 
 
 class LogInModal extends Component {
 	constructor() {
@@ -37,13 +36,16 @@ class LogInModal extends Component {
                   return response.json();
                 }
       })
-      .then(responseData =>{
-        console.log(responseData)
+      .then(responseData => {
+        localStorage.setItem("userId", responseData.data);
+          this.props.router.push({
+            pathname: '/user/events',
+          });
       });
   
     }
 
-    addNewApiUser(email, password, confirmpassword, nick) {
+  addNewApiUser(email, password, confirmpassword, nick) {
     fetch('http://localhost:8000/user/sign-up',{
         headers: {
           'Accept': 'application/json',
@@ -154,7 +156,7 @@ class LogInModal extends Component {
               : null
               }
               
-              <a href="#" onClick={() => this.setState({registerActive: true, modalTitle: 'Sign Up'})}>Sing Up</a><i> or </i><a href="#" onClick={() => this.setState({showLogInModal: false})}>Continue Anonymously</a>
+              <a href="#" onClick={() => this.setState({registerActive: true, modalTitle: 'Sign Up'})}>Sing Up</a><i> or </i> <a href="#"><Link to={`organizer`}>Continue Anonymously</Link></a>
               <button className="btn pull-right modal-save" onClick={(this.state.registerActive) ? this.signUpValidate.bind(this) : this.logInValidate.bind(this)} type="button">{this.state.modalTitle}</button>
             </form>
           </div>
