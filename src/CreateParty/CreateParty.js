@@ -21,8 +21,7 @@ class CreateParty extends Component {
 	    			 placePrice: 0,
 	    			 placeMax: 0,
 	    			 placeNote: '' },
-	    	peopleMen: [],
-	    	peopleWomen: [],
+	    	people: {},
 	    	numberOfUsers: 0
 	    };
 	}
@@ -63,6 +62,7 @@ class CreateParty extends Component {
 			sumUpOpened: true,
 			info: info
 		});
+		this.openSumUp.bind(this);
 	}
 
 	openPeople() {
@@ -99,9 +99,9 @@ class CreateParty extends Component {
 		  	organizerName: this.props.location.state.organizerName,
 		  	organizerNote: this.props.location.state.organizerNote,
 		  	place: this.state.place,
+		  	stuff: this.state.stuff,
 		  	info: this.state.info,
-		  	peopleWomen: this.state.peopleWomen,
-		  	peopleMen: this.state.peopleMen,
+		  	people: this.state.people,
 		  	numberOfUsers: this.state.numberOfUsers,
 		  } 
 		})
