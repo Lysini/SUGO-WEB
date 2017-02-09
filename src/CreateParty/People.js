@@ -15,9 +15,9 @@ class People extends Component {
 			peopleSex: 'men',
 			people: {
 				peopleMen: [],
-				peopleWomen: [],
-				numberOfUsers: 0,
+				peopleWomen: []
 			},
+			numberOfUsers: 0,
 			assistantNumber: 0
 		};
 	}
@@ -31,8 +31,7 @@ class People extends Component {
 	saveUpUser() {
 		let person = {
 			peopleName: this.state.inputName,
-			peopleNote: this.state.inputNote,
-			numberOfUsers: this.state.numberOfUsers+1
+			peopleNote: this.state.inputNote
 		};
 		if(this.state.peopleSex === "men") {
 			this.state.people.peopleMen.push(person);

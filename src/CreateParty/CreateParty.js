@@ -38,13 +38,11 @@ class CreateParty extends Component {
 	    });
 	}
 
-	savePeople(peopleMen, peopleWomen, numberOfUsers) {
+	savePeople(people) {
 		this.setState({
 			peopleOpened: false,
 			stuffOpened: true,
-	    	peopleMen: peopleMen,
-	    	peopleWomen: peopleWomen,
-	    	numberOfUsers: numberOfUsers
+	    	people: people
 	    });
 	}
 

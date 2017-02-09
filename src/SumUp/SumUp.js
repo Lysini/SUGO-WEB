@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import { Link } from 'react-router';
 import './SumUp.css';
 
 class SumUp extends Component {
@@ -11,44 +10,43 @@ class SumUp extends Component {
 	}
 
 
-	addEvent() {
+   addEvent() {
 	var userId = localStorage.getItem("userId");
-    fetch('http://localhost:8000/event',{
-        headers: {
-          'Accept': 'application/json',
-           'Content-Type': 'application/json'
-        },
-        method: 'POST',
-        body: JSON.stringify({
+	fetch(`http://localhost:8000/event`,{
+		method: 'POST',
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({
         	organizer_id: userId,
-        	event_name: 'xD',
         	stuff: this.props.location.state.stuff,
-        	/*stuff_label: this.props.stuff.labelName
-        	stuff_array: this.props.stuff.labelName.stuffArray ,
-            stuff_name: this.props.stuff.stuffItem.stuffName,
-			stuff_price: this.props.stuff.stuffItem.stuffPrice,
-			stuff_amount: this.props.stuff.stuffItem.stuffAmount,*/
+        	people: this.props.location.state.people,
+        	place: this.props.location.state.place,
             special_info: this.props.location.state.info
-        })
-      })
-      .then(
-          response => {
-                const status = response.status;
-                if (status === 201) {
-                  return response.json();
-                }
-      })
-      .then(responseData =>{
-        console.log(responseData)
-      });
-  
-    }
+		})
+	})
+	.then(
+		response => {
+			const status = response.status;
+			if (status === 200) {
+				return response.json();
+			}
+		})
+	.then(responseData => {
+		console.log(responseData);
+	})
+	.catch(err => {
+		console.log(err);
+	})
+}
+
 
     cancelAddingEvent(){
     	this.props.router.push({
 		  pathname: '/',
 		})
-    }
+   }
 
 
 
@@ -97,14 +95,3 @@ class SumUp extends Component {
 }
 
 export default SumUp;
-
-
-
-		/*	people: this.props.people,
-			people_men: this.props.people.peopleMen,
-			people_women: this.props.people.peopleWomen,
-			men_name: this.props.people.peopleMen.peopleName,
-			men_note: this.props.people.peopleMen.peopleNote,
-			women_name: this.props.people.peopleWomen.peopleName,
-			women_note: this.props.people.peopleWomen.peopleNote,
-			*/
