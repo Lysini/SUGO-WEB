@@ -60,66 +60,9 @@ class UserEvents extends Component {
                 this.state.userEvents.map((item, itemIndex) => {
                   return (
                     <div>
-                    <p className="event-name">Nazwa wydarzenia: {this.state.userEvents[itemIndex].event_name}</p>
-                    <i className="fa fa-plus" onClick={this.openEventInformation.bind(this, item)} aria-hidden="true"></i>
-                    {this.state.userEvents[itemIndex].stuff.map((stuffItem, stuffIndex) => {
-                          return (
-                              <div className="event-box">
-                                <p className="event-name">Nazwa stuffu: {stuffItem.labelName}</p>
-                                  {stuffItem.stuffArray.map((stuffArrayItem, stuffArrayIndex) => {
-                                        return (
-                                            <div className="event-box">
-                                              <p className="event-name">Nazwa przedmiotu: {stuffArrayItem.stuffName}</p>
-                                              <p className="event-name">Nazwa cena: {stuffArrayItem.stuffPrice}</p>
-                                              <p className="event-name">Nazwa ilość: {stuffArrayItem.stuffAmount}</p>
-                                            </div>  
-                                        );
-                                    })
-                                  }
-                              </div>  
-                          );
-                      })
-                    }
-                    <div className="event-box">
-                      <p className="event-name">Mężczyźni:</p>
-                      <div className="event-box">
-                        {this.state.userEvents[itemIndex].people.peopleMen.map((peopleItem, peopleIndex) => {
-                            return (
-                              <div className="event-box">
-                                  <p className="event-name">Imie: {peopleItem.peopleName}</p>
-                                  <p className="event-name">Notka: {peopleItem.peopleNote}</p>
-                              </div> 
-                            );
-                          })
-                        }
-                      </div>  
-                      <p className="event-name">Kobiety:</p>
-                      <div className="event-box">
-                        {this.state.userEvents[itemIndex].people.peopleWomen.map((peopleItem, peopleIndex) => {
-                            return (
-                              <div className="event-box">
-                                  <p className="event-name">Imie: {peopleItem.peopleName}</p>
-                                  <p className="event-name">notka: {peopleItem.peopleNote}</p>
-                              </div> 
-                            );
-                          })
-                        }
-                      </div>  
-                    </div>  
-                       <div className="event-box-2">
-                        <div className="event-box">
-                          <p className="event-name">Miejsce</p>
-                          <p className="event-name">Nazwa: {this.state.userEvents[itemIndex].place.placeName}</p>
-                          <p className="event-name">{this.state.userEvents[itemIndex].place.placeLocation}</p>
-                          <p className="event-name">{this.state.userEvents[itemIndex].place.placePrice}</p>
-                          <p className="event-name">{this.state.userEvents[itemIndex].place.placeMax}</p>
-                          <p className="event-name">{this.state.userEvents[itemIndex].place.placeNote}</p>
-                        </div> 
-                        <div className="event-box">
-                          <p className="event-name">Dodatkowe informacje: {this.state.userEvents[itemIndex].special_info}</p>
-                        </div>
-                      </div>
-                  </div>
+                      <p className="event-name">Nazwa wydarzenia: {this.state.userEvents[itemIndex].event_name}</p>
+                      <i className="fa fa-plus" onClick={this.openEventInformation.bind(this, item)} aria-hidden="true"></i>
+                    </div>
                   );
                 }) : <img src="http://rpg.drivethrustuff.com/shared_images/ajax-loader.gif"/>
               }
