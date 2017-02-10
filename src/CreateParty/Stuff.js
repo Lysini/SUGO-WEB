@@ -85,7 +85,7 @@ class Stuff extends Component {
 									<h3 className="stuff-label">{this.state.stuff[itemIndex].labelName} <i className="fa fa-plus add-people-button" onClick={addStatus => this.setState({ showModal: true, selectedLabel: itemIndex, modalTitle: 'Dodaj Przedmiot'  })} aria-hidden="true"></i></h3>
 									<div className="stuff-label-content">
 									{(this.state.addedLabel) ?
-										this.state.stuff[itemIndex].stuffArray.map(function(stuffItem, stuffIndex) {
+										this.state.stuff[itemIndex].stuffArray.map((stuffItem, stuffIndex) => {
 						                    return (
 						                    	<div>
 													<p>Nazwa: {stuffItem.stuffName} <button className="btn fa fa-pencil-square-o pull-right" aria-hidden="true"/></p>

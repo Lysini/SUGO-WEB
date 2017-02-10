@@ -1,0 +1,12 @@
+.background {
+	background-color: #ddd;
+	height: 100vh;
+}
+
+.event-box {
+	border: 5px #000 solid;
+}
+
+.event-box-2 {
+	border: 1px #ddd solid;
+}

@@ -39,7 +39,7 @@ class LogInModal extends Component {
       .then(responseData => {
         localStorage.setItem("userId", responseData.data);
           this.props.router.push({
-            pathname: '/user/events',
+            pathname: '/user',
           });
       });
   
