@@ -15,12 +15,14 @@ class Home extends Component {
   constructor() {
       super();
       this.state = {
+        logged: false,
         showLogInModal: false,
       };
   }
 
   logOut(){
       localStorage.removeItem("userId");
+      this.setState({logged: false})
   }
 
   showLogInModal() {
@@ -34,6 +36,19 @@ class Home extends Component {
       showLogInModal: true,
       createPartyActivity: true
     });
+  }
+
+  checkLogInActive(){
+    if(localStorage.getItem("userId") !== null){
+      this.setState({logged: true})
+    }
+    else{
+      this.setState({logged: false})
+    }
+  }
+
+  componentWillMount(){
+    this.checkLogInActive();
   }
 
   componentDidMount() {
@@ -128,9 +143,9 @@ class Home extends Component {
     return (
       <div>
         <div className="main-bg">
-          <Navbar router={this.props.router} showLogInModal={this.showLogInModal.bind(this)} logOut={this.logOut.bind(this)} showLogInModalCreate={this.showLogInModalCreate.bind(this)}/>
+          <Navbar router={this.props.router} showLogInModal={this.showLogInModal.bind(this)} logOut={this.logOut.bind(this)} showLogInModalCreate={this.showLogInModalCreate.bind(this)} logged={this.state.logged}/>
           {(this.state.showLogInModal)?
-            <LogInModal router={this.props.router} onClose={()=>{this.setState({ showLogInModal: false })}} createPartyActivity={this.state.createPartyActivity}/>
+            <LogInModal router={this.props.router} onClose={()=>{this.setState({ showLogInModal: false })}} createPartyActivity={this.state.createPartyActivity} checkLogInActive={this.checkLogInActive.bind(this)}/>
           : null
           }
           <div className="main-slogan">

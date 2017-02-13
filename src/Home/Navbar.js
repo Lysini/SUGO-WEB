@@ -25,6 +25,7 @@ class Navbar extends Component {
 	}
 
 	render() {
+		console.log(this.props.logged);
 	    return (
 			<nav className="navbar navbar-default">
 			  <div className="container">
@@ -45,7 +46,7 @@ class Navbar extends Component {
 			        <li><a href="#" onClick={this.openCreator.bind(this)}>Create Party +</a></li>
 			        <li><a href="#"><Link to={`user/events`}>UserEvents</Link></a></li>
 			        <li><a href="#">PL/EN</a></li>
-			        <li><a href="#" onClick={this.showLogInModal.bind(this)}>Log In</a></li>
+			        {(this.props.logged) ? null : <li><a href="#" onClick={this.showLogInModal.bind(this)}>Log In</a></li>}
 			        <li className="dropdown">
 						<button className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example</button>
 						<ul className="dropdown-menu">

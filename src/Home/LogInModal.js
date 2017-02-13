@@ -48,6 +48,9 @@ class LogInModal extends Component {
                 pathname: '/create'
             });
           }
+          else{
+            this.props.checkLogInActive();
+          }
       });
   
     }
