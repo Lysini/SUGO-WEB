@@ -19,9 +19,20 @@ class Home extends Component {
       };
   }
 
+  logOut(){
+      localStorage.removeItem("userId");
+  }
+
   showLogInModal() {
     this.setState({
+      showLogInModal: true
+    });
+  }
+
+  showLogInModalCreate() {
+    this.setState({
       showLogInModal: true,
+      createPartyActivity: true
     });
   }
 
@@ -117,16 +128,16 @@ class Home extends Component {
     return (
       <div>
         <div className="main-bg">
-          <Navbar showLogInModal={this.showLogInModal.bind(this)}/>
+          <Navbar router={this.props.router} showLogInModal={this.showLogInModal.bind(this)} logOut={this.logOut.bind(this)} showLogInModalCreate={this.showLogInModalCreate.bind(this)}/>
           {(this.state.showLogInModal)?
-            <LogInModal router={this.props.router} onClose={()=>{this.setState({ showLogInModal: false })}}/>
+            <LogInModal router={this.props.router} onClose={()=>{this.setState({ showLogInModal: false })}} createPartyActivity={this.state.createPartyActivity}/>
           : null
           }
           <div className="main-slogan">
             <div>
               <p className="main-slogan-text">Spotkaj się ze znajomymi!</p>
               <p className="main-slogan-text">Uniknij problemów z organizacją</p>
-              <Link to={`create`}><button className="btn main-slogan-btn">Stwórz wydarzenie!</button></Link>
+              <button className="btn main-slogan-btn" onClick={this.showLogInModal.bind(this)}>Stwórz wydarzenie!</button>
             </div>
           </div>
         </div>

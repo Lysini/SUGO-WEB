@@ -38,9 +38,16 @@ class LogInModal extends Component {
       })
       .then(responseData => {
         localStorage.setItem("userId", responseData.data);
+        this.props.loggedIn;
           this.props.router.push({
-            pathname: '/user',
+            pathname: '/',
           });
+          this.setState({showLogInModal: false});
+          if(this.props.createPartyActivity=== true){
+            this.props.router.push({
+                pathname: '/create'
+            });
+          }
       });
   
     }
@@ -69,6 +76,7 @@ class LogInModal extends Component {
       })
       .then(responseData =>{
         console.log(responseData)
+        this.setState({showLogInModal: false});
       });
   
     }
@@ -121,6 +129,12 @@ class LogInModal extends Component {
         }
     }
 
+    continueAnonymously(){
+      this.props.router.push({
+             pathname: '/organizer'
+        });
+    }
+
   render() {
     return (
 		<ReactModal 
@@ -140,13 +154,13 @@ class LogInModal extends Component {
               </div>
               <div className="form-group text-center">
                 <label>Password:</label>
-                <input type="text" className="form-control modal-text" onChange={password => this.setState({ password:password.target.value })} value={this.state.password} />
+                <input type="password" className="form-control modal-text" onChange={password => this.setState({ password:password.target.value })} value={this.state.password} />
               </div>
               {(this.state.registerActive) ?
                 <div>
                 <div className="form-group text-center">
                   <label>Confirm Password:</label>
-                  <input type="text" className="form-control modal-text" onChange={confirmpassword => this.setState({ confirmpassword:confirmpassword.target.value })} value={this.state.confirmpassword} />
+                  <input type="password" className="form-control modal-text" onChange={confirmpassword => this.setState({ confirmpassword:confirmpassword.target.value })} value={this.state.confirmpassword} />
                 </div>
                 <div className="form-group text-center">
                   <label>Nickname:</label>
@@ -156,7 +170,7 @@ class LogInModal extends Component {
               : null
               }
               
-              <a href="#" onClick={() => this.setState({registerActive: true, modalTitle: 'Sign Up'})}>Sing Up</a><i> or </i> <a href="#"><Link to={`organizer`}>Continue Anonymously</Link></a>
+              <a href="#" onClick={() => this.setState({registerActive: true, modalTitle: 'Sign Up'})}>Sing Up</a>{(this.props.createPartyActivity) ? <a><i> or </i> <a href="#" onClick={this.continueAnonymously.bind(this)}>Continue Anonymously</a></a> : null}
               <button className="btn pull-right modal-save" onClick={(this.state.registerActive) ? this.signUpValidate.bind(this) : this.logInValidate.bind(this)} type="button">{this.state.modalTitle}</button>
             </form>
           </div>

@@ -22,6 +22,8 @@ class CreateParty extends Component {
 	    			 placeMax: 0,
 	    			 placeNote: '' },
 	    	people: {},
+	    	organizerName: '',
+	    	organizerNote: '',
 	    	numberOfUsers: 0
 	    };
 	}
@@ -64,29 +66,38 @@ class CreateParty extends Component {
 	}
 
 	openPeople() {
-		return (
-          <People organizerName={this.props.location.state.organizerName}
-		          organizerNote={this.props.location.state.organizerNote} 
-		          savePeople={this.savePeople.bind(this)}  
-		          onClose={()=>{this.setState({ peopleOpened: false })}} />
-      	);
+		if(localStorage.getItem("userId") === null){
+			return (
+		        <People organizerName={this.props.location.state.organizerName}
+				organizerNote={this.props.location.state.organizerNote} 
+				savePeople={this.savePeople.bind(this)}  
+				onClose={this.cancelAdding.bind(this)}/>
+		    );
+		}else{
+			return (
+		        <People organizerName=' adasd'
+				organizerNote='sdasd'
+				savePeople={this.savePeople.bind(this)}  
+				onClose={this.cancelAdding.bind(this)}/>
+		    );
+		}
 	}
 
 	openStuff() {
 		return (
-          <Stuff saveStuff={this.saveStuff.bind(this)} onClose={()=>{this.setState({ stuffOpened: false })}} />
+          <Stuff saveStuff={this.saveStuff.bind(this)} onClose={this.cancelAdding.bind(this)} />
       	);
 	}
 
 	openPlace() {
 		return (
-          <Place savePlace={this.savePlace.bind(this)} onClose={()=>{this.setState({ placeOpened: false })}} />
+          <Place savePlace={this.savePlace.bind(this)} onClose={this.cancelAdding.bind(this)} />
       	);
 	}
 
 	openInfo() {
 		return (
-          <Info saveInfo={this.saveInfo.bind(this)} onClose={()=>{this.setState({ infoOpened: false })}} />
+          <Info saveInfo={this.saveInfo.bind(this)} onClose={this.cancelAdding.bind(this)} />
       	);
 	}
 
@@ -102,6 +113,12 @@ class CreateParty extends Component {
 		  	people: this.state.people,
 		  	numberOfUsers: this.state.numberOfUsers,
 		  } 
+		})
+	}
+
+	cancelAdding(){
+		this.props.router.push({
+			pathname: '/'
 		})
 	}
 

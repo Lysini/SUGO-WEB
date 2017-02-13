@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import './Home.css';
+import Dropdown from 'react-dropdown';
 
 class Navbar extends Component {
 
@@ -8,6 +9,21 @@ class Navbar extends Component {
 		this.props.showLogInModal(
 	    );
 	}
+
+	logOut(){
+		this.props.logOut();
+	}
+
+	openCreator(){
+		if(localStorage.getItem("userId") !== null){
+        	this.props.router.push({
+        		pathname: '/create'
+        	})
+     	}else{
+          	this.props.showLogInModalCreate();
+      	}
+	}
+
 	render() {
 	    return (
 			<nav className="navbar navbar-default">
@@ -26,10 +42,18 @@ class Navbar extends Component {
 			      	<li><a href="#">Home</a></li>
 			        <li><a href="#">About App</a></li>
 			        <li><a href="#">Contact Us</a></li>
-			        <li><a href="#"><Link to={`organizer`}>Create Party +</Link></a></li>
-			        <li><a href="#"><Link to={`user`}>UserEvents</Link></a></li>
-			        <li><a href="#" onClick={this.showLogInModal.bind(this)}>Log In</a></li>
+			        <li><a href="#" onClick={this.openCreator.bind(this)}>Create Party +</a></li>
+			        <li><a href="#"><Link to={`user/events`}>UserEvents</Link></a></li>
 			        <li><a href="#">PL/EN</a></li>
+			        <li><a href="#" onClick={this.showLogInModal.bind(this)}>Log In</a></li>
+			        <li className="dropdown">
+						<button className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example</button>
+						<ul className="dropdown-menu">
+						    <li><a href="#">HTML</a></li>
+						    <li><a href="#">CSS</a></li>
+						    <li><a href="#" onClick={this.logOut.bind(this)}>Log out</a></li>
+						</ul>
+					</li>
 			      </ul>
 			    </div>
 			  </div>
