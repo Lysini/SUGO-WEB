@@ -14,6 +14,7 @@ class Stuff extends Component {
 	    	editActive: false,
 	    	addedLabel: false,
 	    	selectedLabel: 0,
+	    	selectedStuff: 0,
 	    	stuff: [],
 	    	stuffLabels: '',
 	    	stuffItems: '',
@@ -55,13 +56,18 @@ class Stuff extends Component {
 			stuffPrice: this.state.stuffPrice,
 			stuffAmount: this.state.stuffAmount
 		};
-		this.state.stuff[this.state.selectedLabel].stuffArray[this.state.editItemIndex]=stuffItem;
+		this.state.stuff[this.state.selectedLabel].stuffArray[this.state.selectedStuff]=stuffItem;
 		this.setState({ 
 			showModal: false,
 			stuffName: '',
 			stuffPrice: '',
 			stuffAmount: ''
 		});
+	}
+
+	deleteStuff(){
+			this.state.stuff[this.state.selectedLabel].stuffArray.splice(this.state.selectedStuff,1);
+			this.setState({modalTitle: 'Dodaj Przedmiot'});
 	}
 
 	render() {
@@ -82,14 +88,14 @@ class Stuff extends Component {
 						this.state.stuff.map((item, itemIndex) => {
 							return (
 								<div className="col-sm-4 pull-left text-center">
-									<h3 className="stuff-label">{this.state.stuff[itemIndex].labelName} <i className="fa fa-plus add-people-button" onClick={addStatus => this.setState({ showModal: true, selectedLabel: itemIndex, modalTitle: 'Dodaj Przedmiot'  })} aria-hidden="true"></i></h3>
+									<h3 className="stuff-label">{this.state.stuff[itemIndex].labelName} <i className="fa fa-plus add-people-button" onClick={addStatus => this.setState({ showModal: true, selectedLabel: itemIndex, modalTitle: 'Dodaj Przedmiot', editActive: false, stuffName: '', stuffPrice: '', stuffAmount: '' })} aria-hidden="true"></i></h3>
 									<div className="stuff-label-content">
 									{(this.state.addedLabel) ?
 										this.state.stuff[itemIndex].stuffArray.map((stuffItem, stuffIndex) => {
 						                    return (
 						                    	<div>
-													<p>Nazwa: {stuffItem.stuffName} <button className="btn fa fa-pencil-square-o pull-right" aria-hidden="true"/></p>
-							           				<p>Cena: {stuffItem.stuffPrice} <button className="btn fa fa-trash pull-right" aria-hidden="true"></button></p>
+													<p>Nazwa: {stuffItem.stuffName} <button className="btn fa fa-pencil-square-o pull-right" onClick={() => this.setState({selectedLabel: itemIndex, selectedStuff: stuffIndex, stuffName: this.state.stuff[this.state.selectedLabel].stuffArray[this.state.selectedStuff].stuffName, stuffPrice: this.state.stuff[this.state.selectedLabel].stuffArray[this.state.selectedStuff].stuffPrice, stuffAmount: this.state.stuff[this.state.selectedLabel].stuffArray[this.state.selectedStuff].stuffAmount, showModal: true, editActive: true, modalTitle: 'Edytuj Przedmiot' })} aria-hidden="true"/></p>
+							           				<p>Cena: {stuffItem.stuffPrice} <button className="btn fa fa-trash pull-right" onClick={() =>{ this.setState({selectedLabel: itemIndex, selectedStuff: stuffIndex}, this.deleteStuff.bind(this))}} aria-hidden="true"></button></p>
 							           				<p>Ilosc: {stuffItem.stuffAmount}</p>
 							           			</div>
 						                    )

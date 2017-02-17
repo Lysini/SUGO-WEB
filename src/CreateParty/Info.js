@@ -15,6 +15,8 @@ class Info extends Component {
 	    );
 	}
 
+	
+
   render() {
     return (
 		<div className="openedPlace">

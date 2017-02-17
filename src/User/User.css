@@ -10,3 +10,8 @@
 .event-box-2 {
 	border: 1px #ddd solid;
 }
+
+
+.userInfo{
+	max-width: 30%;
+}

@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import './Home.css';
-import Dropdown from 'react-dropdown';
+import DropDown from './DropDown';
+
 
 class Navbar extends Component {
+
 
 	showLogInModal() {
 		this.props.showLogInModal(
@@ -17,7 +19,7 @@ class Navbar extends Component {
 	openCreator(){
 		if(localStorage.getItem("userId") !== null){
         	this.props.router.push({
-        		pathname: '/create'
+        		pathname: '/organizer'
         	})
      	}else{
           	this.props.showLogInModalCreate();
@@ -25,7 +27,6 @@ class Navbar extends Component {
 	}
 
 	render() {
-		console.log(this.props.logged);
 	    return (
 			<nav className="navbar navbar-default">
 			  <div className="container">
@@ -47,14 +48,8 @@ class Navbar extends Component {
 			        <li><a href="#"><Link to={`user/events`}>UserEvents</Link></a></li>
 			        <li><a href="#">PL/EN</a></li>
 			        {(this.props.logged) ? null : <li><a href="#" onClick={this.showLogInModal.bind(this)}>Log In</a></li>}
-			        <li className="dropdown">
-						<button className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example</button>
-						<ul className="dropdown-menu">
-						    <li><a href="#">HTML</a></li>
-						    <li><a href="#">CSS</a></li>
-						    <li><a href="#" onClick={this.logOut.bind(this)}>Log out</a></li>
-						</ul>
-					</li>
+			        {(this.props.logged) ? <li><DropDown logOut={this.logOut.bind(this)}/></li> : null}
+								
 			      </ul>
 			    </div>
 			  </div>

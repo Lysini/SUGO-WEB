@@ -55,7 +55,7 @@ class People extends Component {
 		else {
 			this.state.people.peopleWomen.splice(this.state.editOrDeleteNumber,1);
 		}
-		this.setState({numberOfUsers: this.state.numberOfUsers-1})
+		this.setState({numberOfUsers: this.state.numberOfUsers-1});
 	}
 
 	updateUser(){
@@ -101,7 +101,7 @@ class People extends Component {
 									return (
 										<div>
 											<p>Imie: {this.state.people.peopleMen[itemIndex].peopleName} <button className="btn fa fa-pencil-square-o pull-right" onClick={() => this.setState({peopleSex: 'men', assistantNumber:itemIndex, showModal:true, inputName: this.state.people.peopleMen[itemIndex].peopleName, inputNote: this.state.people.peopleMen[itemIndex].peopleNote, modalTitle: 'Edytuj uczestnika', updateActive: true})} aria-hidden="true"></button></p> 
-								          	<p>Notka: {this.state.people.peopleMen[itemIndex].peopleNote} <button className="btn fa fa-trash pull-right" onClick={() => { this.setState({editOrDeleteNumber: itemIndex}, this.deleteUser.bind(this))}} aria-hidden="true"></button></p>
+								          	<p>Notka: {this.state.people.peopleMen[itemIndex].peopleNote} <button className="btn fa fa-trash pull-right" onClick={() => { this.setState({peopleSex: 'men' ,editOrDeleteNumber: itemIndex}, this.deleteUser.bind(this))}} aria-hidden="true"></button></p>
 								          	
 								       	</div>
 							        );
@@ -117,7 +117,7 @@ class People extends Component {
 									return (
 										<div>
 							            	<p>Imie: {this.state.people.peopleWomen[itemIndex].peopleName} <button className="btn fa fa-pencil-square-o pull-right" onClick={() => this.setState({peopleSex: 'women', assistantNumber:itemIndex, showModal:true, inputName: this.state.people.peopleWomen[itemIndex].peopleName, inputNote: this.state.people.peopleWomen[itemIndex].peopleNote, modalTitle: 'Edytuj uczestnika', updateActive: true})} aria-hidden="true"></button></p> 
-							           		<p>Notka: {this.state.people.peopleWomen[itemIndex].peopleNote} <button className="btn fa fa-trash pull-right" onClick={() => { this.setState({editOrDeleteNumber: itemIndex}, this.deleteUser.bind(this))}} aria-hidden="true"></button></p> 
+							           		<p>Notka: {this.state.people.peopleWomen[itemIndex].peopleNote} <button className="btn fa fa-trash pull-right" onClick={() => { this.setState({peopleSex: 'women' ,editOrDeleteNumber: itemIndex}, this.deleteUser.bind(this))}} aria-hidden="true"></button></p> 
 							        	</div>
 						        	);
 						    	}) : null

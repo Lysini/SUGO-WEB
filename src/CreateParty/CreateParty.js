@@ -22,8 +22,6 @@ class CreateParty extends Component {
 	    			 placeMax: 0,
 	    			 placeNote: '' },
 	    	people: {},
-	    	organizerName: '',
-	    	organizerNote: '',
 	    	numberOfUsers: 0
 	    };
 	}
@@ -66,21 +64,12 @@ class CreateParty extends Component {
 	}
 
 	openPeople() {
-		if(localStorage.getItem("userId") === null){
-			return (
-		        <People organizerName={this.props.location.state.organizerName}
-				organizerNote={this.props.location.state.organizerNote} 
-				savePeople={this.savePeople.bind(this)}  
-				onClose={this.cancelAdding.bind(this)}/>
-		    );
-		}else{
-			return (
-		        <People organizerName=' adasd'
-				organizerNote='sdasd'
-				savePeople={this.savePeople.bind(this)}  
-				onClose={this.cancelAdding.bind(this)}/>
-		    );
-		}
+		return (
+		    <People organizerName={this.props.location.state.organizerName}
+			organizerNote={this.props.location.state.organizerNote} 
+			savePeople={this.savePeople.bind(this)}  
+			onClose={this.cancelAdding.bind(this)}/>
+		);
 	}
 
 	openStuff() {

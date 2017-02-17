@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import './User.css';
+import UserUpdate from './UserUpdate';
 
 class User extends Component {
 	constructor() {
@@ -52,6 +53,7 @@ class User extends Component {
 				}	
 		      	</div>
 		    </div>
+		    <UserUpdate/>
 	      </div>
 	    </div>
     );

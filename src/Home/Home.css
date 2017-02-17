@@ -173,7 +173,7 @@
   margin: auto;
   background-color: #d0dae0;
   min-height: 50%;
-  width: 20%;
+  min-width: 30%;
   position: absolute;
   top: 25vh;
   left: 35vw;
@@ -182,7 +182,7 @@
 
 .modal-form-container-stuff {
   min-height: 30%;
-  width: 20%;
+  min-width: 20%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -197,7 +197,45 @@
   justify-content: center;
   position: absolute;
   top: 15vh;
-  left: 11vw;
+  left: 5vw;
   margin: auto;
 
+}
+
+
+
+
+
+
+/* DropDown  -------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+
+
+.dropdown {
+    display: inline-block;
+}
+
+.dropdown__content {
+    display: none;
+    position: absolute;
+    background-color: rgba(212, 223, 230,0.95);
+}
+
+.dropdown--active .dropdown__content {
+    display: block;
+}
+
+.caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 4px dashed;
+    border-top: 4px solid\9;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
 }

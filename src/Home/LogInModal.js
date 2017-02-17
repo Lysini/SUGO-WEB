@@ -38,14 +38,13 @@ class LogInModal extends Component {
       })
       .then(responseData => {
         localStorage.setItem("userId", responseData.data);
-        this.props.loggedIn;
           this.props.router.push({
             pathname: '/',
           });
           this.setState({showLogInModal: false});
           if(this.props.createPartyActivity=== true){
             this.props.router.push({
-                pathname: '/create'
+                pathname: '/organizer'
             });
           }
           else{

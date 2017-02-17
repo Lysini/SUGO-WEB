@@ -9,9 +9,12 @@
     "jquery": "^3.1.1",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
+    "react-dropdown": "^1.2.0",
     "react-modal": "^1.6.5",
     "react-router": "^3.0.0",
-    "scrollmagic": "^2.0.5"
+    "react-simple-dropdown": "^2.0.0",
+    "scrollmagic": "^2.0.5",
+    "simple-react-dropdown": "^3.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
