@@ -19,6 +19,7 @@ class SumUp extends Component {
 			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify({
+			event_name: this.props.location.state.eventName,
         	organizer_id: userId,
         	stuff: this.props.location.state.stuff,
         	people: this.props.location.state.people,
@@ -35,6 +36,9 @@ class SumUp extends Component {
 		})
 	.then(responseData => {
 		console.log(responseData);
+		this.props.router.push({
+		  pathname: '/user/events'
+		})
 	})
 	.catch(err => {
 		console.log(err);

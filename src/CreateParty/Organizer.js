@@ -44,7 +44,7 @@ class Organizer extends Component {
 			})
 		.then(responseData =>{
 			console.log(responseData);
-			this.setState({ organizerName: responseData.data.name, organizerNote: responseData.data.name
+			this.setState({ organizerName: responseData.data.name, organizerNote: responseData.data.note
 				 });
 		});
 	}

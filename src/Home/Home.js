@@ -23,6 +23,9 @@ class Home extends Component {
   logOut(){
       localStorage.removeItem("userId");
       this.setState({logged: false})
+      this.props.router.push({
+                pathname: '/'
+      });
   }
 
   showLogInModal() {

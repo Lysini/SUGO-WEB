@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import './User.css';
 import UserUpdate from './UserUpdate';
+import Navbar from '../Home/Navbar';
 
 class User extends Component {
 	constructor() {
@@ -39,21 +40,22 @@ class User extends Component {
   render() {
     return (
 	 	<div className="background">
-	      <div className="container">
-	    	<li><a href="#"><Link to={`user/events`}>UserEvents</Link></a></li>
-	      	<h1 className="text-center">Informacje o użytkowniku</h1>
+	      <div className="main-bg">
+	      	<Navbar/>
+	      	<div className="main-slogan">
 	      	<div className="container">
 		      	<div className="jumbotron">
 				{
 					(this.state.dataLoaded) ?
 						<div className="well">
 						    <p className="event-name">{this.state.userData.name}</p>
+						    <UserUpdate/>
 						</div>
 					: <img src="http://rpg.drivethrustuff.com/shared_images/ajax-loader.gif"/>
 				}	
 		      	</div>
 		    </div>
-		    <UserUpdate/>
+	      </div>
 	      </div>
 	    </div>
     );

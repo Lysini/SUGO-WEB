@@ -93,7 +93,8 @@ class CreateParty extends Component {
 	openSumUp() {
 		this.props.router.push({
 		  pathname: '/sum-up',
-		  state: { 
+		  state: {
+		  	eventName: this.props.location.state.eventName, 
 		  	organizerName: this.props.location.state.organizerName,
 		  	organizerNote: this.props.location.state.organizerNote,
 		  	place: this.state.place,

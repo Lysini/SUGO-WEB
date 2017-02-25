@@ -11,7 +11,29 @@
 	border: 1px #ddd solid;
 }
 
-
 .userInfo{
-	max-width: 30%;
+	max-width: 70%;
+  margin: auto;
+}
+
+.avatar{
+  max-width: 300px;
+  max-height: 300px;
+}
+
+
+.main-bg {
+  background-image: url('http://www.sunlandrvresorts.com/wp-content/uploads/2013/09/bigstock-silhouettes-of-concert-crowd-i-15652625_mini.jpg');
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+
+.main-slogan {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

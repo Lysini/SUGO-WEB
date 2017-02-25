@@ -53,13 +53,14 @@ class UserEvents extends Component {
       <div className="background">
         <div className="container">
           <li><a href="#"><Link to={`/user`}>User</Link></a></li>
+          <li><a href="#"><Link to={`/`}>Home</Link></a></li>
           <h1 className="text-center">Twoje wydarzenia</h1>
             <div className="container">
               <div className="jumbotron">
               {(this.state.dataLoaded) ?
                 this.state.userEvents.map((item, itemIndex) => {
                   return (
-                    <div>
+                    <div className="page-header"> 
                       <p className="event-name">Nazwa wydarzenia: {this.state.userEvents[itemIndex].event_name}</p>
                       <i className="fa fa-plus" onClick={this.openEventInformation.bind(this, item)} aria-hidden="true"></i>
                     </div>
