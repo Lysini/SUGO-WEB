@@ -143,6 +143,8 @@ class Home extends Component {
 
 
   render() {
+      var userId = localStorage.getItem("userId");
+  console.log(userId);
     return (
       <div>
         <div className="main-bg">

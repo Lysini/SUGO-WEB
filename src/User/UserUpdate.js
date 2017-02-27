@@ -6,7 +6,7 @@ class User extends Component {
 	constructor() {
 	    super();
 	    this.state = {
-			updateActivity: false,
+			 updateActivity: false,
 	    };
 	}
 
@@ -24,11 +24,12 @@ class User extends Component {
       })
       .then(responseData =>{
         console.log(responseData);
-        this.setState({ name: responseData.data.name, age: responseData.data.age, note: responseData.data.note, image: responseData.data.avatar});
-      });
-	}
+        this.setState({ name: responseData.data.name, age: responseData.data.age, note: responseData.data.note, avatar: responseData.data.avatar });
+	});
+}
 
-	updateUser() {
+
+updateUser() {
 	var userId = localStorage.getItem("userId");
     fetch(`http://localhost:8000/user/${userId}/update`,{
         headers: {
@@ -55,15 +56,6 @@ class User extends Component {
   
     }
 
-    checkAvatar(){
-        if(this.state.imgSrc===undefined){
-
-        }
-        else{
-          this.setState({avatar: true});
-        }
-    }
-
   updateUserAvatar() {
     var userId = localStorage.getItem("userId");
     fetch(`http://localhost:8000/user/${userId}/update-avatar`,{
@@ -73,7 +65,7 @@ class User extends Component {
         },
         method: 'PUT',
         body: JSON.stringify({
-          avatar: this.state.image[0]
+          avatar: this.state.avatar[0]
         })
       })
       .then(
@@ -87,15 +79,6 @@ class User extends Component {
         this.setState({updateActivity: false});
       });
   
-    }
-
-    checkAvatar(){
-        if(this.state.image===undefined){
-
-        }
-        else{
-          this.setState({avatar: true});
-        }
     }
 
   changePassword() {
@@ -127,21 +110,19 @@ class User extends Component {
 
   componentWillMount() {
     	this.fetchUserData();
-      this.checkAvatar();
   }
 
-  getImage(){
-  // Assuming only image
-  var file = this.refs.file.files[0];
-  var reader = new FileReader();
-  var url = reader.readAsDataURL(file);
+  getAvatar(){
+    var file = this.refs.file.files[0];
+    var reader = new FileReader();
+    var url = reader.readAsDataURL(file);
 
-   reader.onloadend = function (e) {
-      this.setState({
-        image: [reader.result],
-        updateActivity: true
-      })
-    }.bind(this);
+     reader.onloadend = function (e) {
+        this.setState({
+          avatar: [reader.result],
+          updateActivity: true
+        })
+      }.bind(this);
   }
 
   render() {
@@ -151,8 +132,8 @@ class User extends Component {
 	      	<h1 className="text-center">Dane Uzytkownika</h1>
           <div className="col-sm-6 text-center pull-left">
   	      	<form>
-              <img className="avatar" src={this.state.image}/>
-              <input ref="file" type="file"  name="user[image]" multiple="true" onChange={this.getImage.bind(this)}/> 
+              <img className="avatar" src={`${this.state.avatar}`}/>
+              <input ref="file" type="file"  name="user[image]" multiple="true" onChange={this.getAvatar.bind(this)}/> 
       			</form>
             <button className="btn pull-right" onClick={this.updateUserAvatar.bind(this)}>Save Avatar</button>
         </div>
