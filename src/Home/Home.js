@@ -149,10 +149,7 @@ class Home extends Component {
       <div>
         <div className="main-bg">
           <Navbar router={this.props.router} showLogInModal={this.showLogInModal.bind(this)} logOut={this.logOut.bind(this)} showLogInModalCreate={this.showLogInModalCreate.bind(this)} logged={this.state.logged} myprofile={false}/>
-          {(this.state.showLogInModal)?
-            <LogInModal router={this.props.router} onClose={()=>{this.setState({ showLogInModal: false })}} createPartyActivity={this.state.createPartyActivity} checkLogInActive={this.checkLogInActive.bind(this)}/>
-          : null
-          }
+          <LogInModal router={this.props.router} showActivity={this.state.showLogInModal}  onClose={()=>{this.setState({ showLogInModal: false })}} createPartyActivity={this.state.createPartyActivity} checkLogInActive={this.checkLogInActive.bind(this)}/>
           <div className="main-slogan">
             <div>
               <p className="main-slogan-text">Spotkaj się ze znajomymi!</p>

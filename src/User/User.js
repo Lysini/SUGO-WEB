@@ -56,7 +56,6 @@ class User extends Component {
 				{
 					(this.state.dataLoaded) ?
 						<div className="well">
-						    <p className="event-name">{this.state.userData.name}</p>
 						    <UserUpdate/>
 						</div>
 					: <img src="http://rpg.drivethrustuff.com/shared_images/ajax-loader.gif"/>

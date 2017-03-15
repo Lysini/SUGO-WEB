@@ -17,6 +17,16 @@ class Navbar extends Component {
 		this.props.logOut();
 	}
 
+	openUserEvents(){
+		this.props.router.push({ pathname: '/user/events' });
+	}
+
+	openUserInfo(){
+		this.props.router.push({ pathname: '/user' });
+	}
+
+	
+
 	openCreator(){
 		if(localStorage.getItem("userId") !== null){
         	this.props.router.push({
@@ -46,7 +56,11 @@ class Navbar extends Component {
 			        <li><a href="#">About App</a></li>
 			        <li><a href="#">Contact Us</a></li>
 			        <li><a href="#" onClick={this.openCreator.bind(this)}>Create Party +</a></li>
-			        <li><a href="#"><Link to={`user/events`}>UserEvents</Link></a></li>
+			        <li><a onClick={this.openUserEvents.bind(this)}>UserEvents</a></li>
+			        {(this.props.logged||this.props.myaccount) ?
+			        	<li><a onClick={this.openUserInfo.bind(this)}>User</a></li>
+			        : null
+			        }
 			        <li><a href="#">PL/EN</a></li>
 			        {(this.props.myaccount) ? 
 			        	<li><a href="#" onClick={this.logOut.bind(this)}>Log Out</a></li>

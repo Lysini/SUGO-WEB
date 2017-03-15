@@ -41,7 +41,8 @@ class LogInModal extends Component {
           this.props.router.push({
             pathname: '/',
           });
-          this.setState({showLogInModal: false});
+          this.props.onClose();
+          this.setState({email: '', password: ''});
           if(this.props.createPartyActivity=== true){
             this.props.router.push({
                 pathname: '/organizer'
@@ -78,7 +79,7 @@ class LogInModal extends Component {
       })
       .then(responseData =>{
         console.log(responseData)
-        this.setState({showLogInModal: false});
+        this.props.onClose();
       });
   
     }
@@ -140,7 +141,7 @@ class LogInModal extends Component {
   render() {
     return (
 		<ReactModal 
-              isOpen={this.state.showLogInModal}
+              isOpen={this.props.showActivity}
               contentLabel="Inline Styles Modal Example"
               className="Modal"
               overlayClassName="Overlay">

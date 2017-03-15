@@ -2,10 +2,66 @@
   min-height: 20vh;
   margin: auto;
 }
+.well{
+    position: absolute;
+    top: 12%;
+}
+
+.user-events{
+    width: 70%;
+    height: 80vh;
+    background-color: #d9dfe2;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%;
+    border-radius: 3%;
+}
+
+
+/* SCROLL BAR FOR EVENTS */
+
+.my-events-title{
+  padding-top: 2%;
+}
+
+
+.info-box{
+  margin: auto;
+  padding: 5px;
+  font: 24px/36px sans-serif;
+  width: 90%;
+  max-height: 600px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+width: 12px;
+height: 12px;
+}
+
+::-webkit-scrollbar-track {
+border: 1px solid #9cb4e5;
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+background: #689cf2;  
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+background: #4f8df2;  
+}
+
+/* END */
+
 
 .background {
 	background-color: #ddd;
-	height: 100vh;
+	height: 800px;
+  border-radius: 3%;
 }
 
 .event-box {
@@ -19,11 +75,16 @@
 .userInfo{
 	max-width: 70%;
   margin: auto;
+
 }
 
 .avatar{
   max-width: 300px;
   max-height: 300px;
+  border-radius: 5%;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #bcbfc4;
 }
 
 
@@ -66,6 +127,7 @@
   min-height: 50%;
   min-width: 30%;
   position: absolute;
+  border-radius: 3%;
   top: 25vh;
   left: 35vw;
   margin: auto;

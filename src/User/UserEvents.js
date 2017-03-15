@@ -59,22 +59,24 @@ class UserEvents extends Component {
 
    render() {
     return (
-      <div className="background">
+      <div className="main-bg">
       <Navbar router={this.props.router} logOut={this.logOut.bind(this)} myaccount={true} logged={false}/>
-        <div className="container">
-          <h1 className="text-center">Twoje wydarzenia</h1>
+        <div className="user-events">
+          <h1 className="text-center my-events-title">Twoje wydarzenia</h1>
             <div className="container">
-              <div className="jumbotron">
-              {(this.state.dataLoaded) ?
-                this.state.userEvents.map((item, itemIndex) => {
-                  return (
-                    <div className="page-header"> 
-                      <p className="event-name">Nazwa wydarzenia: {this.state.userEvents[itemIndex].event_name}</p>
-                      <i className="fa fa-plus" onClick={this.openEventInformation.bind(this, item)} aria-hidden="true"></i>
-                    </div>
-                  );
-                }) : <img src="http://rpg.drivethrustuff.com/shared_images/ajax-loader.gif"/>
-              }
+              <div className="jumbotron text-center">
+                <div className="info-box">
+                {(this.state.dataLoaded) ?
+                  this.state.userEvents.map((item, itemIndex) => {
+                    return (
+                      <div className="page-header"> 
+                        <p className="event-name">Nazwa wydarzenia: {this.state.userEvents[itemIndex].event_name}</p>
+                        <i className="fa fa-plus" onClick={this.openEventInformation.bind(this, item)} aria-hidden="true"></i>
+                      </div>
+                    );
+                  }) : <img src="http://rpg.drivethrustuff.com/shared_images/ajax-loader.gif"/>
+                }
+                </div>
               </div>
           </div>
         </div>

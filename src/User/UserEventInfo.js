@@ -15,7 +15,6 @@ render() {
     return (
       <div className="background">
         <div className="container">
-          <li><a href="#"><Link to={`/user/events`}>User</Link></a></li>
           <h1 className="text-center">{eventInformation.event_name}</h1>
             <div className="container">
               <div className="jumbotron">
