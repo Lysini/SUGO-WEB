@@ -176,13 +176,13 @@
   min-width: 30%;
   position: absolute;
   top: 25vh;
-  left: 35vw;
+  left: 30vw;
   margin: auto;
 }
 
 .modal-form-container-stuff {
   min-height: 30%;
-  min-width: 20%;
+  min-width: 15%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -195,11 +195,13 @@
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  position: absolute;
-  top: 15vh;
-  left: 5vw;
-  margin: auto;
+  
 
+}
+
+.modal-text{
+  max-width: 80%;
+  margin-left: 10%;
 }
 
 

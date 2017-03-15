@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Dropdown, { DropdownTrigger, DropdownContent } from 'react-simple-dropdown';
+import { Router, Link } from 'react-router';
 import './Home.css';
 
 
@@ -10,9 +11,9 @@ class AccountDropdown extends Component {
     this.props.logOut();
   }
 
-  handleLinkClick() {
+  /*handleLinkClick() {
     this.refs.dropdown.hide();
-  }
+  }*/
 
 
   render() {

@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import './User.css';
+import ChangePasswordModal from './ChangePasswordModal';
 
 class User extends Component {
 	constructor() {
 	    super();
 	    this.state = {
 			 updateActivity: false,
+       showChangePasswordModal: false,
+       updateAvatarActivity: false
 	    };
 	}
 
@@ -76,36 +79,9 @@ updateUser() {
                 }
       })
       .then(responseData =>{
-        this.setState({updateActivity: false});
+        this.setState({updateAvatarActivity: false});
       });
   
-    }
-
-  changePassword() {
-    var userId = localStorage.getItem("userId");
-      fetch(`http://localhost:8000/user/${userId}/change-password`,{
-          headers: {
-            'Accept': 'application/json',
-             'Content-Type': 'application/json'
-          },
-          method: 'PUT',
-          body: JSON.stringify({
-            oldpassword: this.state.oldPassword,
-            password: this.state.newPassword,
-            password_confirmation: this.state.newPasswordConfirmation,
-              
-          })
-        })
-        .then(
-            response => {
-                  const status = response.status;
-                  if (status === 200) {
-                    return response.json();
-                  }
-        })
-        .then(responseData =>{
-          this.setState({updateActivity: false});
-        });
     }
 
   componentWillMount() {
@@ -120,7 +96,7 @@ updateUser() {
      reader.onloadend = function (e) {
         this.setState({
           avatar: [reader.result],
-          updateActivity: true
+          updateAvatarActivity: true
         })
       }.bind(this);
   }
@@ -128,6 +104,7 @@ updateUser() {
   render() {
     return (
 	 	<div className="background">
+    {(this.state.showChangePasswordModal) ? <ChangePasswordModal oldPassword={this.state.oldPassword} onClose={() =>this.setState({showChangePasswordModal: false})}/> : null}
 	      <div className="container userInfo">
 	      	<h1 className="text-center">Dane Uzytkownika</h1>
           <div className="col-sm-6 text-center pull-left">
@@ -135,7 +112,7 @@ updateUser() {
               <img className="avatar" src={`${this.state.avatar}`}/>
               <input ref="file" type="file"  name="user[image]" multiple="true" onChange={this.getAvatar.bind(this)}/> 
       			</form>
-            <button className="btn pull-right" onClick={this.updateUserAvatar.bind(this)}>Save Avatar</button>
+            {(this.state.updateAvatarActivity) ? <button className="btn pull-right" onClick={this.updateUserAvatar.bind(this)}>Save Avatar</button> : null}
         </div>
         <div className="col-sm-6 text-center pull-right">
             <form>
@@ -144,28 +121,16 @@ updateUser() {
                 <input className="form-control" onChange={name => this.setState({ name:name.target.value, updateActivity: true })} value={this.state.name} />
               </div>
               <div className="form-group">
-                <label>Note:</label>
-                <input className="form-control" onChange={note => this.setState({ note:note.target.value, updateActivity: true })} value={this.state.note} />
-              </div>
-              <div className="form-group">
                 <label>Age:</label>
                 <input className="form-control" onChange={age => this.setState({ age:age.target.value, updateActivity: true })} value={this.state.age} />
               </div>
               <div className="form-group">
-                <label>Old password:</label>
-                <input className="form-control" onChange={oldPassword => this.setState({ oldPassword:oldPassword.target.value, updateActivity: true })} value={this.state.oldPassword} />
-              </div>
-              <div className="form-group">
-                <label>New password:</label>
-                <input className="form-control" onChange={newPassword => this.setState({ newPassword:newPassword.target.value, updateActivity: true })} value={this.state.newPassword} />
-              </div>
-              <div className="form-group">
-                <label>Repeat new password:</label>
-                <input className="form-control" onChange={newPasswordConfirmation => this.setState({ newPasswordConfirmation:newPasswordConfirmation.target.value, updateActivity: true })} value={this.state.newPasswordConfirmation} />
+                <label>Note:</label>
+                <textarea className="form-control note-textarea" onChange={note => this.setState({ note:note.target.value, updateActivity: true })} value={this.state.note} />
               </div>
             </form>
-            {(this.state.updateActivity) ? <button className="btn pull-right" onClick={this.changePassword.bind(this)}>Change password</button> : null}
             {(this.state.updateActivity) ? <button className="btn pull-right" onClick={this.updateUser.bind(this)}>Save</button> : null}
+            <button className="btn pull-right" onClick={() => this.setState({showChangePasswordModal: true})}>Change password</button>
         </div>
 	      </div>
 	    </div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import './User.css';
+import Navbar from '../Home/Navbar';
 
 class UserEvents extends Component {
 	constructor() {
@@ -11,6 +12,14 @@ class UserEvents extends Component {
 
 	    this.fetchEvents = this.fetchEvents.bind(this);
 	}
+
+  logOut(){
+      localStorage.removeItem("userId");
+      this.setState({logged: false})
+      this.props.router.push({
+                pathname: '/'
+      });
+    }
 
 	fetchEvents(userId) {
       fetch(`http://localhost:8000/user/${userId}/events`,{
@@ -51,9 +60,8 @@ class UserEvents extends Component {
    render() {
     return (
       <div className="background">
+      <Navbar router={this.props.router} logOut={this.logOut.bind(this)} myaccount={true} logged={false}/>
         <div className="container">
-          <li><a href="#"><Link to={`/user`}>User</Link></a></li>
-          <li><a href="#"><Link to={`/`}>Home</Link></a></li>
           <h1 className="text-center">Twoje wydarzenia</h1>
             <div className="container">
               <div className="jumbotron">

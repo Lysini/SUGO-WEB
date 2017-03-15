@@ -13,6 +13,14 @@ class User extends Component {
 	    this.fetchUserData = this.fetchUserData.bind(this);
 	}
 
+	logOut(){
+      localStorage.removeItem("userId");
+      this.setState({logged: false})
+      this.props.router.push({
+                pathname: '/'
+      });
+  	}
+
 	fetchUserData(userId) {
       fetch(`http://localhost:8000/user/${userId}`,{
           method: 'GET'
@@ -41,7 +49,7 @@ class User extends Component {
     return (
 	 	<div className="background">
 	      <div className="main-bg">
-	      	<Navbar/>
+	      	<Navbar router={this.props.router} logOut={this.logOut.bind(this)} myaccount={true} logged={false}/>
 	      	<div className="main-slogan">
 	      	<div className="container">
 		      	<div className="jumbotron">

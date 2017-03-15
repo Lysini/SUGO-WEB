@@ -20,6 +20,6 @@ ReactDOM.render((
  		<Route path="/user" component={User}/>
  		<Route path="/user/events" component={UserEvents}/>
  		<Route path="/user/event-info" component={UserEventInfo}/>
-	    <Route path="*" component={Home}/>
+	    <Route path="*"component={Home}/>
 	  </Router>
 	), document.getElementById('root'))
