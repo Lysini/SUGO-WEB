@@ -1,0 +1,18 @@
+.dropdown-style{
+	padding-top: 1%;
+}
+.navbar {
+  margin-bottom: 0px;
+  border-width: 0;
+  min-height: 60px;
+  background-color: rgba(212, 223, 230,0.95);
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #000;
+  font-size: 1.25em;
+}
+
+.navbar-default .navbar-brand {
+  color: #000;
+}

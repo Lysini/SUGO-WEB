@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import './User.css';
 import Navbar from '../Home/Navbar';
+import config from '../config';
 
 class UserEvents extends Component {
 	constructor() {
@@ -13,16 +14,8 @@ class UserEvents extends Component {
 	    this.fetchEvents = this.fetchEvents.bind(this);
 	}
 
-  logOut(){
-      localStorage.removeItem("userId");
-      this.setState({logged: false})
-      this.props.router.push({
-                pathname: '/'
-      });
-    }
-
 	fetchEvents(userId) {
-      fetch(`http://localhost:8000/user/${userId}/events`,{
+      fetch(`${config.apiUrl}/user/${userId}/events`,{
           method: 'GET'
       })
       .then(
@@ -41,12 +34,17 @@ class UserEvents extends Component {
 
 	componentWillMount() {
     var userId = localStorage.getItem("userId");
-		this.fetchEvents(userId);
+    if(userId===null){
+    	this.props.router.push({
+                pathname: '/'
+      	});
+    }
+	this.fetchEvents(userId);
   }
 
   openEventInformation(selectedEvent) {
     this.props.router.push({
-      pathname: '/user/event-info',
+      pathname: `/user/event-info/${selectedEvent._id}`,
       state: { 
         eventInformation: selectedEvent
       } 
@@ -60,7 +58,7 @@ class UserEvents extends Component {
    render() {
     return (
       <div className="main-bg">
-      <Navbar router={this.props.router} logOut={this.logOut.bind(this)} myaccount={true} logged={false}/>
+      <Navbar router={this.props.router} myaccount={true} logged={false}/>
         <div className="user-events">
           <h1 className="text-center my-events-title">Twoje wydarzenia</h1>
             <div className="container">

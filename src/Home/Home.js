@@ -11,48 +11,7 @@ import LogInModal from './LogInModal';
   var windowWidth = window.innerWidth;
 
 class Home extends Component {
-
-  constructor() {
-      super();
-      this.state = {
-        logged: false,
-        showLogInModal: false,
-      };
-  }
-
-  logOut(){
-      localStorage.removeItem("userId");
-      this.setState({logged: false})
-      this.props.router.push({
-                pathname: '/'
-      });
-  }
-
-  showLogInModal() {
-    this.setState({
-      showLogInModal: true
-    });
-  }
-
-  showLogInModalCreate() {
-    this.setState({
-      showLogInModal: true,
-      createPartyActivity: true
-    });
-  }
-
-  checkLogInActive(){
-    if(localStorage.getItem("userId") !== null){
-      this.setState({logged: true})
-    }
-    else{
-      this.setState({logged: false})
-    }
-  }
-
-  componentWillMount(){
-    this.checkLogInActive();
-  }
+  
 
   componentDidMount() {
     this.setAnimations();
@@ -143,18 +102,15 @@ class Home extends Component {
 
 
   render() {
-      var userId = localStorage.getItem("userId");
-  console.log(userId);
     return (
       <div>
         <div className="main-bg">
-          <Navbar router={this.props.router} showLogInModal={this.showLogInModal.bind(this)} logOut={this.logOut.bind(this)} showLogInModalCreate={this.showLogInModalCreate.bind(this)} logged={this.state.logged} myprofile={false}/>
-          <LogInModal router={this.props.router} showActivity={this.state.showLogInModal}  onClose={()=>{this.setState({ showLogInModal: false })}} createPartyActivity={this.state.createPartyActivity} checkLogInActive={this.checkLogInActive.bind(this)}/>
+          <Navbar router={this.props.router} myprofile={false}/>
           <div className="main-slogan">
             <div>
               <p className="main-slogan-text">Spotkaj się ze znajomymi!</p>
               <p className="main-slogan-text">Uniknij problemów z organizacją</p>
-              <button className="btn main-slogan-btn" onClick={this.showLogInModal.bind(this)}>Stwórz wydarzenie!</button>
+              <button className="btn main-slogan-btn">Stwórz wydarzenie!</button>
             </div>
           </div>
         </div>

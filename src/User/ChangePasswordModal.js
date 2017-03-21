@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './User.css';
 import { Link } from 'react-router';
 import ReactModal from 'react-modal'; 
+import config from '../config';
 
 class ChangePasswordModal extends Component {
 	constructor() {
@@ -15,7 +16,7 @@ class ChangePasswordModal extends Component {
   }
   changePassword() {
     var userId = localStorage.getItem("userId");
-      fetch(`http://localhost:8000/user/${userId}/change-password`,{
+      fetch(`${config.apiUrl}/user/${userId}/change-password`,{
           headers: {
             'Accept': 'application/json',
              'Content-Type': 'application/json'

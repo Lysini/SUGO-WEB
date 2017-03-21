@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './SumUp.css';
+import config from '../config';
 
 class SumUp extends Component {
 	constructor() {
@@ -12,7 +13,7 @@ class SumUp extends Component {
 
    addEvent() {
 	var userId = localStorage.getItem("userId");
-	fetch(`http://localhost:8000/event`,{
+	fetch(`${config.apiUrl}/event`,{
 		method: 'POST',
 		headers: {
 			'Accept': 'application/json',

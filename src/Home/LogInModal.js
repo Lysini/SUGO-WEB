@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Home.css';
 import { Link } from 'react-router';
 import ReactModal from 'react-modal'; 
+import config from '../config'
 
 class LogInModal extends Component {
 	constructor() {
@@ -18,7 +19,7 @@ class LogInModal extends Component {
   }
 
   authenticateApiUser(email, password) {
-    fetch('http://localhost:8000/user/log-in',{
+    fetch(`${config.apiUrl}/user/log-in`,{
         headers: {
           'Accept': 'application/json',
            'Content-Type': 'application/json'
@@ -56,7 +57,7 @@ class LogInModal extends Component {
     }
 
   addNewApiUser(email, password, confirmpassword, nick) {
-    fetch('http://localhost:8000/user/sign-up',{
+    fetch(`${config.apiUrl}/user/sign-up`,{
         headers: {
           'Accept': 'application/json',
            'Content-Type': 'application/json'

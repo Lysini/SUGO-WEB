@@ -4,6 +4,8 @@ import './User.css';
 import UserUpdate from './UserUpdate';
 import Navbar from '../Home/Navbar';
 
+import config from '../config';
+
 class User extends Component {
 	constructor() {
 	    super();
@@ -22,7 +24,7 @@ class User extends Component {
   	}
 
 	fetchUserData(userId) {
-      fetch(`http://localhost:8000/user/${userId}`,{
+      fetch(`${config.apiUrl}/user/${userId}`,{
           method: 'GET'
       })
       .then(
@@ -39,11 +41,16 @@ class User extends Component {
       });
 	}
 
-  componentWillMount() {
-    var userId = localStorage.getItem("userId");
-	this.fetchUserData(userId);
-	console.log(userId);
-  }
+	componentWillMount() {
+	    var userId = localStorage.getItem("userId");
+	    if(userId===null){
+	    	this.props.router.push({
+	                pathname: '/'
+	      	});
+	    }
+		this.fetchUserData(userId);
+		console.log(userId);
+	  }
 
   render() {
     return (

@@ -1,3 +1,45 @@
+
+.people-men{ 
+  background-color: #7dd18c;
+  border-radius: 1vh;
+  max-width: 15vw;
+  margin: auto;
+  font-size: 30px;
+  width: 15vw;
+  padding: 1vh;
+  align-items: center;
+  justify-content: center;
+
+}
+.people-women{
+  background-color: #f7a3de;
+  border-radius: 1vh;
+  font-size: 30px;
+  width: 15vw;
+  padding: 1vh;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.people-men-1{
+    background-color: #7dd18c;
+    width: 13vw;
+    text-align: left;
+    padding-left: 3vw;
+    border-bottom-right-radius: 2vh;
+    border-bottom-left-radius: 2vh;
+}
+.people-women-1{
+    background-color: #f7a3de;
+    width: 13vw;
+    text-align: left;
+    padding-left: 3vw;
+    border-bottom-right-radius: 2vh;
+    border-bottom-left-radius: 2vh;
+}
+
+
 .note-textarea{
   min-height: 20vh;
   margin: auto;
@@ -15,6 +57,27 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 3%;
+    border-radius: 3%;
+}
+
+.user-profile{
+    width: 60%;
+    height: 80vh;
+    background-color: #d9dfe2;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%;
+    border-radius: 3%;
+}
+
+.user-event-info{
+  width: 70%;
+  height: 80vh;
+  background-color: #d9dfe2;
+  margin-left: auto;
+  margin-right: auto;
+   margin-top: 3%;
     border-radius: 3%;
 }
 
@@ -52,7 +115,7 @@ border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-background: #4f8df2;  
+background: #4f8df2; 
 }
 
 /* END */

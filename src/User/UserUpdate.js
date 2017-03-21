@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import './User.css';
 import ChangePasswordModal from './ChangePasswordModal';
+import config from '../config';
 
 class User extends Component {
 	constructor() {
@@ -15,7 +16,7 @@ class User extends Component {
 
 	fetchUserData() {
 	var userId = localStorage.getItem("userId");
-      fetch(`http://localhost:8000/user/${userId}`,{
+      fetch(`${config.apiUrl}/user/${userId}`,{
           method: 'GET'
       })
       .then(
@@ -34,7 +35,7 @@ class User extends Component {
 
 updateUser() {
 	var userId = localStorage.getItem("userId");
-    fetch(`http://localhost:8000/user/${userId}/update`,{
+    fetch(`${config.apiUrl}/user/${userId}/update`,{
         headers: {
           'Accept': 'application/json',
            'Content-Type': 'application/json'
@@ -61,7 +62,7 @@ updateUser() {
 
   updateUserAvatar() {
     var userId = localStorage.getItem("userId");
-    fetch(`http://localhost:8000/user/${userId}/update-avatar`,{
+    fetch(`${config.apiUrl}/user/${userId}/update-avatar`,{
         headers: {
           'Accept': 'application/json',
            'Content-Type': 'application/json'
@@ -113,8 +114,8 @@ updateUser() {
               <input ref="file" type="file"  name="user[image]" multiple="true" onChange={this.getAvatar.bind(this)}/> 
       			</form>
             {(this.state.updateAvatarActivity) ? <button className="btn pull-right" onClick={this.updateUserAvatar.bind(this)}>Save Avatar</button> : null}
-        </div>
-        <div className="col-sm-6 text-center pull-right">
+          </div>
+          <div className="col-sm-6 text-center pull-right">
             <form>
                 <div className="form-group">
                 <label>Name:</label>
@@ -131,7 +132,7 @@ updateUser() {
             </form>
             {(this.state.updateActivity) ? <button className="btn pull-right" onClick={this.updateUser.bind(this)}>Save</button> : null}
             <button className="btn pull-right" onClick={() => this.setState({showChangePasswordModal: true})}>Change password</button>
-        </div>
+          </div>
 	      </div>
 	    </div>
     );
