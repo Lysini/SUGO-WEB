@@ -15,6 +15,7 @@ class LogInModal extends Component {
         nick: '',
         password: '',
         confirmpassword: '',
+        profileAdress: ''
       };
   }
 
@@ -38,7 +39,8 @@ class LogInModal extends Component {
                 }
       })
       .then(responseData => {
-        localStorage.setItem("userId", responseData.data);
+        localStorage.setItem("userId", responseData.id);
+        console.log(responseData);
           this.props.router.push({
             pathname: '/',
           });
@@ -56,7 +58,7 @@ class LogInModal extends Component {
   
     }
 
-  addNewApiUser(email, password, confirmpassword, nick) {
+  addNewApiUser(email, password, confirmpassword, nick, profileAdress) {
     fetch(`${config.apiUrl}/user/sign-up`,{
         headers: {
           'Accept': 'application/json',
@@ -67,7 +69,8 @@ class LogInModal extends Component {
             name: nick,
             email: email,
             password: password,
-            password_confirmation: confirmpassword
+            password_confirmation: confirmpassword,
+            login: profileAdress
             
         })
       })
@@ -107,7 +110,7 @@ class LogInModal extends Component {
     }
 
     signUpValidate() {
-        let { email, password, confirmpassword, nick } = this.state;
+        let { email, password, confirmpassword, nick, profileAdress } = this.state;
         var allowedChars = new RegExp("^([A-Za-z0-9]{5,})$"); 
         if(email === '' || password === '' || confirmpassword === '' || nick === '') {
         this.setState({ validErrorText: 'Please fill all inputs' });
@@ -127,9 +130,12 @@ class LogInModal extends Component {
         else if (!allowedChars.test(password)) {
         this.setState({ validErrorText: 'Your password contain unallowed characters', password: '' });
         }
+        else if (profileAdress.length<4) {
+        this.setState({ validErrorText: 'Your nick must be at least 4 characters' });
+        }
         else {
         this.setState({ validErrorText: '' });
-                this.addNewApiUser(email, password, confirmpassword, nick);
+                this.addNewApiUser(email, password, confirmpassword, nick, profileAdress);
         }
     }
 
@@ -169,6 +175,10 @@ class LogInModal extends Component {
                 <div className="form-group text-center">
                   <label>Nickname:</label>
                   <input type="text" className="form-control modal-text" onChange={nick => this.setState({ nick:nick.target.value })} value={this.state.nick} />
+                </div>
+                <div className="form-group text-center">
+                  <label>Profile Adress:</label>
+                  <input type="text" className="form-control modal-text" onChange={profileAdress => this.setState({ profileAdress:profileAdress.target.value })} value={this.state.profileAdress} />
                 </div>
                 </div>
               : null
