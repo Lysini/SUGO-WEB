@@ -87,7 +87,7 @@ class Navbar extends Component {
 			    </div>
 			    <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			      <ul className="nav navbar-nav navbar-right">
-			      	<li><a onClick={this.backToHome.bind(this)}>Home</a></li>
+			      	<li><a href="#" onClick={this.backToHome.bind(this)}>Home</a></li>
 			        <li><a href="#">About App</a></li>
 			        <li><a href="#">Contact Us</a></li>
 			        <li><a href="#" onClick={this.showLogInModalCreate.bind(this)}>Create Party +</a></li>

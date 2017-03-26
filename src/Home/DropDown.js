@@ -11,6 +11,10 @@ class AccountDropdown extends Component {
     this.props.logOut();
   }
 
+  componentWillMount(){
+      this.setState({name: localStorage.getItem("name")});
+  }
+
   /*handleLinkClick() {
     this.refs.dropdown.hide();
   }*/
@@ -19,7 +23,7 @@ class AccountDropdown extends Component {
   render() {
     return (
       <Dropdown className="dropdown" ref="dropdown">
-        <DropdownTrigger className="btn btn-primary dropdown-toggle">Click Here <span className="caret"></span>
+        <DropdownTrigger className="btn btn-primary dropdown-toggle">{this.state.name} <span className="caret"></span>
         </DropdownTrigger>
         <DropdownContent className="dropdown-menu">
           <ul className="account-dropdown__quick-links account-dropdown__segment">

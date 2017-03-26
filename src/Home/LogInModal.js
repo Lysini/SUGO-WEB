@@ -39,7 +39,8 @@ class LogInModal extends Component {
                 }
       })
       .then(responseData => {
-        localStorage.setItem("userId", responseData.id);
+        localStorage.setItem("userId", responseData.data.id);
+        localStorage.setItem("name", responseData.data.name);
         console.log(responseData);
           this.props.router.push({
             pathname: '/',

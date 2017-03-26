@@ -52,6 +52,23 @@ class UserEvents extends Component {
     console.log(selectedEvent);
   }
 
+  deleteEvent(selectedEvent){
+    var userId = localStorage.getItem("userId");
+    fetch(`${config.apiUrl}/event/${selectedEvent._id}/delete`,{
+          method: 'DELETE'
+      })
+      .then(
+        response => {
+              const status = response.status;
+              if(status===200){
+                return response.json();
+              }
+      })
+      .then(responseData =>{
+        this.fetchEvents(userId);
+      });
+  }
+
 
 
 
@@ -61,15 +78,17 @@ class UserEvents extends Component {
       <Navbar router={this.props.router} myaccount={true} logged={false}/>
         <div className="user-events">
           <h1 className="text-center my-events-title">Twoje wydarzenia</h1>
-            <div className="container">
+            <div className="user-event-list">
               <div className="jumbotron text-center">
                 <div className="info-box">
                 {(this.state.dataLoaded) ?
                   this.state.userEvents.map((item, itemIndex) => {
                     return (
                       <div className="page-header"> 
-                        <p className="event-name">Nazwa wydarzenia: {this.state.userEvents[itemIndex].event_name}</p>
-                        <i className="fa fa-plus" onClick={this.openEventInformation.bind(this, item)} aria-hidden="true"></i>
+                        <p className="event-name">Nazwa wydarzenia: {this.state.userEvents[itemIndex].event_name}    
+                            <i className="fa fa-plus open-event-info-btn" onClick={this.openEventInformation.bind(this, item)} aria-hidden="true"></i> 
+                            <button className="btn fa fa-trash" onClick={this.deleteEvent.bind(this, item)}/>
+                        </p>
                       </div>
                     );
                   }) : <img src="http://rpg.drivethrustuff.com/shared_images/ajax-loader.gif"/>
