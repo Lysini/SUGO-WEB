@@ -24,6 +24,39 @@ class EventInfoPlace extends Component {
       });
   }
 
+  updateEventGeneralInfo() {
+    var eventId = this.props.params.id;
+      fetch(`${config.apiUrl}/event/${eventId}/update/general-info`,{
+          headers: {
+            'Accept': 'application/json',
+             'Content-Type': 'application/json'
+          },
+          method: 'PUT',
+          body: JSON.stringify({
+            event_name: this.state.event_name,
+            place:{
+                placeName: this.state.placeName,
+                placeLocation: this.state.placeLocation,
+                placePrice: this.state.placePrice,
+                placeMax: this.state.placeMax,
+                placeNote: this.state.placeNote
+            },
+            special_info: this.state.special_info
+          })
+        })
+        .then(
+            response => {
+                  const status = response.status;
+                  if (status === 200) {
+                    return response.json();
+                  }
+        })
+        .then(responseData =>{
+            this.setState({editMode: false});
+            this.props.reFetchEvent;
+        });
+    }
+
   render(){
     return(
       <div>
@@ -77,7 +110,7 @@ class EventInfoPlace extends Component {
                 <label>Dodatkowe informacje: <textArea className="form-control" onChange={special_info => this.setState({ special_info: special_info.target.value })} value={this.state.special_info} /></label>
               </div>
             </form>
-            <button className="btn" onClick={() => this.setState({editMode: false})}>Zapisz zmiany</button>
+            <button className="btn" onClick={this.updateEventGeneralInfo.bind(this)}>Zapisz zmiany</button>
           </div>
         }
       </div>

@@ -11,12 +11,36 @@ class EventInfoStuff extends Component {
       };
   }
 
-
   componentWillMount(){
       this.setState({
           stuff: this.props.stuff
       });
   }
+
+  updateEventStuff() {
+    var eventId = this.props.params.id;
+      fetch(`${config.apiUrl}/event/${eventId}/update/stuff`,{
+          headers: {
+            'Accept': 'application/json',
+             'Content-Type': 'application/json'
+          },
+          method: 'PUT',
+          body: JSON.stringify({
+              stuff: this.state.stuff
+          })
+        })
+        .then(
+            response => {
+                  const status = response.status;
+                  if (status === 200) {
+                    return response.json();
+                  }
+        })
+        .then(responseData =>{
+            this.setState({editMode: false});
+            this.props.reFetchEvent;
+        });
+    }
 
   render(){
     return(
@@ -45,5 +69,4 @@ class EventInfoStuff extends Component {
     );
   }
 }
-
 export default EventInfoStuff;

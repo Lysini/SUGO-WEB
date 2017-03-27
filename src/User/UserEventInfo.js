@@ -18,7 +18,8 @@ class UserEventInfo extends Component {
 	    };
 	}
 
-  fetchEvent(eventId) {
+  fetchEvent() {
+      var eventId = this.props.params.id;
       fetch(`${config.apiUrl}/event/${eventId}`,{
           method: 'GET'
       })
@@ -43,7 +44,7 @@ class UserEventInfo extends Component {
   }
 
   componentWillMount() {
-    this.fetchEvent(this.props.params.id);
+    this.fetchEvent();
   }
 
 render() {
@@ -73,14 +74,14 @@ render() {
           </nav>
             <div className="container">
                     {(this.state.showPageNumber === 0) ?
-                      <EventInfoPlace place={this.state.place} special_info={this.state.special_info}/>
+                      <EventInfoPlace place={this.state.place} special_info={this.state.special_info} reFetchEvent={this.fetchEvent.bind(this)} eventId={this.props.params.id}/>
                       : null
                     }
                     {(this.state.showPageNumber === 1) ?
-                      <EventInfoPeople people={this.state.people}/>
+                      <EventInfoPeople people={this.state.people} reFetchEvent={this.fetchEvent.bind(this)} eventId={this.props.params.id}/>
                     : null }
                     {(this.state.showPageNumber === 2) ?
-                      <EventInfoStuff stuff={this.state.stuff}/>
+                      <EventInfoStuff stuff={this.state.stuff} reFetchEvent={this.fetchEvent.bind(this)} eventId={this.props.params.id}/>
                     : null 
                     }
               </div>
