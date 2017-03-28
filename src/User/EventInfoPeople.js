@@ -20,8 +20,8 @@ class EventInfoPeople extends Component {
       this.setState({
           peopleMen: this.props.people.peopleMen,
           peopleWomen: this.props.people.peopleWomen
-          
       });
+      console.log(this.state.peopleWomen);
   }
 
   saveUpUser() {
@@ -39,7 +39,8 @@ class EventInfoPeople extends Component {
       added: true, 
       showModal: false,
       inputName: '',
-      inputNote: '' 
+      inputNote: '',
+      changesActivity: true
     });
   }
 
@@ -54,15 +55,13 @@ class EventInfoPeople extends Component {
   }
 
   updateUser(){
-    let person = {
-      peopleName: this.state.inputName,
-      peopleNote: this.state.inputNote,
-    };
     if(this.state.peopleSex === "men") {
-      this.state.peopleMen[this.state.selectedPerson]=person;
+      this.state.peopleMen[this.state.selectedPerson].peopleName=this.state.inputName;
+      this.state.peopleMen[this.state.selectedPerson].peopleNote=this.state.inputNote;  
     }
     else {
-      this.state.peopleWomen[this.state.selectedPerson]=person;
+      this.state.peopleWomen[this.state.selectedPerson].peopleName=this.state.inputName;
+      this.state.peopleWomen[this.state.selectedPerson].peopleNote=this.state.inputNote;
     }
     this.setState({ 
       showModal: false,
@@ -73,35 +72,42 @@ class EventInfoPeople extends Component {
   }
 
   updateEventPeople() {
+    for(var i=0; i<this.state.peopleMen.length;i++){
+        delete this.state.peopleMen[i]["_id"];
+    }
+    for(var i=0; i<this.state.peopleWomen.length;i++){
+        delete this.state.peopleWomen[i]["_id"];
+    }
     var eventId = this.props.eventId;
-      fetch(`${config.apiUrl}/event/${eventId}/update/people`,{
-          headers: {
-            'Accept': 'application/json',
-             'Content-Type': 'application/json'
-          },
-          method: 'PUT',
-          body: JSON.stringify({
-            people:{
-                peopleMen: this.state.peopleMen,
-                peopleWomen: this.state.peopleWomen
+    let people ={
+        peopleMen: this.state.peopleMen,
+        peopleWomen: this.state.peopleWomen
+    };
+    console.log(people);
+    fetch(`${config.apiUrl}/event/${eventId}/update/people`,{
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: 'PUT',
+      body: JSON.stringify({
+        people: people
+      })
+    })
+    .then(
+        response => {
+            const status = response.status;
+            if (status === 200) {
+              return response.json();
             }
-          })
-        })
-        .then(
-            response => {
-                  const status = response.status;
-                  if (status === 200) {
-                    return response.json();
-                  }
-        })
-        .then(responseData =>{
-            this.setState({changesActivity: false});
-            this.props.reFetchEvent;
-        });
+      })
+      .then(responseData =>{
+          this.setState({changesActivity: false});
+          this.props.reFetchEvent;
+      });
     }
 
   render(){
-    console.log(this.props);
     return(
     	<div>
         <div>
