@@ -72,18 +72,7 @@ class EventInfoPeople extends Component {
   }
 
   updateEventPeople() {
-    for(var i=0; i<this.state.peopleMen.length;i++){
-        delete this.state.peopleMen[i]["_id"];
-    }
-    for(var i=0; i<this.state.peopleWomen.length;i++){
-        delete this.state.peopleWomen[i]["_id"];
-    }
     var eventId = this.props.eventId;
-    let people ={
-        peopleMen: this.state.peopleMen,
-        peopleWomen: this.state.peopleWomen
-    };
-    console.log(people);
     fetch(`${config.apiUrl}/event/${eventId}/update/people`,{
       headers: {
         'Accept': 'application/json',
@@ -91,7 +80,10 @@ class EventInfoPeople extends Component {
       },
       method: 'PUT',
       body: JSON.stringify({
-        people: people
+        people: {
+            peopleMen: this.state.peopleMen,
+            peopleWomen: this.state.peopleWomen
+        }
       })
     })
     .then(
