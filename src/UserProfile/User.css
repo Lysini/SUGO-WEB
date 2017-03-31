@@ -13,52 +13,6 @@
   overflow-y:auto;
 }
 
-.people-men-box{ 
-  background-color: #e3e9f2;
-  border-radius: 2vh;
-  margin: auto;
-  min-width: 40%;
-  min-height: 40vh;
-  padding: 1vh;
-  align-items: center;
-  justify-content: center;
-
-}
-.people-women-box{
-  background-color: #e3e9f2;
-  border-radius: 2vh;
-  min-width: 40%;
-  min-height: 40vh;
-  padding: 1vh;
-  margin: auto;
-  align-items: center;
-  justify-content: center;
-  
-}
-.people-men-list{
-    width: 100%;
-    height: 36vh;
-    text-align: left;
-    padding-left: 3vw;
-    border-bottom-right-radius: 2vh;
-    border-bottom-left-radius: 2vh;
-    overflow: scroll;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-.people-women-list{
-    width: 100%;
-    height: 36vh;
-    text-align: left;
-    padding-left: 3vw;
-    border-bottom-right-radius: 2vh;
-    border-bottom-left-radius: 2vh;
-    overflow: scroll;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
-
 .note-textarea{
   min-height: 20vh;
   margin: auto;

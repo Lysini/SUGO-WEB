@@ -94,35 +94,42 @@ class People extends Component {
 			<div className="container">
 				<div className="row">
 					<div className="col-sm-12 col-md-6 text-center">
-					   	<h1 className="people-men">Mężczyźni <i className="fa fa-plus add-people-button" onClick={showModal => this.setState({showModal: true, peopleSex: 'men', modalTitle: 'Dodaj uczestnika', updateActive: false, inputName: '', inputNote: ''})} aria-hidden="true"></i></h1>
-					   	<div className="people-men-1">
-							{(this.state.added) ? 
-				                this.state.people.peopleMen.map((item, itemIndex) => {
-									return (
-										<div>
-											<p>Imie: {this.state.people.peopleMen[itemIndex].peopleName} <button className="btn fa fa-pencil-square-o pull-right" onClick={() => this.setState({peopleSex: 'men', assistantNumber:itemIndex, showModal:true, inputName: this.state.people.peopleMen[itemIndex].peopleName, inputNote: this.state.people.peopleMen[itemIndex].peopleNote, modalTitle: 'Edytuj uczestnika', updateActive: true})} aria-hidden="true"></button></p> 
-								          	<p>Notka: {this.state.people.peopleMen[itemIndex].peopleNote} <button className="btn fa fa-trash pull-right" onClick={() => { this.setState({peopleSex: 'men' ,editOrDeleteNumber: itemIndex}, this.deleteUser.bind(this))}} aria-hidden="true"></button></p>
-								          	
-								       	</div>
-							        );
-							    }) : null
-						    }
+						<div className="people-men">
+						   	<h1>Mężczyźni: <i className="fa fa-plus add-people-button" onClick={showModal => this.setState({showModal: true, peopleSex: 'men', modalTitle: 'Dodaj uczestnika', updateActive: false, inputName: '', inputNote: ''})} aria-hidden="true"></i></h1>
+						   	<div className="people-men-1">
+						   		<div className="jumbotron text-center">
+									{(this.state.added) ? 
+						                this.state.people.peopleMen.map((item, itemIndex) => {
+											return (
+												<div>
+													<p>Imie: {this.state.people.peopleMen[itemIndex].peopleName} <button className="btn fa fa-pencil-square-o pull-right" onClick={() => this.setState({peopleSex: 'men', assistantNumber:itemIndex, showModal:true, inputName: this.state.people.peopleMen[itemIndex].peopleName, inputNote: this.state.people.peopleMen[itemIndex].peopleNote, modalTitle: 'Edytuj uczestnika', updateActive: true})} aria-hidden="true"></button></p> 
+										          	<p>Notka: {this.state.people.peopleMen[itemIndex].peopleNote} <button className="btn fa fa-trash pull-right" onClick={() => { this.setState({peopleSex: 'men' ,editOrDeleteNumber: itemIndex}, this.deleteUser.bind(this))}} aria-hidden="true"></button></p>
+										       	</div>
+									        );
+									    }) : null
+								    }
+								</div>
+							</div>
 						</div>
 					</div>
 					<div className="col-sm-12 col-md-6 text-center">
-						<h1 className="people-women">Kobiety <i className="fa fa-plus add-people-button" onClick={showModal => this.setState({showModal: true, peopleSex: 'women', modalTitle: 'Dodaj uczestnika', updateActive: false, inputName: '', inputNote: ''})} aria-hidden="true"></i> </h1>   
-						<div className="people-women-1">
-							{(this.state.added) ? 
-			               		this.state.people.peopleWomen.map((item, itemIndex) => {
-									return (
-										<div>
-							            	<p>Imie: {this.state.people.peopleWomen[itemIndex].peopleName} <button className="btn fa fa-pencil-square-o pull-right" onClick={() => this.setState({peopleSex: 'women', assistantNumber:itemIndex, showModal:true, inputName: this.state.people.peopleWomen[itemIndex].peopleName, inputNote: this.state.people.peopleWomen[itemIndex].peopleNote, modalTitle: 'Edytuj uczestnika', updateActive: true})} aria-hidden="true"></button></p> 
-							           		<p>Notka: {this.state.people.peopleWomen[itemIndex].peopleNote} <button className="btn fa fa-trash pull-right" onClick={() => { this.setState({peopleSex: 'women' ,editOrDeleteNumber: itemIndex}, this.deleteUser.bind(this))}} aria-hidden="true"></button></p> 
-							        	</div>
-						        	);
-						    	}) : null
-					    	}
-					    </div>
+						<div className="people-women">
+						<h1>Kobiety <i className="fa fa-plus add-people-button" onClick={showModal => this.setState({showModal: true, peopleSex: 'women', modalTitle: 'Dodaj uczestnika', updateActive: false, inputName: '', inputNote: ''})} aria-hidden="true"></i> </h1>   
+							<div className="people-women-1">
+								<div className="jumbotron text-center">
+									{(this.state.added) ? 
+					               		this.state.people.peopleWomen.map((item, itemIndex) => {
+											return (
+												<div>
+									            	<p>Imie: {this.state.people.peopleWomen[itemIndex].peopleName} <button className="btn fa fa-pencil-square-o pull-right" onClick={() => this.setState({peopleSex: 'women', assistantNumber:itemIndex, showModal:true, inputName: this.state.people.peopleWomen[itemIndex].peopleName, inputNote: this.state.people.peopleWomen[itemIndex].peopleNote, modalTitle: 'Edytuj uczestnika', updateActive: true})} aria-hidden="true"></button></p> 
+									           		<p>Notka: {this.state.people.peopleWomen[itemIndex].peopleNote} <button className="btn fa fa-trash pull-right" onClick={() => { this.setState({peopleSex: 'women' ,editOrDeleteNumber: itemIndex}, this.deleteUser.bind(this))}} aria-hidden="true"></button></p> 
+									        	</div>
+								        	);
+								    	}) : null
+							    	}
+							   	</div>
+						    </div>
+						</div>
 					</div>
 				</div>
 			</div>	
