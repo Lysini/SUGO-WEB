@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import './User.css';
-import UserUpdate from './UserUpdate';
+import UserProfileContent from './UserProfileContent';
 import Navbar from '../Home/Navbar';
-
 import config from '../config';
 
-class User extends Component {
+class UserProfile extends Component {
 	constructor() {
 	    super();
 	    this.state = {
@@ -63,7 +62,7 @@ class User extends Component {
 				{
 					(this.state.dataLoaded) ?
 						<div className="well">
-						    <UserUpdate/>
+						    <UserProfileContent/>
 						</div>
 					: <img src="http://rpg.drivethrustuff.com/shared_images/ajax-loader.gif"/>
 				}	
@@ -76,4 +75,4 @@ class User extends Component {
   }
 }
 
-export default User;
+export default UserProfile;

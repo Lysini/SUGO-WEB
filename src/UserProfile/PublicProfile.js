@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import './User.css';
 import Navbar from '../Home/Navbar';
-
 import config from '../config';
 
-class UserProfile extends Component {
+class PublicProfile extends Component {
 	constructor() {
 	    super();
 	    this.state = {
@@ -114,4 +113,4 @@ class UserProfile extends Component {
   }
 }
 
-export default UserProfile;
+export default PublicProfile;

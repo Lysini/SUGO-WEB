@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import './User.css';
+import './Event.css';
 import Navbar from '../Home/Navbar';
 import config from '../config';
 import EventInfoPlace from './EventInfoPlace';
 import EventInfoPeople from './EventInfoPeople';
 import EventInfoStuff from './EventInfoStuff';
 
-class UserEventInfo extends Component {
+class EventInfo extends Component {
 	constructor() {
 	    super();
 	    this.state = {
@@ -92,4 +92,4 @@ render() {
   }
 }
 
-export default UserEventInfo;
+export default EventInfo;

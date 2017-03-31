@@ -37,25 +37,25 @@
 }
 .people-men-list{
     width: 100%;
-    min-height: 35vh;
+    height: 36vh;
     text-align: left;
     padding-left: 3vw;
     border-bottom-right-radius: 2vh;
     border-bottom-left-radius: 2vh;
     overflow: scroll;
     overflow-x: hidden;
-    overflow-y:auto;
+    overflow-y: auto;
 }
 .people-women-list{
     width: 100%;
-    min-height: 35vh;
+    height: 36vh;
     text-align: left;
     padding-left: 3vw;
     border-bottom-right-radius: 2vh;
     border-bottom-left-radius: 2vh;
     overflow: scroll;
     overflow-x: hidden;
-    overflow-y:auto;
+    overflow-y: auto;
 }
 
 

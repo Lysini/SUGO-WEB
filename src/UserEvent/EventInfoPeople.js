@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import './User.css';
+import './Event.css';
 import Navbar from '../Home/Navbar';
 import config from '../config';
 import ReactModal from 'react-modal';

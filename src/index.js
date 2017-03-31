@@ -5,10 +5,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory } from 'react-router'
 import Home from './Home/Home';
-import User from './User/User';
-import UserProfile from './User/UserProfile';
-import UserEvents from './User/UserEvents';
-import UserEventInfo from './User/UserEventInfo';
+import UserProfile from './UserProfile/UserProfile';
+import PublicProfile from './UserProfile/PublicProfile';
+import EventList from './UserEvent/EventList';
+import EventInfo from './UserEvent/EventInfo';
 import Organizer from './CreateParty/Organizer';
 import CreateParty from './CreateParty/CreateParty';
 import SumUp from './SumUp/SumUp';
@@ -20,10 +20,10 @@ ReactDOM.render((
 	  	<Route path="/organizer" component={Organizer}/>
 	    <Route path="/create" component={CreateParty}/>
  		<Route path="/sum-up" component={SumUp}/>
- 		<Route path="/user" component={User}/>
- 		<Route path="/user/profile/:id" component={UserProfile}/>
- 		<Route path="/user/events" component={UserEvents}/>
- 		<Route path="/user/event-info/:id" component={UserEventInfo}/>
+ 		<Route path="/user" component={UserProfile}/>
+ 		<Route path="/user/profile/:id" component={PublicProfile}/>
+ 		<Route path="/user/events" component={EventList}/>
+ 		<Route path="/user/event-info/:id" component={EventInfo}/>
 	    <Route path="*"component={Home}/>
 	  </Router>
 	), document.getElementById('root'))

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import './User.css';
+import './Event.css';
 import Navbar from '../Home/Navbar';
 import config from '../config';
 
-class UserEvents extends Component {
+class EventList extends Component {
 	constructor() {
 	    super();
 	    this.state = {
@@ -102,4 +102,4 @@ class UserEvents extends Component {
   }
 }
 
-export default UserEvents;
+export default EventList;

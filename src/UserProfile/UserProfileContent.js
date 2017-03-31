@@ -4,7 +4,7 @@ import './User.css';
 import ChangePasswordModal from './ChangePasswordModal';
 import config from '../config';
 
-class User extends Component {
+class UserProfileContent extends Component {
 	constructor() {
 	    super();
 	    this.state = {
@@ -139,4 +139,4 @@ updateUser() {
   }
 }
 
-export default User;
+export default UserProfileContent;
