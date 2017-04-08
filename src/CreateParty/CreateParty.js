@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import Organizer from './Organizer';
+import SaveEvent from './SaveEvent';
 import People from './People';
 import Stuff from './Stuff';
 import Place from './Place';
 import Info from './Info';
 import './style.css';
-import config from '../config';
+
 
 class CreateParty extends Component {
 	constructor() {
 	    super();
 	    this.state = {
 	    	organizerOpened: true,
-	    	sumUpOpened: false,
-	    	peopleOpened: true,
+	    	peopleOpened: false,
 	    	stuffOpened: false,
 	    	placeOpened: false,
 	    	infoOpened: false,
@@ -48,7 +49,7 @@ class CreateParty extends Component {
 			peopleOpened: true,
 			organizerName: organizerName,
 			organizerNote: organizerNote,
-			event_name: name
+			event_name: event_name
 		})
 	}
 
@@ -71,45 +72,8 @@ class CreateParty extends Component {
 	saveInfo(info) {
 		this.setState({
 			infoOpened: false,
-			sumUpOpened: true,
 			info: info
 		});
-		this.addEvent.bind(this);
-	}
-
-	addEvent() {
-		var userId = localStorage.getItem("userId");
-		fetch(`${config.apiUrl}/event`,{
-			method: 'POST',
-			headers: {
-				'Accept': 'application/json',
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
-				event_name: this.state.event_name,
-	        	organizer_id: userId,
-	        	stuff: this.state.stuff,
-	        	people: this.state.people,
-	        	place: this.state.place,
-	            special_info: this.state.info
-			})
-		})
-		.then(
-			response => {
-				const status = response.status;
-				if (status === 200) {
-					return response.json();
-				}
-			})
-		.then(responseData => {
-			console.log(responseData);
-			this.props.router.push({
-			  pathname: '/user/events'
-			})
-		})
-		.catch(err => {
-			console.log(err);
-		})
 	}
 
 	openOrganizer() {
@@ -142,8 +106,25 @@ class CreateParty extends Component {
 
 	openInfo() {
 		return (
-          <Info saveInfo={this.saveInfo.bind(this)} onClose={this.cancelAdding.bind(this)} />
+        	<Info saveInfo={this.saveInfo.bind(this)} 
+        	router={this.props.router}
+        	event_name={this.state.event_name}
+			stuff={this.state.stuff}
+		    people={this.state.people}
+		    place={this.state.place} 
+		    onClose={this.cancelAdding.bind(this)} />
       	);
+	}
+
+	openSaveEvent() {
+		return (
+		    <SaveEvent event_name={this.state.event_name}
+		    stuff={this.state.stuff}
+		    people={this.state.people}
+		    place={this.state.place}
+		    special_info={this.state.info}
+			onClose={this.cancelAdding.bind(this)}/>
+		);
 	}
 
 	cancelAdding(){
@@ -170,11 +151,7 @@ class CreateParty extends Component {
   		return this.openInfo();
   	}
   	else
-  		return(
-  			<div>
-  				<img role="presentation" src="../src/loader.gif"/>
-  			</div>
-  		);
+  		return this.openSaveEvent();
   }
 }
 
