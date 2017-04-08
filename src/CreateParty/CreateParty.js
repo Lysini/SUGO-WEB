@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
+import Organizer from './Organizer';
 import People from './People';
 import Stuff from './Stuff';
 import Place from './Place';
 import Info from './Info';
 import './style.css';
+import config from '../config';
 
 class CreateParty extends Component {
 	constructor() {
 	    super();
 	    this.state = {
+	    	organizerOpened: true,
 	    	sumUpOpened: false,
 	    	peopleOpened: true,
 	    	stuffOpened: false,
@@ -22,7 +25,8 @@ class CreateParty extends Component {
 	    			 placeMax: 0,
 	    			 placeNote: '' },
 	    	people: {},
-	    	numberOfUsers: 0
+	    	event_name: '',
+	    	organizerNote: ''
 	    };
 	}
 
@@ -36,6 +40,16 @@ class CreateParty extends Component {
 	    			 placeMax: placeMax,
 	    			 placeNote: placeNote }
 	    });
+	}
+
+	saveOrganizer(organizerName, organizerNote, event_name){
+		this.setState({
+			organizerOpened: false,
+			peopleOpened: true,
+			organizerName: organizerName,
+			organizerNote: organizerNote,
+			event_name: name
+		})
 	}
 
 	savePeople(people) {
@@ -60,13 +74,55 @@ class CreateParty extends Component {
 			sumUpOpened: true,
 			info: info
 		});
-		this.openSumUp.bind(this);
+		this.addEvent.bind(this);
+	}
+
+	addEvent() {
+		var userId = localStorage.getItem("userId");
+		fetch(`${config.apiUrl}/event`,{
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				event_name: this.state.event_name,
+	        	organizer_id: userId,
+	        	stuff: this.state.stuff,
+	        	people: this.state.people,
+	        	place: this.state.place,
+	            special_info: this.state.info
+			})
+		})
+		.then(
+			response => {
+				const status = response.status;
+				if (status === 200) {
+					return response.json();
+				}
+			})
+		.then(responseData => {
+			console.log(responseData);
+			this.props.router.push({
+			  pathname: '/user/events'
+			})
+		})
+		.catch(err => {
+			console.log(err);
+		})
+	}
+
+	openOrganizer() {
+		return (
+		    <Organizer saveOrganizer={this.saveOrganizer.bind(this)}  
+			onClose={this.cancelAdding.bind(this)}/>
+		);
 	}
 
 	openPeople() {
 		return (
-		    <People organizerName={this.props.location.state.organizerName}
-			organizerNote={this.props.location.state.organizerNote} 
+		    <People organizerName={this.state.organizerName}
+			organizerNote={this.state.organizerNote} 
 			savePeople={this.savePeople.bind(this)}  
 			onClose={this.cancelAdding.bind(this)}/>
 		);
@@ -90,22 +146,6 @@ class CreateParty extends Component {
       	);
 	}
 
-	openSumUp() {
-		this.props.router.push({
-		  pathname: '/sum-up',
-		  state: {
-		  	eventName: this.props.location.state.eventName, 
-		  	organizerName: this.props.location.state.organizerName,
-		  	organizerNote: this.props.location.state.organizerNote,
-		  	place: this.state.place,
-		  	stuff: this.state.stuff,
-		  	info: this.state.info,
-		  	people: this.state.people,
-		  	numberOfUsers: this.state.numberOfUsers,
-		  } 
-		})
-	}
-
 	cancelAdding(){
 		this.props.router.push({
 			pathname: '/'
@@ -114,7 +154,9 @@ class CreateParty extends Component {
 
 
   render() {
-  	console.log(this.state);
+  	if(this.state.organizerOpened) {
+  		return this.openOrganizer();
+  	}
   	if(this.state.peopleOpened) {
   		return this.openPeople();
   	}
@@ -127,10 +169,12 @@ class CreateParty extends Component {
   	else if(this.state.infoOpened) {
   		return this.openInfo();
   	}
-  	else if(this.state.sumUpOpened) {
-  		return this.openSumUp();
-  	}
-    	
+  	else
+  		return(
+  			<div>
+  				<img role="presentation" src="../src/loader.gif"/>
+  			</div>
+  		);
   }
 }
 

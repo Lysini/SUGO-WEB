@@ -7,27 +7,16 @@ class Organizer extends Component {
 	    this.state = {
 	    	organizerName: '',
 	    	organizerNote: '',
-	    	eventName: '',
-	    	logged: false,
+	    	event_name: '',
 	    };
 	}
 
 	saveUp() {
-		this.props.router.push({
-		  pathname: '/create',
-		  state: { 
-	    	organizerName: this.state.organizerName,
-	    	organizerNote: this.state.organizerNote,
-	    	eventName: this.state.eventName
-		  } 
-		})
-	}
-
-	checkLogInActive(){
-	    if(!!localStorage.getItem("userId")){
-	      this.setState({logged: true})
-	      this.fetchUserData();
-	    }
+		this.props.saveOrganizer(
+	    	this.state.organizerName,
+	    	this.state.organizerNote,
+	    	this.state.event_name
+		)
 	}
 
 	fetchUserData(){
@@ -50,7 +39,7 @@ class Organizer extends Component {
 	}
 
 	componentWillMount(){
-    	this.checkLogInActive();
+    	this.fetchUserData();
   	}
 
 	onClose() {
@@ -60,38 +49,25 @@ class Organizer extends Component {
 	}
 
   render() {
-  	console.log(this.state.organizerName);
     return (
-      <div className="openedPlace">
-      <h1 className="title">Organizator</h1>
-      	<div className="PlaceClose" onClick={this.onClose.bind(this)}>
-     		<div className="close-left"></div>
-      		<div className="close-right"></div>
-      	</div>
-      	<div className="container">
-      		<div className="form-container">
-		      <form>
-		      	<div className="form-group">
-					<label>Event Name:</label>
-					<input className="form-control PlaceText" onChange={eventName => this.setState({ eventName:eventName.target.value })} value={this.state.eventName} />
-				</div>
-				{ (!this.state.logged) ? 
-					<div>
-					    <div className="form-group">
-							<label>Name:</label>
-							<input className="form-control PlaceText" onChange={organizerName => this.setState({ organizerName:organizerName.target.value })} value={this.state.organizerName} />
+		<div className="openedPlace">
+			<h1 className="title">Organizator</h1>
+			<div className="PlaceClose" onClick={this.onClose.bind(this)}>
+     			<div className="close-left"></div>
+      			<div className="close-right"></div>
+      		</div>
+      		<div className="container">
+      			<div className="form-container">
+		      		<form>
+		      			<div className="form-group">
+							<label>Event Name:</label>
+							<input className="form-control PlaceText" onChange={event_name => this.setState({ event_name:event_name.target.value })} value={this.state.event_name} />
 						</div>
-					    <div className="form-group">
-							<label>Note:</label>
-							<textarea className="form-control PlaceTextArea" onChange={organizerNote => this.setState({ organizerNote:organizerNote.target.value })} value={this.state.organizerNote} />
-						</div>
-					</div>
-				: null }
-			   </form>
-		   </div>
-			<button className="btn PlaceSave" onClick={this.saveUp.bind(this)}>Next</button>
+			  		</form>
+		  		</div>
+				<button className="btn PlaceSave" onClick={this.saveUp.bind(this)}>Next</button>
+      		</div>
       	</div>
-      </div>
     );
   }
 }

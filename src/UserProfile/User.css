@@ -127,7 +127,7 @@ background: #4f8df2;
 
 
 .main-bg {
-  background-image: url('http://www.sunlandrvresorts.com/wp-content/uploads/2013/09/bigstock-silhouettes-of-concert-crowd-i-15652625_mini.jpg');
+  background-image: url('../img/main-background.jpg');
   background-size: cover;
   height: 100vh;
   width: 100vw;

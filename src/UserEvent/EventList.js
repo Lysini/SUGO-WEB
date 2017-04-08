@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import './Event.css';
 import Navbar from '../Home/Navbar';
 import config from '../config';
@@ -91,7 +90,7 @@ class EventList extends Component {
                         </p>
                       </div>
                     );
-                  }) : <img src="http://rpg.drivethrustuff.com/shared_images/ajax-loader.gif"/>
+                  }) : <img role="presentation" src="../src/loader.gif"/>
                 }
                 </div>
               </div>

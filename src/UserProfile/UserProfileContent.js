@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import './User.css';
 import ChangePasswordModal from './ChangePasswordModal';
 import config from '../config';
@@ -100,6 +99,7 @@ updateUser() {
           updateAvatarActivity: true
         })
       }.bind(this);
+    console.log(url);
   }
 
   render() {
@@ -110,7 +110,7 @@ updateUser() {
 	      	<h1 className="text-center">Dane Uzytkownika</h1>
           <div className="col-sm-6 text-center pull-left">
   	      	<form>
-              <img className="avatar" src={`${this.state.avatar}`}/>
+              <img role="presentation"   className="avatar" src={`${this.state.avatar}`}/>
               <input ref="file" type="file"  name="user[image]" multiple="true" onChange={this.getAvatar.bind(this)}/> 
       			</form>
             {(this.state.updateAvatarActivity) ? <button className="btn pull-right" onClick={this.updateUserAvatar.bind(this)}>Save Avatar</button> : null}

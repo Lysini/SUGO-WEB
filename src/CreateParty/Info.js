@@ -33,7 +33,7 @@ class Info extends Component {
 					</div>
 					</form>
 				</div>	
-			<button className="btn InfoSave" onClick={this.saveUp.bind(this)}>Next</button>
+			<button className="btn InfoSave" onClick={this.saveUp.bind(this)}>Zapisz</button>
      	</div>
      </div>
     );

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import './Home.css';
-import { Link } from 'react-router';
-import ReactModal from 'react-modal'; 
 import config from '../config'
 
 

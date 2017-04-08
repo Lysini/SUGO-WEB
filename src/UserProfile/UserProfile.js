@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import './User.css';
 import UserProfileContent from './UserProfileContent';
 import Navbar from '../Home/Navbar';
@@ -49,7 +48,7 @@ class UserProfile extends Component {
 	    }
 		this.fetchUserData(userId);
 		console.log(userId);
-	  }
+	}
 
   render() {
     return (
@@ -64,7 +63,7 @@ class UserProfile extends Component {
 						<div className="well">
 						    <UserProfileContent/>
 						</div>
-					: <img src="http://rpg.drivethrustuff.com/shared_images/ajax-loader.gif"/>
+					: <img role="presentation" src="../src/loader.gif"/>
 				}	
 		      	</div>
 		    </div>

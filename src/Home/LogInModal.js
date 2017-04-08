@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './Home.css';
-import { Link } from 'react-router';
 import ReactModal from 'react-modal'; 
-import config from '../config';
 import LogInModalContent from './LogInModalContent';
 import SignUpModalContent from './SignUpModalContent';
 

@@ -11,7 +11,6 @@ import EventList from './UserEvent/EventList';
 import EventInfo from './UserEvent/EventInfo';
 import Organizer from './CreateParty/Organizer';
 import CreateParty from './CreateParty/CreateParty';
-import SumUp from './SumUp/SumUp';
 
 
 ReactDOM.render((
@@ -19,7 +18,6 @@ ReactDOM.render((
 	    <Route path="/" component={Home}/>
 	  	<Route path="/organizer" component={Organizer}/>
 	    <Route path="/create" component={CreateParty}/>
- 		<Route path="/sum-up" component={SumUp}/>
  		<Route path="/user" component={UserProfile}/>
  		<Route path="/user/profile/:id" component={PublicProfile}/>
  		<Route path="/user/events" component={EventList}/>
