@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import './Event.css';
-import Navbar from '../Home/Navbar';
 import config from '../config';
 import ReactModal from 'react-modal';
 
@@ -21,7 +19,6 @@ class EventInfoPeople extends Component {
           peopleMen: this.props.people.peopleMen,
           peopleWomen: this.props.people.peopleWomen
       });
-      console.log(this.state.peopleWomen);
   }
 
   saveUpUser() {
@@ -55,13 +52,15 @@ class EventInfoPeople extends Component {
   }
 
   updateUser(){
+    let person = {
+      peopleName: this.state.inputName,
+      peopleNote: this.state.inputNote
+    };
     if(this.state.peopleSex === "men") {
-      this.state.peopleMen[this.state.selectedPerson].peopleName=this.state.inputName;
-      this.state.peopleMen[this.state.selectedPerson].peopleNote=this.state.inputNote;  
+      this.state.peopleMen[this.state.selectedPerson]=person;
     }
     else {
-      this.state.peopleWomen[this.state.selectedPerson].peopleName=this.state.inputName;
-      this.state.peopleWomen[this.state.selectedPerson].peopleNote=this.state.inputNote;
+      this.state.peopleWomen[this.state.selectedPerson]=person;
     }
     this.setState({ 
       showModal: false,
@@ -95,7 +94,7 @@ class EventInfoPeople extends Component {
       })
       .then(responseData =>{
           this.setState({changesActivity: false});
-          this.props.reFetchEvent;
+          this.props.reFetchEvent();
       });
     }
 

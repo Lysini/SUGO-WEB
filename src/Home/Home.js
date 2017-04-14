@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import $ from 'jquery';
 import ScrollMagic from 'scrollmagic';
 import Navbar from './Navbar';
 import './Home.css';
-import ReactModal from 'react-modal';
-import LogInModal from './LogInModal';
 
   var windowHeight = window.innerHeight;
   var windowWidth = window.innerWidth;

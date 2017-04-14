@@ -3,7 +3,6 @@ import { Link } from 'react-router';
 import './Navbar.css';
 import DropDown from './DropDown';
 import '../index.css';
-import ReactModal from 'react-modal';
 import LogInModal from './LogInModal';
 
 
@@ -44,7 +43,7 @@ class Navbar extends Component {
 	showLogInModalCreate() {
 	    if(localStorage.getItem("userId") !== null){
         	this.props.router.push({
-        		pathname: '/organizer'
+        		pathname: '/create'
         	})
      	}else{
           	this.setState({

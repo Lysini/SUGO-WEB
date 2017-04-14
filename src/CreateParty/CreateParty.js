@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
+import Organizer from './Organizer';
+import SaveEvent from './SaveEvent';
 import People from './People';
 import Stuff from './Stuff';
 import Place from './Place';
 import Info from './Info';
 import './style.css';
 
+
 class CreateParty extends Component {
 	constructor() {
 	    super();
 	    this.state = {
-	    	sumUpOpened: false,
-	    	peopleOpened: true,
+	    	organizerOpened: true,
+	    	peopleOpened: false,
 	    	stuffOpened: false,
 	    	placeOpened: false,
 	    	infoOpened: false,
@@ -22,7 +26,8 @@ class CreateParty extends Component {
 	    			 placeMax: 0,
 	    			 placeNote: '' },
 	    	people: {},
-	    	numberOfUsers: 0
+	    	event_name: '',
+	    	organizerNote: ''
 	    };
 	}
 
@@ -36,6 +41,16 @@ class CreateParty extends Component {
 	    			 placeMax: placeMax,
 	    			 placeNote: placeNote }
 	    });
+	}
+
+	saveOrganizer(organizerName, organizerNote, event_name){
+		this.setState({
+			organizerOpened: false,
+			peopleOpened: true,
+			organizerName: organizerName,
+			organizerNote: organizerNote,
+			event_name: event_name
+		})
 	}
 
 	savePeople(people) {
@@ -57,16 +72,21 @@ class CreateParty extends Component {
 	saveInfo(info) {
 		this.setState({
 			infoOpened: false,
-			sumUpOpened: true,
 			info: info
 		});
-		this.openSumUp.bind(this);
+	}
+
+	openOrganizer() {
+		return (
+		    <Organizer saveOrganizer={this.saveOrganizer.bind(this)}  
+			onClose={this.cancelAdding.bind(this)}/>
+		);
 	}
 
 	openPeople() {
 		return (
-		    <People organizerName={this.props.location.state.organizerName}
-			organizerNote={this.props.location.state.organizerNote} 
+		    <People organizerName={this.state.organizerName}
+			organizerNote={this.state.organizerNote} 
 			savePeople={this.savePeople.bind(this)}  
 			onClose={this.cancelAdding.bind(this)}/>
 		);
@@ -86,24 +106,25 @@ class CreateParty extends Component {
 
 	openInfo() {
 		return (
-          <Info saveInfo={this.saveInfo.bind(this)} onClose={this.cancelAdding.bind(this)} />
+        	<Info saveInfo={this.saveInfo.bind(this)} 
+        	router={this.props.router}
+        	event_name={this.state.event_name}
+			stuff={this.state.stuff}
+		    people={this.state.people}
+		    place={this.state.place} 
+		    onClose={this.cancelAdding.bind(this)} />
       	);
 	}
 
-	openSumUp() {
-		this.props.router.push({
-		  pathname: '/sum-up',
-		  state: {
-		  	eventName: this.props.location.state.eventName, 
-		  	organizerName: this.props.location.state.organizerName,
-		  	organizerNote: this.props.location.state.organizerNote,
-		  	place: this.state.place,
-		  	stuff: this.state.stuff,
-		  	info: this.state.info,
-		  	people: this.state.people,
-		  	numberOfUsers: this.state.numberOfUsers,
-		  } 
-		})
+	openSaveEvent() {
+		return (
+		    <SaveEvent event_name={this.state.event_name}
+		    stuff={this.state.stuff}
+		    people={this.state.people}
+		    place={this.state.place}
+		    special_info={this.state.info}
+			onClose={this.cancelAdding.bind(this)}/>
+		);
 	}
 
 	cancelAdding(){
@@ -114,7 +135,9 @@ class CreateParty extends Component {
 
 
   render() {
-  	console.log(this.state);
+  	if(this.state.organizerOpened) {
+  		return this.openOrganizer();
+  	}
   	if(this.state.peopleOpened) {
   		return this.openPeople();
   	}
@@ -127,10 +150,8 @@ class CreateParty extends Component {
   	else if(this.state.infoOpened) {
   		return this.openInfo();
   	}
-  	else if(this.state.sumUpOpened) {
-  		return this.openSumUp();
-  	}
-    	
+  	else
+  		return this.openSaveEvent();
   }
 }
 

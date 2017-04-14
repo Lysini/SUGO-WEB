@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import './User.css';
 import Navbar from '../Home/Navbar';
 import config from '../config';
@@ -74,7 +73,7 @@ class PublicProfile extends Component {
 					    <h1 className="text-center">Dane Uzytkownika</h1>
 				    	<div className="col-sm-6 text-center pull-left">
 					  	    <form>
-					            <img className="avatar" src={`${this.state.userData.avatar}`}/>
+					            <img className="avatar" role="presentation" src={`${this.state.userData.avatar}`}/>
 					            <div className="form-group">
 					            	<label>Name: {this.state.userData.name}</label>
 					            </div>
@@ -98,13 +97,13 @@ class PublicProfile extends Component {
 					                        <i className="fa fa-plus" onClick={this.openEventInformation.bind(this, item)} aria-hidden="true"></i>
 					                      </div>
 					                    );
-					                  }) : <img src="http://rpg.drivethrustuff.com/shared_images/ajax-loader.gif"/>
+					                  }) : <img role="presentation" src="http://rpg.drivethrustuff.com/shared_images/ajax-loader.gif"/>
 					                }
 				                </div>
 				        	</form>
 				    	</div>
 					</div>
-					: <img src="http://rpg.drivethrustuff.com/shared_images/ajax-loader.gif"/>
+					: <img role="presentation" src="../src/loader.gif"/>
 				}
 				</div>	
 		</div>

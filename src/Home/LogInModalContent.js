@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import './Home.css';
-import { Link } from 'react-router';
-import ReactModal from 'react-modal'; 
 import config from '../config'
 
 
@@ -72,7 +70,7 @@ class LogInModalContent extends Component {
       this.setState({email: '', password: ''});
       if(this.props.createPartyActivity === true){
         this.props.router.push({
-            pathname: '/organizer'
+            pathname: '/create'
         });
       }
       else{

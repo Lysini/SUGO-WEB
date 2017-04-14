@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import './Event.css';
-import Navbar from '../Home/Navbar';
 import config from '../config';
 
 class EventInfoPlace extends Component {
@@ -53,7 +51,7 @@ class EventInfoPlace extends Component {
         })
         .then(responseData =>{
             this.setState({editMode: false});
-            this.props.reFetchEvent;
+            this.props.reFetchEvent();
         });
     }
 

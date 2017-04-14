@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Dropdown, { DropdownTrigger, DropdownContent } from 'react-simple-dropdown';
-import { Router, Link } from 'react-router';
 import './Home.css';
 
 
