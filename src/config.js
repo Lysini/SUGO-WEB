@@ -1,3 +1,3 @@
 export default {
-  apiUrl: 'http://mate.ct8.pl'
+  apiUrl: 'https://mate.ct8.pl'
 };
