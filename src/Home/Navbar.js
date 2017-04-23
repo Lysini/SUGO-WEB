@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import './Navbar.css';
-import DropDown from './DropDown';
+import MyProfileDropDown from './MyProfileDropDown';
 import '../index.css';
 import LogInModal from './LogInModal';
 
@@ -13,6 +13,7 @@ class Navbar extends Component {
 		this.state ={
 			showLogInModal: false,
 			logged: false,
+			burgerMenuOpened: false
 		}
 
 	}
@@ -53,13 +54,6 @@ class Navbar extends Component {
       	}
 	}
 
-	openUserEvents(){
-		this.props.router.push({ pathname: '/user/events' });
-	}
-
-	openUserInfo(){
-		this.props.router.push({ pathname: '/user' });
-	}
 	backToHome(){
 		this.props.router.push({ pathname: '/' });
 	}
@@ -67,43 +61,60 @@ class Navbar extends Component {
 	componentWillMount(){
     	this.checkLogInActive();
   	}
+
+  	openUserInfo(){
+    	this.props.router.push({ pathname: '/user' });
+  	}
+
+  	openUserEvents(){
+	    this.props.router.push({ pathname: '/user/events' });
+	}
 	
 		
 
 	render() {
 	    return (
-			<nav className="navbar navbar-default navbar">
-			<LogInModal router={this.props.router} showActivity={this.state.showLogInModal}  onClose={()=>{this.setState({ showLogInModal: false })}} createPartyActivity={this.state.createPartyActivity} checkLogInActive={this.checkLogInActive.bind(this)}/>
-			  <div className="container">
-			    <div className="navbar-header">
-			      <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-			        <span className="sr-only">Toggle navigation</span>
-			        <span className="icon-bar"></span>
-			        <span className="icon-bar"></span>
-			        <span className="icon-bar"></span>
-			      </button>
-			      <a className="navbar-brand" href="#"><Link to={`/`}>SUGO</Link></a>
-			    </div>
-			    <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			      <ul className="nav navbar-nav navbar-right">
-			      	<li><a href="#" onClick={this.backToHome.bind(this)}>Home</a></li>
-			        <li><a href="#">About App</a></li>
-			        <li><a href="#">Contact Us</a></li>
-			        <li><a href="#" onClick={this.showLogInModalCreate.bind(this)}>Create Party +</a></li>
-			        <li><a onClick={this.openUserEvents.bind(this)}>UserEvents</a></li>
-			        {(this.state.logged||this.props.myaccount) ?
-			        	<li><a onClick={this.openUserInfo.bind(this)}>User</a></li>
-			        : null
-			        }
-			        <li><a href="#">PL/EN</a></li>
-			        {(this.props.myaccount) ? 
-			        	<li><a href="#" onClick={this.logOut.bind(this)}>Log Out</a></li>
-				        :  (this.state.logged) ? <li className="dropdown-style"><DropDown logOut={this.logOut.bind(this)} router={this.props.router}/></li> : <li><a href="#" onClick={this.showLogInModal.bind(this)}>Log In</a></li>
-				    }
-			      </ul>
-			    </div>
-			  </div>
-			</nav>
+				<nav className="navbar navbar-default navbar">
+					<LogInModal router={this.props.router} showActivity={this.state.showLogInModal}  onClose={()=>{this.setState({ showLogInModal: false })}} createPartyActivity={this.state.createPartyActivity} checkLogInActive={this.checkLogInActive.bind(this)}/>
+					<div className="container">
+				    	<div className="navbar-header">
+				      		<button type="button" className="navbar-toggle collapsed" onClick={() => this.setState({burgerMenuOpened: !this.state.burgerMenuOpened})} data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				       			<span className="sr-only">Toggle navigation</span>
+				        		<span className="icon-bar"></span>
+				        		<span className="icon-bar"></span>
+				        		<span className="icon-bar"></span>
+				      		</button>
+				      		<a className="navbar-brand" href="#"><Link to={`/`}>SUGO</Link></a>
+				   	 	</div>
+				   		<div className="collapse navbar-collapse navbar-content" id="bs-example-navbar-collapse-1">
+				    		<ul className="nav navbar-nav navbar-right">
+						      	<li><a href="#" onClick={this.backToHome.bind(this)}>Home</a></li>
+						        <li><a href="#">O Nas</a></li>
+						        <li><a href="#">Kontakt</a></li>
+						        <li><a href="#" onClick={this.showLogInModalCreate.bind(this)}>Dodaj Wydarzenie +</a></li>
+						        {(this.props.myaccount) ? 
+						        	<li><a href="#" onClick={this.logOut.bind(this)}>Log Out</a></li>
+							        :  (this.state.logged) ? <li className="dropdown-style"><MyProfileDropDown logOut={this.logOut.bind(this)} router={this.props.router}/></li> : <li><a href="#" onClick={this.showLogInModal.bind(this)}>Log In</a></li>
+							    }
+				    		</ul>
+				    	</div>
+				    	{(this.state.burgerMenuOpened) ?
+							<div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						    	<ul className="nav navbar-nav navbar-right">
+								    <li><a href="#" onClick={this.backToHome.bind(this)}>Home</a></li>
+								    <li><a href="#">O Nas</a></li>
+								    <li><a href="#">Kontakt</a></li>
+								    <li><a href="#" onClick={this.showLogInModalCreate.bind(this)}>Dodaj Wydarzenie +</a></li>
+									<li className={(this.state.logged ? 'show' : 'hidden')}><a href="#" onClick={this.openUserInfo.bind(this)} >Mój Profil</a></li>
+									<li className={(this.state.logged ? 'show' : 'hidden')}><a href="#" onClick={this.openUserEvents.bind(this)}>Moje Wydarzenia</a></li>
+									<li className={(this.state.logged ? 'hidden' : 'show')}><a href="#" onClick={this.showLogInModal.bind(this)}>Zaloguj Się</a></li>
+									<li className={(this.state.logged ? 'show' : 'hidden')}><a href="#" onClick={this.logOut.bind(this)}>Wyloguj Się</a></li>
+						    	</ul>
+						    </div>
+						: null
+						}
+				  	</div>
+				</nav>
     	);
 	}
 }

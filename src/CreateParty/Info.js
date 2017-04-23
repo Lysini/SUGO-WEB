@@ -25,7 +25,8 @@ class Info extends Component {
 	        	stuff: this.props.stuff,
 	        	people: this.props.people,
 	        	place: this.props.place,
-	            special_info: this.state.info
+	            special_info: this.state.info,
+	            date: this.props.startDate
 			})
 		})
 		.then(

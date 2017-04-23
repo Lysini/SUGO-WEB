@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import Organizer from './Organizer';
 import SaveEvent from './SaveEvent';
 import People from './People';
@@ -7,6 +6,7 @@ import Stuff from './Stuff';
 import Place from './Place';
 import Info from './Info';
 import './style.css';
+import moment from 'moment';
 
 
 class CreateParty extends Component {
@@ -27,7 +27,8 @@ class CreateParty extends Component {
 	    			 placeNote: '' },
 	    	people: {},
 	    	event_name: '',
-	    	organizerNote: ''
+	    	organizerNote: '',
+	    	startDate: moment()
 	    };
 	}
 
@@ -43,13 +44,14 @@ class CreateParty extends Component {
 	    });
 	}
 
-	saveOrganizer(organizerName, organizerNote, event_name){
+	saveOrganizer(organizerName, organizerNote, event_name, startDate){
 		this.setState({
 			organizerOpened: false,
 			peopleOpened: true,
 			organizerName: organizerName,
 			organizerNote: organizerNote,
-			event_name: event_name
+			event_name: event_name,
+			startDate: startDate
 		})
 	}
 
@@ -112,6 +114,7 @@ class CreateParty extends Component {
 			stuff={this.state.stuff}
 		    people={this.state.people}
 		    place={this.state.place} 
+		    startDate={this.state.startDate}
 		    onClose={this.cancelAdding.bind(this)} />
       	);
 	}

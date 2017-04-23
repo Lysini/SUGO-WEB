@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import './CreateParty.css';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+import 'react-datepicker/dist/react-datepicker.css';
+
 
 class Organizer extends Component {
 	constructor() {
@@ -8,14 +11,23 @@ class Organizer extends Component {
 	    	organizerName: '',
 	    	organizerNote: '',
 	    	event_name: '',
-	    };
+			startDate: moment()
+    	};
+    	this.handleChange = this.handleChange.bind(this);
+	}
+
+	handleChange(date) {
+	    this.setState({
+	      startDate: date
+	    });
 	}
 
 	saveUp() {
 		this.props.saveOrganizer(
 	    	this.state.organizerName,
 	    	this.state.organizerNote,
-	    	this.state.event_name
+	    	this.state.event_name,
+	    	this.state.startDate
 		)
 	}
 
@@ -42,17 +54,12 @@ class Organizer extends Component {
     	this.fetchUserData();
   	}
 
-	onClose() {
-		this.props.router.push({
-		  pathname: '/'
-		})
-	}
-
   render() {
+  	console.log(this.state.startDate._d);
     return (
 		<div className="openedPlace">
 			<h1 className="title">Organizator</h1>
-			<div className="PlaceClose" onClick={this.onClose.bind(this)}>
+			<div className="PlaceClose" onClick={this.props.onClose}>
      			<div className="close-left"></div>
       			<div className="close-right"></div>
       		</div>
@@ -60,8 +67,15 @@ class Organizer extends Component {
       			<div className="form-container">
 		      		<form>
 		      			<div className="form-group">
-							<label>Event Name:</label>
+							<label>Nazwa Wydarzenia:</label>
 							<input className="form-control PlaceText" onChange={event_name => this.setState({ event_name:event_name.target.value })} value={this.state.event_name} />
+						</div>
+						<div className="form-group">
+							<label>Data Wydarzenia:</label>
+							<DatePicker
+						        selected={this.state.startDate}
+						        onChange={this.handleChange}
+						    />
 						</div>
 			  		</form>
 		  		</div>

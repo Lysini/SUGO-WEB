@@ -16,3 +16,90 @@
 .navbar-default .navbar-brand {
   color: #000;
 }
+
+
+.burger-menu{
+	width: 45px;
+	height: 45px;
+	display: none;
+}
+
+.burger-close{
+	width: 45px;
+	height: 45px;
+	display: none;
+}
+
+.burger-menu-element{
+    width: 30px;
+    height: 5px;
+    background-color: black;
+    margin: 6px 0;
+    padding: 2px;
+}
+
+.close-burger-left{
+  width:5px;
+  height:35px;
+  position:absolute;
+  top: 0;
+  background-color: #000;
+  transform:rotate(45deg);
+}
+.close-burger-right{
+  width:5px;
+  height:35px;
+  position:absolute;
+  top: 0;
+  background-color: #000;
+  transform:rotate(135deg);
+}
+
+
+/* Media queries
+-------------------------------------------------- */
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+
+}
+
+/* Portrait tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+  
+
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+  	.burger-menu{
+		display: block;
+	}
+
+	.burger-close{
+		display: block;
+	}
+	.navbar-content{
+		display: none;
+	}
+
+}
+
+/* Landscape phones and smaller */
+@media (max-width: 480px) {
+  	.burger-menu{
+		display: block;
+	}
+
+	.burger-close{
+		display: block;
+	}
+	.navbar-content{
+		display: none;
+	}
+
+}

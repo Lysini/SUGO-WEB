@@ -18,6 +18,13 @@ class AccountDropdown extends Component {
     this.refs.dropdown.hide();
   }*/
 
+  openUserEvents(){
+    this.props.router.push({ pathname: '/user/events' });
+  }
+
+  openUserInfo(){
+    this.props.router.push({ pathname: '/user' });
+  }
 
   render() {
     return (
@@ -27,25 +34,20 @@ class AccountDropdown extends Component {
         <DropdownContent className="dropdown-menu">
           <ul className="account-dropdown__quick-links account-dropdown__segment">
             <li className="account-dropdown__link">
-              <a className="account-dropdown__link__anchor" href="user" onClick={this.handleLinkClick}>
-                My Account
+              <a href="#" className="account-dropdown__link__anchor" onClick={this.openUserInfo.bind(this)}>
+                Mój Profil
               </a>
             </li>
             <li className="account-dropdown__link">
-              <a className="account-dropdown__link__anchor" href="user/events" onClick={this.handleLinkClick}>
-                My Events
+              <a href="#" className="account-dropdown__link__anchor" onClick={this.openUserEvents.bind(this)}>
+                Moje Wydarzenia
               </a>
             </li>
           </ul>
           <ul className="account-dropdown__management-links account-dropdown__segment">
             <li className="account-dropdown__link">
-              <a className="account-dropdown__link__anchor" href="#" onClick={this.handleLinkClick}>
-                Settings
-              </a>
-            </li>
-            <li className="account-dropdown__link">
-              <a className="account-dropdown__link__anchor"  onClick={this.logOut.bind(this)}>
-                Log Out
+              <a className="account-dropdown__link__anchor" href="#" onClick={this.logOut.bind(this)}>
+                Wyloguj się
               </a>
             </li>
           </ul>
