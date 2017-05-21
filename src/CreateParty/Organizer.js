@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
-
+import config from '../config';
 
 class Organizer extends Component {
+
 	constructor() {
 	    super();
 	    this.state = {
@@ -23,17 +24,20 @@ class Organizer extends Component {
 	}
 
 	saveUp() {
+  		var startDate = this.state.startDate._d.toISOString();
+  		var startDateA = startDate.substring(0, 10);
+		console.log(startDateA);
 		this.props.saveOrganizer(
 	    	this.state.organizerName,
 	    	this.state.organizerNote,
 	    	this.state.event_name,
-	    	this.state.startDate
+	    	startDateA
 		)
 	}
 
 	fetchUserData(){
 		var userId= localStorage.getItem("userId");
-		fetch(`http://localhost:8000/user/${userId}`,{
+		fetch(`${config.apiUrl}/user/${userId}`,{
 			method: 'GET'
 		})
 		.then(
@@ -55,7 +59,9 @@ class Organizer extends Component {
   	}
 
   render() {
-  	console.log(this.state.startDate._d);
+  	var startDate = this.state.startDate._d.toISOString();
+  	var startDateA = startDate.substring(0, 10);
+	console.log(startDateA);
     return (
 		<div className="openedPlace">
 			<h1 className="title">Organizator</h1>
@@ -73,6 +79,8 @@ class Organizer extends Component {
 						<div className="form-group">
 							<label>Data Wydarzenia:</label>
 							<DatePicker
+								dateFormat='YYYY/MM/DD'
+								dateFormatCalendar='YYYY/MM/DD'
 						        selected={this.state.startDate}
 						        onChange={this.handleChange}
 						    />
