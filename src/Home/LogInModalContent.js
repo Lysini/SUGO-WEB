@@ -88,7 +88,7 @@ class LogInModalContent extends Component {
           <h4 className="modal-title" id="myModalLabel">Zaloguj Sie</h4>
           <span className="fa fa-times" onClick={this.props.onClose} aria-hidden="true"/>
         </div>
-        <div className="modal-form-container">
+        <div className="modal-form-container-log-in">
           <form>
             <div className="form-group text-center">
               <label>Email:</label>
@@ -98,8 +98,8 @@ class LogInModalContent extends Component {
               <label>Password:</label>
               <input type="password" className="form-control modal-text" onChange={password => this.setState({ password:password.target.value })} value={this.state.password} />
             </div>
-            <a href="#" onClick={this.props.changeRegisterFormActivity}>Zarejestruj Sie</a>
-            <button className="btn pull-right modal-save" onClick={this.logInValidate.bind(this)} type="button">Zaloguj Sie</button>
+            <a href="#" className="change-log-to-register-form" onClick={this.props.changeRegisterFormActivity}>Zarejestruj Sie</a>
+            <button className="btn pull-right modal-log-in-btn" onClick={this.logInValidate.bind(this)} type="button">Zaloguj Sie</button>
           </form>
         </div>
       </div>

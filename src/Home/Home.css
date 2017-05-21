@@ -151,48 +151,6 @@
   background-color: rgba(0,0,0,0.3);
 }
 
-
-.Modal {
-  justify-content: center;
-  margin: auto;
-  background-color: #d0dae0;
-  min-height: 50%;
-  min-width: 30%;
-  position: absolute;
-  top: 25vh;
-  left: 30vw;
-  margin: auto;
-}
-
-.modal-form-container-stuff {
-  min-height: 30%;
-  min-width: 15%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  
-
-}
-
-.modal-text{
-  max-width: 80%;
-  margin-left: 10%;
-}
-
-
-
-
-
-
 /* DropDown  -------------------------------------------------------------------------------------------------------------------- */
 
 
@@ -224,4 +182,212 @@
     border-top: 4px solid\9;
     border-right: 4px solid transparent;
     border-left: 4px solid transparent;
+}
+
+
+
+/* Media queries
+-------------------------------------------------- */
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+  .Modal-Log-In {
+    justify-content: center;
+    margin: auto;
+    background-color: #d0dae0;
+    max-height: 70%;
+    min-width: 30%;
+    position: absolute;
+    top: 28%;
+    left: 36%;
+    margin: auto;
+    border-radius: 3%;
+  }
+
+  .modal-form-container-log-in {
+    min-height: 30%;
+    min-width: 15%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding-top: 10%;
+    padding-bottom: 20%;
+  }
+
+  .modal-text{
+    max-width: 80%;
+    margin-left: 10%;
+  }
+
+  .modal-log-in-btn{
+    width: 95px;
+    margin-right: 10%;
+  }
+  .modal-sign-up-btn{
+    width: 115px;
+    margin-right: 10%;
+  }
+  .change-log-to-register-form{
+    margin-left: 10%;
+  }
+
+}
+
+/* Portrait tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+.Modal {
+    justify-content: center;
+    margin: auto;
+    background-color: #d0dae0;
+    min-height: 50%;
+    min-width: 30%;
+    position: absolute;
+    top: 25vh;
+    left: 30vw;
+    margin: auto;
+  }
+
+  .modal-form-container-stuff {
+    min-height: 30%;
+    min-width: 15%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+
+  .modal-text{
+    max-width: 80%;
+    margin-left: 10%;
+  }
+
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+  .Modal {
+    justify-content: center;
+    margin: auto;
+    background-color: #d0dae0;
+    min-height: 50%;
+    min-width: 30%;
+    position: absolute;
+    top: 25vh;
+    left: 30vw;
+    margin: auto;
+  }
+
+  .modal-form-container-stuff {
+    min-height: 30%;
+    min-width: 15%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+
+  .modal-text{
+    max-width: 80%;
+    margin-left: 10%;
+  }
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+  .Modal {
+    justify-content: center;
+    margin: auto;
+    background-color: #d0dae0;
+    min-height: 50%;
+    min-width: 30%;
+    position: absolute;
+    top: 25vh;
+    left: 30vw;
+    margin: auto;
+  }
+
+  .modal-form-container-stuff {
+    min-height: 30%;
+    min-width: 15%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+
+  .modal-text{
+    max-width: 80%;
+    margin-left: 10%;
+  }
+
+}
+
+/* Landscape phones and smaller */
+@media (max-width: 480px) {
+  .Modal {
+    justify-content: center;
+    margin: auto;
+    background-color: #d0dae0;
+    min-height: 50%;
+    min-width: 30%;
+    position: absolute;
+    top: 25vh;
+    left: 30vw;
+    margin: auto;
+  }
+
+  .modal-form-container-stuff {
+    min-height: 30%;
+    min-width: 15%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+
+  .modal-text{
+    max-width: 80%;
+    margin-left: 10%;
+  }
+
 }

@@ -29,7 +29,7 @@ class Navbar extends Component {
 
 	logOut(){
 	      localStorage.removeItem("userId");
-	      this.setState({logged: false})
+	      this.setState({logged: false, burgerMenuOpened: false})
 	      this.props.router.push({
 	                pathname: '/'
 	      });
@@ -37,7 +37,8 @@ class Navbar extends Component {
 
 	showLogInModal() {
 	    this.setState({
-	      showLogInModal: true
+	      showLogInModal: true,
+	      burgerMenuOpened: false
 	    });
 	}
 
@@ -75,7 +76,7 @@ class Navbar extends Component {
 	render() {
 	    return (
 				<nav className="navbar navbar-default navbar">
-					<LogInModal router={this.props.router} showActivity={this.state.showLogInModal}  onClose={()=>{this.setState({ showLogInModal: false })}} createPartyActivity={this.state.createPartyActivity} checkLogInActive={this.checkLogInActive.bind(this)}/>
+					<LogInModal router={this.props.router} showActivity={this.state.showLogInModal} onClose={() => this.setState({showLogInModal: false})} createPartyActivity={this.state.createPartyActivity} checkLogInActive={this.checkLogInActive.bind(this)}/>
 					<div className="container">
 				    	<div className="navbar-header">
 				      		<button type="button" className="navbar-toggle collapsed" onClick={() => this.setState({burgerMenuOpened: !this.state.burgerMenuOpened})} data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -92,9 +93,8 @@ class Navbar extends Component {
 						        <li><a href="#">O Nas</a></li>
 						        <li><a href="#">Kontakt</a></li>
 						        <li><a href="#" onClick={this.showLogInModalCreate.bind(this)}>Dodaj Wydarzenie +</a></li>
-						        {(this.props.myaccount) ? 
-						        	<li><a href="#" onClick={this.logOut.bind(this)}>Log Out</a></li>
-							        :  (this.state.logged) ? <li className="dropdown-style"><MyProfileDropDown logOut={this.logOut.bind(this)} router={this.props.router}/></li> : <li><a href="#" onClick={this.showLogInModal.bind(this)}>Log In</a></li>
+						        { (this.state.logged) ? <li className="dropdown-style"><MyProfileDropDown logOut={this.logOut.bind(this)} router={this.props.router}/></li> 
+						        : <li><a href="#" onClick={this.showLogInModal.bind(this)}>Log In</a></li>
 							    }
 				    		</ul>
 				    	</div>

@@ -17,7 +17,6 @@ class LogInModal extends Component {
     this.setState({registerActive: !this.state.registerActive});
   }
 
-
   continueAnonymously(){
     this.props.router.push({
             pathname: '/organizer'
@@ -29,7 +28,7 @@ class LogInModal extends Component {
 		    <ReactModal 
               isOpen={this.props.showActivity}
               contentLabel="Inline Styles Modal Example"
-              className="Modal"
+              className="Modal-Log-In"
               overlayClassName="Overlay">
                   {(this.state.registerActive) ?
                     <SignUpModalContent onClose={this.props.onClose} router={this.props.router} checkLogInActive={this.props.checkLogInActive}  createPartyActivity={this.props.createPartyActivity} changeRegisterFormActivity={this.changeRegisterFormActivity.bind(this)}/>

@@ -95,7 +95,7 @@ class SignUpModalContent extends Component {
           <h4 className="modal-title" id="myModalLabel">Zarejestruj Sie</h4>
           <span className="fa fa-times" onClick={this.props.onClose} aria-hidden="true"/>
         </div>
-        <div className="modal-form-container">
+        <div className="modal-form-container-log-in">
           <form>
             <div className="form-group text-center">
               <label>Email:</label>
@@ -117,8 +117,8 @@ class SignUpModalContent extends Component {
               <label>Profile Adress:</label>
               <input type="text" className="form-control modal-text" onChange={profileAdress => this.setState({ profileAdress:profileAdress.target.value })} value={this.state.profileAdress} />
             </div>
-            <a href="#" onClick={this.props.changeRegisterFormActivity}>Zaloguj Sie</a>
-            <button className="btn pull-right modal-save" onClick={this.signUpValidate.bind(this)} type="button">Zarejestruj Sie</button>
+            <a href="#" className="change-log-register-form" onClick={this.props.changeRegisterFormActivity}>Zaloguj Sie</a>
+            <button className="btn pull-right modal-sign-up-btn" onClick={this.signUpValidate.bind(this)} type="button">Zarejestruj Sie</button>
           </form>
         </div>
       </div>
