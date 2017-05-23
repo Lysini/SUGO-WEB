@@ -24,7 +24,8 @@ class EventInfoPlace extends Component {
   }
 
   updateEventGeneralInfo() {
-    var eventId = this.props.eventId;
+    if(this.validatePlace(this.state.eventName, this.state.placeName, this.state.placeLocation, this.state.placePrice, this.state.placeMax, this.state.placeNote)){
+      var eventId = this.props.eventId;
       fetch(`${config.apiUrl}/event/${eventId}/update/general-info`,{
           headers: {
             'Accept': 'application/json',
@@ -54,6 +55,7 @@ class EventInfoPlace extends Component {
             this.setState({editMode: false});
             this.props.reFetchEvent();
         });
+      }
     }
 
     onClose() {
@@ -66,6 +68,53 @@ class EventInfoPlace extends Component {
           placeNote: this.props.place.placeNote,
           special_info: this.props.place.special_info
       });
+    }
+
+    validatePlace(event_name, placeName, placeLocation, placePrice, placeMax, placeNote) {
+      var allowedNameChars = new RegExp("^([A-Za-z]{3,20})$"); 
+      var allowedPriceChars = new RegExp("^([0-9]{0,4})$"); 
+      var allowedMaxChars = new RegExp("^([0-9]{0,4})$"); 
+      var allowedNoteChars = new RegExp("^([A-Za-z]{0,150})$"); 
+      if (!allowedNameChars.test(event_name)) {
+        this.setState({ validEventNameErrorText: 'Nazwa wydarzenia może zawierać od 3 do 20 liter.' });
+      }
+      else{
+        this.setState({ validEventNameErrorText: '' });
+      }
+      if (!allowedNameChars.test(placeName)) {
+        this.setState({ validNameErrorText: 'Nazwa lokacji może zawierać od 3 do 20 liter.' });
+      }
+      else{
+        this.setState({ validNameErrorText: '' });
+      }
+      if (placeLocation.length > 40) {
+        this.setState({ validLocationErrorText: 'Lokalizacja może zawierać maksymalnie 40 znaków' });
+      }
+      else{
+        this.setState({ validLocationErrorText: '' });
+      }
+      if (!allowedPriceChars.test(placePrice)) {
+        this.setState({ validPriceErrorText: 'Cena może zawierać maksymalnie 4 cyfry' });
+      }
+      else{
+        this.setState({ validPriceErrorText: '' });
+      }
+      if (!allowedMaxChars.test(placeMax)) {
+        this.setState({ validMaxErrorText: 'Ilość miejsc nie może być dłuższa niż 4 cyfry' });
+      }
+      else{
+        this.setState({ validMaxErrorText: '' });
+      }
+      if (!allowedNoteChars.test(placeNote)) {
+        this.setState({ validNoteErrorText: 'Notatka może zawierać nie więcej niż 150 cyfr i liter' });
+      }
+      else{
+        this.setState({ validNoteErrorText: '' });
+      }
+      if(allowedNameChars.test(placeName) && allowedNameChars.test(event_name) && this.state.validLocationErrorText === '' && allowedPriceChars.test(placePrice) && allowedMaxChars.test(placeMax) && allowedNoteChars.test(placeNote)) {
+        return true;
+      }
+      return false;
     }
 
   render(){
@@ -123,6 +172,14 @@ class EventInfoPlace extends Component {
               </div>
               <div className="form-group">
                 <label>Dodatkowe informacje: <textArea className="form-control" onChange={special_info => this.setState({ special_info: special_info.target.value })} value={this.state.special_info} /></label>
+              </div>
+              <div className="form-group">
+                <p className="error-text">{this.state.validEventNameErrorText}</p>
+                <p className="error-text">{this.state.validNameErrorText}</p>
+                <p className="error-text">{this.state.validLocationErrorText}</p>
+                <p className="error-text">{this.state.validPriceErrorText}</p>
+                <p className="error-text">{this.state.validMaxErrorText}</p>
+                <p className="error-text">{this.state.validNoteErrorText}</p>
               </div>
             </form>
             <button className="btn" onClick={this.updateEventGeneralInfo.bind(this)}>Zapisz zmiany</button>

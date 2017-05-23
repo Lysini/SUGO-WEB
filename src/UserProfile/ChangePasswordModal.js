@@ -14,7 +14,7 @@ class ChangePasswordModal extends Component {
       };
   }
   changePassword() {
-    if(this.validatePassword(this.state.oldPassword, this.state.newPassword, this.state.newPasswordConfirmation)){
+    if(this.validatePassword(this.state.newPassword, this.state.newPasswordConfirmation)){
       var userId = localStorage.getItem("userId");
       fetch(`${config.apiUrl}/user/${userId}/change-password`,{
           headers: {
@@ -47,7 +47,23 @@ class ChangePasswordModal extends Component {
     this.setState({oldPassword:this.props.oldPassword})
   }
 
-  validatePassword(oldPassword, newPassword, newPasswordRepeat) {
+  validatePassword(newPassword, newPasswordConfirmation) {
+      var allowedChars = new RegExp("^([A-Za-z0-9]{6,20})$"); 
+      if (!allowedChars.test(newPassword)) {
+        this.setState({ validNewPasswordErrorText: 'Hasło musi mieć od 6 do 12 liter i cyfr' });
+      }
+      else{
+        this.setState({ validNewPasswordErrorText: '' });
+      }
+      if (newPassword !== newPasswordConfirmation) {
+        this.setState({ validNewPasswordCompareErrorText: 'Nowe hasło nie jest zgodne z jego potwierdzeniem.' });
+      }
+      else{
+          validNewPasswordCompareErrorText: ''
+      }
+      if(allowedChars.test(newPassword) && newPassword === newPasswordConfirmation) {
+        return true;
+      }
       return false;
   }
 
@@ -65,16 +81,20 @@ class ChangePasswordModal extends Component {
             <div className="modal-form-container">
               <form>
                 <div className="form-group">
-                  <label>Old password:</label>
+                  <label>Aktualne Hasło:</label>
                   <input className="form-control" onChange={oldPassword => this.setState({ oldPassword:oldPassword.target.value, updateActivity: true })} value={this.state.oldPassword} />
                 </div>
                 <div className="form-group">
-                  <label>New password:</label>
+                  <label>Nowe hasło:</label>
                   <input className="form-control" onChange={newPassword => this.setState({ newPassword:newPassword.target.value, updateActivity: true })} value={this.state.newPassword} />
                 </div>
                 <div className="form-group">
-                  <label>Repeat new password:</label>
+                  <label>Potwierdź nowe hasło:</label>
                   <input className="form-control" onChange={newPasswordConfirmation => this.setState({ newPasswordConfirmation:newPasswordConfirmation.target.value, updateActivity: true })} value={this.state.newPasswordConfirmation} />
+                </div>
+                <div className="form-group">
+                  <p className="error-text">{this.state.validNewPasswordErrorText}</p>
+                  <p className="error-text">{this.state.validNewPasswordCompareErrorText}</p>
                 </div>
               </form>
               {(this.state.updateActivity) ? <button className="btn pull-right" onClick={this.changePassword.bind(this)}>Save</button> : null}

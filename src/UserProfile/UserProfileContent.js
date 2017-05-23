@@ -33,7 +33,8 @@ class UserProfileContent extends Component {
 
 
 updateUser() {
-	var userId = localStorage.getItem("userId");
+  if(this.validateUserInfo(this.state.name, this.state.age, this.state.note)){
+    var userId = localStorage.getItem("userId");
     fetch(`${config.apiUrl}/user/${userId}/update`,{
         headers: {
           'Accept': 'application/json',
@@ -56,8 +57,8 @@ updateUser() {
       .then(responseData =>{
         this.setState({updateActivity: false});
       });
-  
     }
+  }
 
   updateUserAvatar() {
     var userId = localStorage.getItem("userId");
@@ -102,6 +103,34 @@ updateUser() {
     console.log(url);
   }
 
+  validateUserInfo(name, age, note) {
+      var allowedNameChars = new RegExp("^([A-Za-z]{3,20})$"); 
+      var allowedAgeChars = new RegExp("^([0-9]{1,2})$"); 
+      var allowedNoteChars = new RegExp("^([A-Za-z0-9]{0,150})$"); 
+      if (!allowedNameChars.test(name)) {
+        this.setState({ validNameErrorText: 'Nazwa może zawierać od 3 do 20 liter.' });
+      }
+      else{
+        this.setState({ validNameErrorText: '' });
+      }
+      if (!allowedAgeChars.test(age)) {
+        this.setState({ validAgeErrorText: 'Wiek może być nie większy niż 99.' });
+      }
+      else{
+        this.setState({ validAgeErrorText: '' });
+      }
+      if (!allowedNoteChars.test(name)) {
+        this.setState({ validNoteErrorText: 'Notatka może mieć maksymalnie 150 cyfr i liter' });
+      }
+      else{
+        this.setState({ validNoteErrorText: '' });
+      }
+      if(allowedNameChars.test(name) && allowedAgeChars.test(age) && allowedNoteChars.test(note)) {
+        return true;
+      }
+      return false;
+  }
+
   render() {
     return (
 	 	<div className="background">
@@ -128,6 +157,11 @@ updateUser() {
               <div className="form-group">
                 <label>Note:</label>
                 <textarea className="form-control note-textarea" onChange={note => this.setState({ note:note.target.value, updateActivity: true })} value={this.state.note} />
+              </div>
+              <div className="form-group">
+                <p className="error-text">{this.state.validNameErrorText}</p>
+                <p className="error-text">{this.state.validAgeErrorText}</p>
+                <p className="error-text">{this.state.validNoteErrorText}</p>
               </div>
             </form>
             {(this.state.updateActivity) ? <button className="btn pull-right" onClick={this.updateUser.bind(this)}>Save</button> : null}

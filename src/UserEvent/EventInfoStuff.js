@@ -24,38 +24,86 @@ class EventInfoStuff extends Component {
   }
 
   addLabel(){
-    let stuffLabel = {
-      labelName: this.state.labelName,
-      stuffArray: []
-    };
-    this.state.stuff.push(stuffLabel);
-    this.setState({ labelName: '' });
+    if(this.validateLabelName(this.state.labelName)){
+      let stuffLabel = {
+        labelName: this.state.labelName,
+        stuffArray: []
+      };
+      this.state.stuff.push(stuffLabel);
+      this.setState({ labelName: '' });
+    }
   }
 
   addStuff(){
-    let stuffItem = {
-      stuffName: this.state.stuffName,
-      stuffPrice: this.state.stuffPrice,
-      stuffAmount: this.state.stuffAmount
-    };
-    this.state.stuff[this.state.selectedLabel].stuffArray.push(stuffItem);
-        this.setState({ showModal: false, addLabel: false, addedLabel:true, stuffName:'', stuffPrice:'', stuffAmount:'', changesActivity: true });
+    if(this.validateStuff(this.state.stuffName, this.state.stuffPrice, this.state.stuffAmount)){
+      let stuffItem = {
+        stuffName: this.state.stuffName,
+        stuffPrice: this.state.stuffPrice,
+        stuffAmount: this.state.stuffAmount
+      };
+      this.state.stuff[this.state.selectedLabel].stuffArray.push(stuffItem);
+      this.setState({ showModal: false, addLabel: false, addedLabel:true, stuffName:'', stuffPrice:'', stuffAmount:'', changesActivity: true });
+    }
   }
 
   updateStuff(){
-    let stuffItem = {
-      stuffName: this.state.stuffName,
-      stuffPrice: this.state.stuffPrice,
-      stuffAmount: this.state.stuffAmount
-    };
-    this.state.stuff[this.state.selectedLabel].stuffArray[this.state.selectedStuff]=stuffItem;
-    this.setState({ 
-      showModal: false,
-      stuffName: '',
-      stuffPrice: '',
-      stuffAmount: '',
-      changesActivity: true
-    });
+    if(this.validateStuff(this.state.stuffName, this.state.stuffPrice, this.state.stuffAmount)){
+      let stuffItem = {
+        stuffName: this.state.stuffName,
+        stuffPrice: this.state.stuffPrice,
+        stuffAmount: this.state.stuffAmount
+      };
+      this.state.stuff[this.state.selectedLabel].stuffArray[this.state.selectedStuff]=stuffItem;
+      this.setState({ 
+        showModal: false,
+        stuffName: '',
+        stuffPrice: '',
+        stuffAmount: '',
+        changesActivity: true
+      });
+    }
+  }
+
+  validateLabelName(labelName) {
+      var allowedChars = new RegExp("^([A-Za-z]{3,20})$"); 
+      if (!allowedChars.test(labelName)) {
+        this.setState({ validLabelNameErrorText: 'Nazwa Labelu może zawierać od 3 do 20 liter.' });
+      }
+      else{
+        this.setState({ validLabelNameErrorText: '' });
+      }
+      if(allowedChars.test(labelName)) {
+        return true;
+      }
+      return false;
+  }
+
+  validateStuff(stuffName, stuffPrice, stuffAmount) {
+      var allowedNameChars = new RegExp("^([A-Za-z]{3,20})$"); 
+      var allowedPriceChars = new RegExp("^([0-9]{0,4})$"); 
+      var allowedAmountChars = new RegExp("^([0-9]{0,4})$"); 
+      if (!allowedNameChars.test(stuffName)) {
+        this.setState({ validStuffNameErrorText: 'Nazwa może zawierać od 3 do 20 liter.' });
+      }
+      else{
+        this.setState({ validStuffNameErrorText: '' });
+      }
+      if (!allowedPriceChars .test(stuffPrice)) {
+        this.setState({ validStuffPriceErrorText: 'Cena może zawierać maksymalnie 4 cyfry.' });
+      }
+      else{
+        this.setState({ validStuffPriceErrorText: '' });
+      }
+      if (!allowedAmountChars .test(stuffAmount)) {
+        this.setState({ validStuffAmountErrorText: 'Ilość może zawierać maksymalnie 4 cyfry.' });
+      }
+      else{
+        this.setState({ validStuffAmountErrorText: '' });
+      }
+      if(allowedNameChars.test(stuffName) && allowedPriceChars.test(stuffPrice) && allowedAmountChars.test(stuffAmount)) {
+        return true;
+      }
+      return false;
   }
 
   deleteStuff(){
@@ -95,6 +143,7 @@ class EventInfoStuff extends Component {
               <label>Dodaj Label:</label>
               <input type="text" className="form-control add-label-text" onChange={labelName => this.setState({ labelName:labelName.target.value })} value={this.state.labelName}/>
               <i className="fa fa-plus add-button" onClick={this.addLabel.bind(this)} aria-hidden="true"/>
+              <p className="error-text">{this.state.validLabelNameErrorText}</p>
               {(this.state.changesActivity) ?
                   <button className="btn" onClick={this.updateEventStuff.bind(this)}>Zapisz zmiany</button> 
                 : null
@@ -151,6 +200,11 @@ class EventInfoStuff extends Component {
                       <div className="form-group">
                         <label>Ilość:</label>
                         <input type="text" className="form-control modal-text" onChange={stuffAmount => this.setState({ stuffAmount:stuffAmount.target.value })} value={this.state.stuffAmount}/>
+                      </div>
+                      <div className="form-group">
+                        <p className="error-text">{this.state.validStuffNameErrorText}</p>
+                        <p className="error-text">{this.state.validStuffPriceErrorText}</p>
+                        <p className="error-text">{this.state.validStuffAmountErrorText}</p>
                       </div>
                       <button className="btn pull-right modal-save" type="button" onClick={(this.state.editActive) ? this.updateStuff.bind(this) : this.addStuff.bind(this)}>Add</button>
                     </form> 
