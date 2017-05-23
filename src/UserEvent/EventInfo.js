@@ -47,6 +47,7 @@ class EventInfo extends Component {
   }
 
 render() {
+  console.log(this.props);
     return (
       <div className="main-bg">
       <Navbar myaccount={true} router={this.props.router}/>

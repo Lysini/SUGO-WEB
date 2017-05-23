@@ -1,3 +1,26 @@
+.close-edit {
+    cursor: pointer;
+    position: absolute;
+    top: 27vh;
+    right: 17vw;
+}
+
+.close-right-edit {
+  width:4px;
+  height:25px;
+  position:absolute;
+  top: 0;
+  background-color: #000;
+  transform:rotate(45deg);
+}
+.close-left-edit {
+  width:4px;
+  height:25px;
+  background-color: #000;
+  transform:rotate(135deg);
+}
+
+
 .add-label-text{
   width: 50px;
 }

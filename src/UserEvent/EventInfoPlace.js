@@ -8,6 +8,7 @@ class EventInfoPlace extends Component {
       this.state = {
         editMode: false
       };
+      this.onClose = this.onClose.bind(this);
   }
 
 
@@ -23,7 +24,7 @@ class EventInfoPlace extends Component {
   }
 
   updateEventGeneralInfo() {
-    var eventId = this.props.params.id;
+    var eventId = this.props.eventId;
       fetch(`${config.apiUrl}/event/${eventId}/update/general-info`,{
           headers: {
             'Accept': 'application/json',
@@ -53,6 +54,18 @@ class EventInfoPlace extends Component {
             this.setState({editMode: false});
             this.props.reFetchEvent();
         });
+    }
+
+    onClose() {
+      this.setState({editMode: false});
+      this.setState({
+          placeName: this.props.place.placeName,
+          placeLocation: this.props.place.placeLocation,
+          placePrice: this.props.place.placePrice,
+          placeMax: this.props.place.placeMax,
+          placeNote: this.props.place.placeNote,
+          special_info: this.props.place.special_info
+      });
     }
 
   render(){
@@ -85,6 +98,10 @@ class EventInfoPlace extends Component {
           </div>
         :
           <div>
+            <div className="close-edit" onClick={this.onClose}>
+                <div className="close-left-edit"></div>
+                <div className="close-right-edit"></div>
+            </div> 
             <form>
               <div className="form-group">
                 <label>Nazwa Wydarzenia: <input className="form-control" onChange={eventName => this.setState({ eventName: eventName.target.value })} value={this.state.eventName} /></label>
