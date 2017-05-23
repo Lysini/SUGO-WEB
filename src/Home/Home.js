@@ -3,16 +3,52 @@ import $ from 'jquery';
 import ScrollMagic from 'scrollmagic';
 import Navbar from './Navbar';
 import './Home.css';
+import LogInModal from './LogInModal';
 
   var windowHeight = window.innerHeight;
   var windowWidth = window.innerWidth;
 
 class Home extends Component {
+
+  constructor(){
+    super();
+    this.state ={
+      showLogInModal: false,
+      logged: false
+    }
+
+  }
+
+
+  checkLogInActive(){
+      if(localStorage.getItem("userId") !== null){
+        this.setState({logged: true})
+      }
+      else {
+        this.setState({logged: false})
+      }
+  }
+  
+  showLogInModalCreate() {
+      if(localStorage.getItem("userId") !== null){
+          this.props.router.push({
+            pathname: '/create'
+          })
+      } else{
+            this.setState({
+              createPartyActivity: true,
+            showLogInModal: true
+      });
+        }
+  }
+
   
 
   componentDidMount() {
     this.setAnimations();
+    this.checkLogInActive();
   }
+
 
   setAnimations() {
     var controller = new ScrollMagic.Controller({
@@ -98,16 +134,18 @@ class Home extends Component {
 
 
 
+
   render() {
     return (
       <div>
+      <LogInModal router={this.props.router} showActivity={this.state.showLogInModal} onClose={() => this.setState({showLogInModal: false})} createPartyActivity={this.state.createPartyActivity} checkLogInActive={this.checkLogInActive.bind(this)}/>
         <div className="main-bg">
           <Navbar router={this.props.router} myprofile={false}/>
           <div className="main-slogan">
             <div>
               <p className="main-slogan-text">Spotkaj się ze znajomymi!</p>
               <p className="main-slogan-text">Uniknij problemów z organizacją</p>
-              <button className="btn main-slogan-btn">Stwórz wydarzenie!</button>
+              <button className="btn main-slogan-btn" onClick={this.showLogInModalCreate.bind(this)}>Stwórz wydarzenie!</button>
             </div>
           </div>
         </div>

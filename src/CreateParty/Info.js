@@ -26,7 +26,8 @@ class Info extends Component {
 	        	people: this.props.people,
 	        	place: this.props.place,
 	            special_info: this.state.info,
-	            date: this.props.startDate
+	            start_date: this.props.start_date,
+	            end_date: this.props.end_date
 			})
 		})
 		.then(
@@ -39,7 +40,7 @@ class Info extends Component {
 		.then(responseData => {
 			console.log(responseData);
 			this.props.router.push({
-			  pathname: `/user/event-info/${responseData.id}`
+			  pathname: `/user/event-info/${responseData.eventId}`
 			})
 		})
 		.catch(err => {

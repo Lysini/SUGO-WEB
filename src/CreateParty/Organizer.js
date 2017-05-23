@@ -12,26 +12,36 @@ class Organizer extends Component {
 	    	organizerName: '',
 	    	organizerNote: '',
 	    	event_name: '',
-			startDate: moment()
+			startDate: moment(),
+			endDate: moment()
     	};
-    	this.handleChange = this.handleChange.bind(this);
+    	this.handleChangeStart = this.handleChangeStart.bind(this);
+    	this.handleChangeEnd = this.handleChangeEnd.bind(this);
 	}
 
-	handleChange(date) {
+	handleChangeStart(date) {
 	    this.setState({
 	      startDate: date
 	    });
 	}
 
+	handleChangeEnd(date) {
+	    this.setState({
+	      endDate: date
+	    });
+	}
+
 	saveUp() {
   		var startDate = this.state.startDate._d.toISOString();
-  		var startDateA = startDate.substring(0, 10);
-		console.log(startDateA);
+  		var start_date = startDate.substring(0, 10);
+  		var endDate = this.state.startDate._d.toISOString();
+  		var end_date = startDate.substring(0, 10);
 		this.props.saveOrganizer(
 	    	this.state.organizerName,
 	    	this.state.organizerNote,
 	    	this.state.event_name,
-	    	startDateA
+	    	start_date,
+	    	end_date
 		)
 	}
 
@@ -48,9 +58,7 @@ class Organizer extends Component {
 				}
 			})
 		.then(responseData =>{
-			console.log(responseData);
-			this.setState({ organizerName: responseData.data.name, organizerNote: responseData.data.note
-				 });
+			this.setState({ organizerName: responseData.data.name, organizerNote: responseData.data.note });
 		});
 	}
 
@@ -59,9 +67,6 @@ class Organizer extends Component {
   	}
 
   render() {
-  	var startDate = this.state.startDate._d.toISOString();
-  	var startDateA = startDate.substring(0, 10);
-	console.log(startDateA);
     return (
 		<div className="openedPlace">
 			<h1 className="title">Organizator</h1>
@@ -77,12 +82,21 @@ class Organizer extends Component {
 							<input className="form-control PlaceText" onChange={event_name => this.setState({ event_name:event_name.target.value })} value={this.state.event_name} />
 						</div>
 						<div className="form-group">
-							<label>Data Wydarzenia:</label>
+							<label>Data rozpoczęcia wydarzenia:</label>
 							<DatePicker
 								dateFormat='YYYY/MM/DD'
 								dateFormatCalendar='YYYY/MM/DD'
 						        selected={this.state.startDate}
-						        onChange={this.handleChange}
+						        onChange={this.handleChangeStart}
+						    />
+						</div>
+						<div className="form-group">
+							<label>Data zakończenia wydarzenia:</label>
+							<DatePicker
+								dateFormat='YYYY/MM/DD'
+								dateFormatCalendar='YYYY/MM/DD'
+						        selected={this.state.endDate}
+						        onChange={this.handleChangeEnd}
 						    />
 						</div>
 			  		</form>
