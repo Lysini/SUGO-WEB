@@ -32,17 +32,19 @@ class Organizer extends Component {
 	}
 
 	saveUp() {
-  		var startDate = this.state.startDate._d.toISOString();
-  		var start_date = startDate.substring(0, 10);
-  		var endDate = this.state.startDate._d.toISOString();
-  		var end_date = startDate.substring(0, 10);
-		this.props.saveOrganizer(
-	    	this.state.organizerName,
-	    	this.state.organizerNote,
-	    	this.state.event_name,
-	    	start_date,
-	    	end_date
-		)
+		if(this.validateEventName(this.state.event_name)){
+	  		var startDate = this.state.startDate._d.toISOString();
+	  		var start_date = startDate.substring(0, 10);
+	  		var endDate = this.state.startDate._d.toISOString();
+	  		var end_date = startDate.substring(0, 10);
+			this.props.saveOrganizer(
+		    	this.state.organizerName,
+		    	this.state.organizerNote,
+		    	this.state.event_name,
+		    	start_date,
+		    	end_date
+			)
+		}
 	}
 
 	fetchUserData(){
@@ -66,46 +68,63 @@ class Organizer extends Component {
     	this.fetchUserData();
   	}
 
-  render() {
-    return (
-		<div className="openedPlace">
-			<h1 className="title">Organizator</h1>
-			<div className="PlaceClose" onClick={this.props.onClose}>
-     			<div className="close-left"></div>
-      			<div className="close-right"></div>
-      		</div>
-      		<div className="container">
-      			<div className="form-container">
-		      		<form>
-		      			<div className="form-group">
-							<label>Nazwa Wydarzenia:</label>
-							<input className="form-control PlaceText" onChange={event_name => this.setState({ event_name:event_name.target.value })} value={this.state.event_name} />
-						</div>
-						<div className="form-group">
-							<label>Data rozpoczęcia wydarzenia:</label>
-							<DatePicker
-								dateFormat='YYYY/MM/DD'
-								dateFormatCalendar='YYYY/MM/DD'
-						        selected={this.state.startDate}
-						        onChange={this.handleChangeStart}
-						    />
-						</div>
-						<div className="form-group">
-							<label>Data zakończenia wydarzenia:</label>
-							<DatePicker
-								dateFormat='YYYY/MM/DD'
-								dateFormatCalendar='YYYY/MM/DD'
-						        selected={this.state.endDate}
-						        onChange={this.handleChangeEnd}
-						    />
-						</div>
-			  		</form>
-		  		</div>
-				<button className="btn PlaceSave" onClick={this.saveUp.bind(this)}>Next</button>
-      		</div>
-      	</div>
-    );
-  }
+  	validateEventName(eventName) {
+	    var allowedChars = new RegExp("^([A-Za-z]{3,20})$"); 
+	    if (!allowedChars.test(eventName)) {
+	      this.setState({ validNameErrorText: 'Nazwa Wydarzenia może zawierać od 3 do 20 liter.' });
+	    }
+	    else{
+	    	this.setState({ validNameErrorText: '' });
+	    }
+	    if(allowedChars.test(eventName)) {
+	    	return true;
+	    }
+	    return false;
+	}
+
+	render() {
+	    return (
+			<div className="openedPlace">
+				<h1 className="title">Organizator</h1>
+				<div className="PlaceClose" onClick={this.props.onClose}>
+	     			<div className="close-left"></div>
+	      			<div className="close-right"></div>
+	      		</div>
+	      		<div className="container">
+	      			<div className="form-container">
+			      		<form>
+			      			<div className="form-group">
+								<label>Nazwa Wydarzenia:</label>
+								<input className="form-control PlaceText" onChange={event_name => this.setState({ event_name:event_name.target.value })} value={this.state.event_name} />
+							</div>
+							<div className="form-group">
+								<p className="error-text">{this.state.validNameErrorText}</p>
+							</div>
+							<div className="form-group">
+								<label>Data rozpoczęcia wydarzenia:</label>
+								<DatePicker
+									dateFormat='YYYY/MM/DD'
+									dateFormatCalendar='YYYY/MM/DD'
+							        selected={this.state.startDate}
+							        onChange={this.handleChangeStart}
+							    />
+							</div>
+							<div className="form-group">
+								<label>Data zakończenia wydarzenia:</label>
+								<DatePicker
+									dateFormat='YYYY/MM/DD'
+									dateFormatCalendar='YYYY/MM/DD'
+							        selected={this.state.endDate}
+							        onChange={this.handleChangeEnd}
+							    />
+							</div>
+				  		</form>
+			  		</div>
+					<button className="btn PlaceSave" onClick={this.saveUp.bind(this)}>Next</button>
+	      		</div>
+	      	</div>
+	    );
+	}
 }
 
 export default Organizer;

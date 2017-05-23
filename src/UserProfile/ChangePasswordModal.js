@@ -14,6 +14,7 @@ class ChangePasswordModal extends Component {
       };
   }
   changePassword() {
+    if(this.validatePassword(this.state.oldPassword))
     var userId = localStorage.getItem("userId");
       fetch(`${config.apiUrl}/user/${userId}/change-password`,{
           headers: {
@@ -41,6 +42,20 @@ class ChangePasswordModal extends Component {
     }
     componentWillMount() {
       this.setState({oldPassword:this.props.oldPassword})
+  }
+
+  validatePassword(oldPassword, newPassword, newPasswordRepeat) {
+      var allowedChars = new RegExp("^([A-Za-z]{3,20})$"); 
+      if (!allowedChars.test(eventName)) {
+        this.setState({ validNameErrorText: 'Nazwa Wydarzenia może zawierać od 3 do 20 liter.' });
+      }
+      else{
+        this.setState({ validNameErrorText: '' });
+      }
+      if(allowedChars.test(eventName)) {
+        return true;
+      }
+      return false;
   }
 
   render() {
