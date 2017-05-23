@@ -10,6 +10,10 @@
     margin-top: 5vh;
 }
 
+.error-text{
+  color: #F54266;
+}
+
 .modal-form-container {
   height: 30%;
   width: 30%;

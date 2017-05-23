@@ -18,7 +18,9 @@ class People extends Component {
 				peopleWomen: []
 			},
 			numberOfUsers: 0,
-			assistantNumber: 0
+			assistantNumber: 0,
+			validNameErrorText: '',
+			validNoteErrorText: ''
 		};
 	}
 
@@ -29,23 +31,25 @@ class People extends Component {
 	}
 
 	saveUpUser() {
-		let person = {
-			peopleName: this.state.inputName,
-			peopleNote: this.state.inputNote
-		};
-		if(this.state.peopleSex === "men") {
-			this.state.people.peopleMen.push(person);
+		if(this.validateUser(this.state.inputName, this.state.inputNote)){
+			let person = {
+				peopleName: this.state.inputName,
+				peopleNote: this.state.inputNote
+			};
+			if(this.state.peopleSex === "men") {
+				this.state.people.peopleMen.push(person);
+			}
+			else {
+				this.state.people.peopleWomen.push(person);
+			}
+			this.setState({ 
+				added: true, 
+				showModal: false,
+				numberOfUsers: this.state.people.numberOfUsers+1,
+				inputName: '',
+				inputNote: '' 
+			});
 		}
-		else {
-			this.state.people.peopleWomen.push(person);
-		}
-		this.setState({ 
-			added: true, 
-			showModal: false,
-			numberOfUsers: this.state.people.numberOfUsers+1,
-			inputName: '',
-			inputNote: '' 
-		});
 	}
 
 	deleteUser(){
@@ -59,21 +63,44 @@ class People extends Component {
 	}
 
 	updateUser(){
-		let person = {
-			peopleName: this.state.inputName,
-			peopleNote: this.state.inputNote,
-		};
-		if(this.state.peopleSex === "men") {
-			this.state.people.peopleMen[this.state.assistantNumber]=person;
+		if(this.validateUser(this.state.inputName, this.state.inputNote)){
+			let person = {
+				peopleName: this.state.inputName,
+				peopleNote: this.state.inputNote,
+			};
+			if(this.state.peopleSex === "men") {
+				this.state.people.peopleMen[this.state.assistantNumber]=person;
+			}
+			else {
+				this.state.people.peopleWomen[this.state.assistantNumber]=person;
+			}
+			this.setState({ 
+				showModal: false,
+				inputName: '',
+				inputNote: '' 
+			});
 		}
-		else {
-			this.state.people.peopleWomen[this.state.assistantNumber]=person;
-		}
-		this.setState({ 
-			showModal: false,
-			inputName: '',
-			inputNote: '' 
-		});
+	}
+
+	validateUser(inputName, inputNote) {
+	    var allowedNameChars = new RegExp("^([A-Za-z]{3,20})$"); 
+	    var allowedNoteChars = new RegExp("^([A-Za-z0-9]{0,150})$"); 
+	    if (!allowedNameChars.test(inputName)) {
+	      this.setState({ validNameErrorText: 'Nazwa użytkownika może zawierać od 3 do 20 znaków. Dopuszczalne znaki to litery.' });
+	    }
+	    else{
+	    	this.setState({ validNameErrorText: '' });
+	    }
+	    if (!allowedNoteChars .test(inputNote)) {
+	      this.setState({ validNoteErrorText: 'Notatka może zawierać maksymalnie 150 znaków. Dopuszczalne znaki to cyfry i litery.' });
+	    }
+	    else{
+	    	this.setState({ validNoteErrorText: '' });
+	    }
+	    if(allowedNoteChars.test(inputNote) && allowedNameChars.test(inputName)) {
+	      return true;
+	    }
+	    return false;
 	}
 
   render() {
@@ -151,6 +178,10 @@ class People extends Component {
 							<div className="form-group text-center">
 								<label>Notatki:</label>
 								<input type="text" className="form-control modal-note" onChange={inputNote => this.setState({ inputNote:inputNote.target.value })} value={this.state.inputNote} />
+							</div>
+							<div className="form-group text-center">
+								<p className="error-text" >{this.state.validNameErrorText}</p>
+								<p className="error-text" >{this.state.validNoteErrorText}</p>
 							</div>
 							<button className="btn pull-right modal-save" type="button" onClick={(this.state.updateActive) ? this.updateUser.bind(this) : this.saveUpUser.bind(this)}>Save</button>
 						</form>
