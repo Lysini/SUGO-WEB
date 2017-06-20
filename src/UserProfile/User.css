@@ -5,6 +5,45 @@
 
 }
 
+.password-input{
+  width: 200px;
+}
+
+.error-box{
+  position: absolute;
+  padding-top: 25%;
+  left: 30;
+  width: 200px;
+}
+
+.userInfo{
+  max-width: 70%;
+  margin: auto;
+}
+
+.profile-info{
+  height: 600px;
+  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.col-sm-6{
+  min-width: 300px;
+  padding-top: 20px;
+}
+
+.save-button{
+  background-color: #b8cef2;
+}
+
+.confirm-password-change{
+  margin-top: 5px;
+  position: absolute;
+  bottom: 23%;
+  right: 35%;
+}
+
 .user-event-list{
   min-height: 70%;
   min-width: 60%;
@@ -17,9 +56,16 @@
   min-height: 20vh;
   margin: auto;
 }
+
+.form-control{
+  margin: auto;
+}
+
 .well{
-    position: absolute;
-    top: 12%;
+  position: absolute;
+  top: 12%;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 .user-events{
@@ -96,9 +142,11 @@ background: #4f8df2;
 /* END */
 
 
-.background {
+.user-profile-box {
 	background-color: #ddd;
-	height: 800px;
+	height: 100%;
+  padding: auto;
+  margin-top: 50px;
   border-radius: 3%;
 }
 
@@ -108,12 +156,6 @@ background: #4f8df2;
 
 .event-box-2 {
 	border: 1px #ddd solid;
-}
-
-.userInfo{
-	max-width: 70%;
-  margin: auto;
-
 }
 
 .avatar{
@@ -134,7 +176,7 @@ background: #4f8df2;
 }
 
 .main-slogan {
-  height: 100%;
+  max-height: 100%;
   width: 100%;
   text-align: center;
   display: flex;
@@ -194,3 +236,102 @@ background: #4f8df2;
 }
 
 
+
+@media (min-width: 1200px) {
+
+}
+
+/* Portrait tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .confirm-password-change{
+    position: absolute;
+    bottom: 24%;
+    right: 29%;
+  }
+
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+  .confirm-password-change{
+    position: absolute;
+    bottom: 27%;
+    right: 33%;
+  }
+
+  .error-box{
+    position: absolute;
+    padding-top: 18%;
+    left: 30;
+    width: 200px;
+  }
+
+  .col-sm-6{
+    min-width: 342px;
+    padding-right: 40px;
+  }
+
+  .user-profile-box {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+  .confirm-password-change{
+    position: absolute;
+    bottom: 20%;
+    right: 32%;
+  }
+
+  .col-sm-6{
+    min-width: 342px;
+    padding-right: 40px;
+  }
+
+  .userInfo{
+    min-width: 100%;
+    margin: auto;
+  }
+
+
+}
+
+/* Landscape phones and smaller */
+@media (max-width: 480px) {
+  .password-input{
+    width: 150px;
+  }
+  .error-box{
+    width: 150px;
+  }
+  .confirm-password-change{
+    position: absolute;
+    bottom: 20%;
+    right: 25%;
+  }
+
+  .col-sm-6{
+    max-width: 190px;
+    padding-right: 40px;
+  }
+
+  .avatar{
+    width: 150px;
+    height: 150px;
+    border-radius: 5%;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #bcbfc4;
+  }
+
+  .form-control{
+    width: 150px;
+  }
+
+  .save-button{
+    margin-right: 24%;
+  }
+}

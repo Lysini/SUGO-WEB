@@ -56,18 +56,16 @@ class UserProfile extends Component {
 	      <div className="main-bg">
 	      	<Navbar router={this.props.router} logOut={this.logOut.bind(this)} myaccount={true} logged={false}/>
 	      	<div className="main-slogan">
-	      	<div className="container">
-		      	<div className="jumbotron">
-				{
-					(this.state.dataLoaded) ?
-						<div className="well">
-						    <UserProfileContent/>
-						</div>
-					: <img role="presentation" src="../src/loader.gif"/>
-				}	
-		      	</div>
-		    </div>
-	      </div>
+		      	<div className="container">
+			      	<div>
+					{
+						(this.state.dataLoaded) ?
+							<UserProfileContent/>
+						: <img role="presentation" src="../src/loader.gif"/>
+					}	
+			      	</div>
+			    </div>
+		      </div>
 	      </div>
 	    </div>
     );

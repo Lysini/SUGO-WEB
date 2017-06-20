@@ -133,39 +133,41 @@ updateUser() {
 
   render() {
     return (
-	 	<div className="background">
+	 	<div className="user-profile-box">
     {(this.state.showChangePasswordModal) ? <ChangePasswordModal oldPassword={this.state.oldPassword} onClose={() =>this.setState({showChangePasswordModal: false})}/> : null}
 	      <div className="container userInfo">
 	      	<h1 className="text-center">Dane Uzytkownika</h1>
-          <div className="col-sm-6 text-center pull-left">
-  	      	<form>
-              <img role="presentation"   className="avatar" src={`${this.state.avatar}`}/>
-              <input ref="file" type="file"  name="user[image]" multiple="true" onChange={this.getAvatar.bind(this)}/> 
-      			</form>
-            {(this.state.updateAvatarActivity) ? <button className="btn pull-right" onClick={this.updateUserAvatar.bind(this)}>Save Avatar</button> : null}
-          </div>
-          <div className="col-sm-6 text-center pull-right">
-            <form>
+          <div className="profile-info">
+            <div className="col-sm-6 text-center">
+    	      	<form>
+                <img role="presentation" className="avatar" src={`${this.state.avatar}`}/>
+                <input ref="file" type="file"  name="user[image]" multiple="true" onChange={this.getAvatar.bind(this)}/> 
+        			</form>
+              {(this.state.updateAvatarActivity) ? <button className="btn pull-right" onClick={this.updateUserAvatar.bind(this)}>Save Avatar</button> : null}
+            </div>
+            <div className="col-sm-6 text-center">
+              <form>
+                  <div className="form-group">
+                  <label>Name:</label>
+                  <input className="form-control" onChange={name => this.setState({ name:name.target.value, updateActivity: true })} value={this.state.name} />
+                </div>
                 <div className="form-group">
-                <label>Name:</label>
-                <input className="form-control" onChange={name => this.setState({ name:name.target.value, updateActivity: true })} value={this.state.name} />
-              </div>
-              <div className="form-group">
-                <label>Age:</label>
-                <input className="form-control" onChange={age => this.setState({ age:age.target.value, updateActivity: true })} value={this.state.age} />
-              </div>
-              <div className="form-group">
-                <label>Note:</label>
-                <textarea className="form-control note-textarea" onChange={note => this.setState({ note:note.target.value, updateActivity: true })} value={this.state.note} />
-              </div>
-              <div className="form-group">
+                  <label>Age:</label>
+                  <input className="form-control" onChange={age => this.setState({ age:age.target.value, updateActivity: true })} value={this.state.age} />
+                </div>
+                <div className="form-group">
+                  <label>Note:</label>
+                  <textarea className="form-control note-textarea" onChange={note => this.setState({ note:note.target.value, updateActivity: true })} value={this.state.note} />
+                </div>
+              </form>
+              {(this.state.updateActivity) ? <button className="btn pull-right" onClick={this.updateUser.bind(this)}>Save</button> : null}
+              <button className="btn pull-right save-button" onClick={() => this.setState({showChangePasswordModal: true})}>Change password</button>
+              <div className="form-group error-box">
                 <p className="error-text">{this.state.validNameErrorText}</p>
                 <p className="error-text">{this.state.validAgeErrorText}</p>
                 <p className="error-text">{this.state.validNoteErrorText}</p>
               </div>
-            </form>
-            {(this.state.updateActivity) ? <button className="btn pull-right" onClick={this.updateUser.bind(this)}>Save</button> : null}
-            <button className="btn pull-right" onClick={() => this.setState({showChangePasswordModal: true})}>Change password</button>
+            </div>
           </div>
 	      </div>
 	    </div>

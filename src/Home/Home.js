@@ -142,7 +142,7 @@ class Home extends Component {
         <div className="main-bg">
           <Navbar router={this.props.router} myprofile={false}/>
           <div className="main-slogan">
-            <div>
+            <div className="main-slogan-box">
               <p className="main-slogan-text">Spotkaj się ze znajomymi!</p>
               <p className="main-slogan-text">Uniknij problemów z organizacją</p>
               <button className="btn main-slogan-btn" onClick={this.showLogInModalCreate.bind(this)}>Stwórz wydarzenie!</button>

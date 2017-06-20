@@ -99,8 +99,8 @@ class Navbar extends Component {
 				    		</ul>
 				    	</div>
 				    	{(this.state.burgerMenuOpened) ?
-							<div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-						    	<ul className="nav navbar-nav navbar-right">
+							<div className="collapse navbar-collapse burger-menu" id="bs-example-navbar-collapse-1">
+						    	<ul className="nav navbar-nav navbar-right burger-menu-content">
 								    <li><a href="#" onClick={this.backToHome.bind(this)}>Home</a></li>
 								    <li><a href="#">O Nas</a></li>
 								    <li><a href="#">Kontakt</a></li>

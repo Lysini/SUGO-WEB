@@ -75,30 +75,30 @@ class ChangePasswordModal extends Component {
               className="Modal"
               overlayClassName="Overlay">
             <div className="modal-header text-center">
-              <h4 className="modal-title" id="myModalLabel">Change Password</h4>
+              <h4 className="modal-title" id="myModalLabel">Zmień hasło</h4>
               <span className="fa fa-times" onClick={this.props.onClose} aria-hidden="true"/>
             </div>
             <div className="modal-form-container">
               <form>
                 <div className="form-group">
                   <label>Aktualne Hasło:</label>
-                  <input className="form-control" onChange={oldPassword => this.setState({ oldPassword:oldPassword.target.value, updateActivity: true })} value={this.state.oldPassword} />
+                  <input className="form-control password-input" onChange={oldPassword => this.setState({ oldPassword:oldPassword.target.value, updateActivity: true })} value={this.state.oldPassword} />
                 </div>
                 <div className="form-group">
                   <label>Nowe hasło:</label>
-                  <input className="form-control" onChange={newPassword => this.setState({ newPassword:newPassword.target.value, updateActivity: true })} value={this.state.newPassword} />
+                  <input className="form-control password-input" onChange={newPassword => this.setState({ newPassword:newPassword.target.value, updateActivity: true })} value={this.state.newPassword} />
                 </div>
                 <div className="form-group">
                   <label>Potwierdź nowe hasło:</label>
-                  <input className="form-control" onChange={newPasswordConfirmation => this.setState({ newPasswordConfirmation:newPasswordConfirmation.target.value, updateActivity: true })} value={this.state.newPasswordConfirmation} />
+                  <input className="form-control password-input" onChange={newPasswordConfirmation => this.setState({ newPasswordConfirmation:newPasswordConfirmation.target.value, updateActivity: true })} value={this.state.newPasswordConfirmation} />
                 </div>
-                <div className="form-group">
+                <div className="form-group error-box">
                   <p className="error-text">{this.state.validNewPasswordErrorText}</p>
                   <p className="error-text">{this.state.validNewPasswordCompareErrorText}</p>
                 </div>
               </form>
-              {(this.state.updateActivity) ? <button className="btn pull-right" onClick={this.changePassword.bind(this)}>Save</button> : null}
             </div>
+              {(this.state.updateActivity) ? <button className="btn pull-right save-button confirm-password-change" onClick={this.changePassword.bind(this)}>Save</button> : null}
           </ReactModal>
     	);
   	}
